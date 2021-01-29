@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float m_playerSpeed = 10.0f;
     public float m_jumpHeight = 3.0f;
@@ -57,7 +57,25 @@ public class PlayerMovement : MonoBehaviour
 
         // move player with their velocity
         controller.Move(playerVelocity * Time.deltaTime);
+    }
 
+    private void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log("SOME TRIGGER");
+        if (collider.gameObject.tag == "Pad")
+        {
+            //Destroy(collider.gameObject);
+            Debug.Log("PAD TRIGGER");
+        }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("SOME COLLISION");
+        if (collision.gameObject.tag == "Pad")
+        {
+            // Destroy(GetComponent<Collider>().gameObject);
+            Debug.Log("PAD COLLISION");
+        }
     }
 }
