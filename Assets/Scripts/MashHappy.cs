@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MashHappy : MinigameManager
 {
-    public Text ScoreText1;  // Text to show the scor efor player 1
+    public Text ScoreText1;  // Text to show the score for player 1
     public Text ScoreText2;
     public Text ScoreText3;
     public Text ScoreText4;
@@ -68,6 +68,8 @@ public class MashHappy : MinigameManager
         yield return StartCoroutine(ShowScores());
 
         yield return StartCoroutine(ShowResults());
+
+        
     }
 
 
