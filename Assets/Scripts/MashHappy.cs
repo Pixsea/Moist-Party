@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MashHappy : MinigameManager
 {
@@ -69,7 +70,7 @@ public class MashHappy : MinigameManager
 
         yield return StartCoroutine(ShowResults());
 
-        
+        SceneManager.LoadScene("BoardScene");
     }
 
 
