@@ -6,11 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/BoardScene.unity
     guid: 20c081d5c687d6e4fb189d435843ccf6
   - enabled: 1
     path: Assets/Scenes/MashHappy.unity
     guid: de6833d89557c92429377e75f15c0e32
+=======
+    path: Assets/Scenes/MainMenu.unity
+    guid: c976c57a31eb3b14da5e278c6239f017
+>>>>>>> Stashed changes
   - enabled: 1
     path: Assets/Scenes/ParkourScene.unity
     guid: d75c84658a65a30499f650e4ede69d4c
