@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Changes the height position of the player..
-        if (Input.GetButton("Jump") && groundedPlayer)
+        if (Input.GetButton("Jump" + playerNum.ToString()) && groundedPlayer)
         {
             // initial vertical velocity calculation
             playerVelocity.y += Mathf.Sqrt(- m_jumpHeight * m_gravityValue);
