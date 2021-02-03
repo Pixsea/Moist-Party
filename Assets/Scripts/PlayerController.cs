@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float m_playerSpeed = 10.0f;
     public float m_jumpHeight = 3.0f;
     public float m_gravityValue = -9.81f;
-    public float playerNum;
+    public int playerNum;
 
     private CharacterController controller;
     private Vector3 playerVelocity;

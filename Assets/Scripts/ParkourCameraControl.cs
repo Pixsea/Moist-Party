@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParkourCameraControl : MonoBehaviour
 {
-    public Transform players;
+    public Transform[] players;
     private Camera camera;
 
     private Vector3 newPosition;
@@ -27,11 +27,18 @@ public class ParkourCameraControl : MonoBehaviour
 
     private void GetNewPosition()
     {
-        Vector3 testPosition = new Vector3();
+        Vector3 minPosition = new Vector3(transform.position.x, transform.position.y, players[0].position.z);
 
-        testPosition.y = transform.position.y;
-        testPosition.x = transform.position.x;
-        testPosition.z = players.position.z;
-        newPosition = testPosition;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (!players[i].gameObject.activeSelf)
+                continue;
+            
+            if (players[i].position.z <= minPosition.z)
+            {
+                minPosition.z = players[i].position.z;
+            }
+        }
+        newPosition = minPosition;
     }
 }
