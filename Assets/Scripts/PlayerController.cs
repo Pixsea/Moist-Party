@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float m_playerSpeed = 10.0f;
     public float m_jumpHeight = 3.0f;
     public float m_gravityValue = -9.81f;
+    public float playerNum;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // move player along x and z axis
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
         controller.Move(move * Time.deltaTime * m_playerSpeed);
 
         // if player is moving, make them move
