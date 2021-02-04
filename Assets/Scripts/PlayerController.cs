@@ -10,13 +10,16 @@ public class PlayerController : MonoBehaviour
     public int playerNum;
 
     private CharacterController controller;
+    private Animator animator; 
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
     private void Start()
     {
         // for movement 
-        controller = gameObject.AddComponent<CharacterController>();
+        
+        controller = gameObject.GetComponent<CharacterController>();
+        animator = gameObject.GetComponent<Animator>(); 
     }
 
     void Update()
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
+            Debug.Log("Player is grounded");
             playerVelocity.y = 0f;
         }
 
@@ -43,18 +47,26 @@ public class PlayerController : MonoBehaviour
         // if player is moving, make them move
         if (move != Vector3.zero)
         {
+            animator.SetInteger("condition",1); //changes animation from idle to walking if they are moving 
             gameObject.transform.forward = move;
+        }
+
+        if (move == Vector3.zero)
+        {
+            animator.SetInteger("condition",0); //this chnages walking animation to idle animation 
         }
 
         // Changes the height position of the player..
         if (Input.GetButton("Jump" + playerNum.ToString()) && groundedPlayer)
         {
+            Debug.Log("Jump recognized");
             // initial vertical velocity calculation
             playerVelocity.y += Mathf.Sqrt(- m_jumpHeight * m_gravityValue);
         }
 
         // drag player down with gravity
         playerVelocity.y += m_gravityValue * Time.deltaTime;
+
 
         // move player with their velocity
         controller.Move(playerVelocity * Time.deltaTime);
