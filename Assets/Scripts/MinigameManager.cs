@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MinigameManager : MonoBehaviour
 {
@@ -156,5 +157,11 @@ public class MinigameManager : MonoBehaviour
     {
         UIMainText.text = "Someone won hopefully";
         yield return resultsWait;
+    }
+
+    public virtual IEnumerator ReturnToBoard()
+    {
+        SceneManager.LoadScene("BoardScene");
+        yield return null;
     }
 }
