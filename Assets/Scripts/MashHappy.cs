@@ -70,7 +70,7 @@ public class MashHappy : MinigameManager
 
         yield return StartCoroutine(ShowResults());
 
-        SceneManager.LoadScene("BoardScene");
+        yield return StartCoroutine(ReturnToBoard());
     }
 
 
