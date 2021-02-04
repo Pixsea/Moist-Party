@@ -10,6 +10,7 @@ public class MashHappy : MinigameManager
     public Text ScoreText2;
     public Text ScoreText3;
     public Text ScoreText4;
+    public Text CenterText;  // text in the center of screen for reference
 
     [SerializeField]
     private string player1Button;  // Button for player 1 to mash
@@ -31,22 +32,22 @@ public class MashHappy : MinigameManager
     {
         if (phase == "Playing")
         {
-            if (Input.GetKeyDown(player1Button))
+            if (Input.GetKeyDown(player1Button) && (Players.Length >= 1))
             {
                 player1Score += 1;
             }
 
-            if (Input.GetKeyDown(player2Button))
+            if (Input.GetKeyDown(player2Button) && (Players.Length >= 2))
             {
                 player2Score += 1;
             }
 
-            if (Input.GetKeyDown(player3Button))
+            if (Input.GetKeyDown(player3Button) && (Players.Length >= 3))
             {
                 player3Score += 1;
             }
 
-            if (Input.GetKeyDown(player4Button))
+            if (Input.GetKeyDown(player4Button) && (Players.Length >= 4))
             {
                 player4Score += 1;
             }
@@ -77,10 +78,43 @@ public class MashHappy : MinigameManager
 
     IEnumerator ShowScores()
     {
-        ScoreText1.text = "Player 1:\n" + player1Score.ToString();
-        ScoreText2.text = "Player 2:\n" + player2Score.ToString();
-        ScoreText3.text = "Player 3:\n" + player3Score.ToString();
-        ScoreText4.text = "Player 4:\n" + player4Score.ToString();
+        // Adjust text positions to only show texts for the number of players then center them
+
+        if (Players.Length == 1)
+        {
+            ScoreText1.transform.position = CenterText.transform.position;
+            ScoreText1.text = "Player 1:\n" + player1Score.ToString();
+        }
+
+        else if (Players.Length == 2)
+        {
+            ScoreText1.transform.position = CenterText.transform.position - new Vector3(125, 0, 0);
+            ScoreText1.text = "Player 1:\n" + player1Score.ToString();
+
+            ScoreText2.transform.position = CenterText.transform.position + new Vector3(125, 0, 0);
+            ScoreText2.text = "Player 2:\n" + player2Score.ToString();
+        }
+
+        else if (Players.Length == 3)
+        {
+            ScoreText1.transform.position = CenterText.transform.position - new Vector3(250, 0, 0);
+            ScoreText1.text = "Player 1:\n" + player1Score.ToString();
+
+            ScoreText2.transform.position = CenterText.transform.position;
+            ScoreText2.text = "Player 2:\n" + player2Score.ToString();
+
+            ScoreText3.transform.position = CenterText.transform.position + new Vector3(250, 0, 0);
+            ScoreText3.text = "Player 3:\n" + player3Score.ToString();
+        }
+
+        else
+        {
+            ScoreText1.text = "Player 1:\n" + player1Score.ToString();
+            ScoreText2.text = "Player 2:\n" + player2Score.ToString();
+            ScoreText3.text = "Player 3:\n" + player3Score.ToString();
+            ScoreText4.text = "Player 4:\n" + player4Score.ToString();
+        }
+        
 
         yield return new WaitForSeconds(3);
     }
