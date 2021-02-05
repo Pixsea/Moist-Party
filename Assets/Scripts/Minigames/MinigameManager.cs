@@ -61,7 +61,7 @@ public class MinigameManager : MonoBehaviour
     public virtual void FixedUpdate()
     {
         //Debug.Log(timer);
-        if ((phase == "Playing" || phase == "End") && UsesTimer)
+        if (phase == "Playing" || phase == "End")
         {
             timer--;
         }
@@ -97,6 +97,8 @@ public class MinigameManager : MonoBehaviour
         UIMainText.text = "Ready?";
         UITimerText.text = "";
 
+        LockMovement();
+
         // Wait for the specified length of time until yielding control back to the game loop.
         yield return startWait;
     }
@@ -107,6 +109,8 @@ public class MinigameManager : MonoBehaviour
     {
         phase = "Playing";
         UIMainText.text = "GO!";
+
+        UnlockMovement();
 
         timer = TotalGameTime / Time.fixedDeltaTime;
 
@@ -137,6 +141,8 @@ public class MinigameManager : MonoBehaviour
         UIMainText.text = "Finish";
         UITimerText.text = "";
 
+        LockMovement();
+
         timer = endWaitSec / Time.fixedDeltaTime;
 
         while(timer > 0)
@@ -163,5 +169,27 @@ public class MinigameManager : MonoBehaviour
     {
         SceneManager.LoadScene("BoardScene");
         yield return null;
+    }
+
+
+
+    // Locks all player movement
+    public void LockMovement()
+    {
+        // Create the player Dictionary from the player array
+        for (int i = 0; i < Players.Length; i++)
+        {
+            Players[i].gameObject.GetComponent<PlayerController>().lockMovement = true;
+        }
+    }
+
+    // Unlocks all player movement
+    public void UnlockMovement()
+    {
+        // Create the player Dictionary from the player array
+        for (int i = 0; i < Players.Length; i++)
+        {
+            Players[i].gameObject.GetComponent <PlayerController> ().lockMovement = false;
+        }
     }
 }

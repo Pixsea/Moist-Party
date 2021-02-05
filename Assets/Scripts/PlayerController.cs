@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float m_gravityValue = -9.81f;
     public int playerNum;
 
+    public bool lockMovement = false;  //Whether the player's movement shoulkd be locked or not
+
     private CharacterController controller;
     private Animator animator; 
     private Vector3 playerVelocity;
@@ -42,6 +44,13 @@ public class PlayerController : MonoBehaviour
 
         // move player along x and z axis
         Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
+
+        // If movement is locked, set velocity to zero
+        if (lockMovement)
+        {
+            move = new Vector3(0, 0, 0);
+        }
+
         controller.Move(move * Time.deltaTime * m_playerSpeed);
 
         // if player is moving, make them move
@@ -57,7 +66,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Changes the height position of the player..
-        if (Input.GetButton("Jump" + playerNum.ToString()) && groundedPlayer)
+        if (Input.GetButton("Jump" + playerNum.ToString()) && groundedPlayer  && !lockMovement)
         {
             Debug.Log("Jump recognized");
             // initial vertical velocity calculation
