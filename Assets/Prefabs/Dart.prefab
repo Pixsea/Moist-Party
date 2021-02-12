@@ -256,6 +256,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: {fileID: 1066304095640131477}
   target: {fileID: 0}
-  player: {fileID: 0}
   playerNum: 0
+  gameManager: {fileID: 0}
+  baseRenderer: {fileID: 5906507095674850369}
+  P1Color: {fileID: 2100000, guid: 070cfb5b6917f97479e8712b8a574d91, type: 2}
+  P2Color: {fileID: 2100000, guid: 03c120be0b710fe4fac71ad0b3da801c, type: 2}
+  P3Color: {fileID: 2100000, guid: 6431a3d7e27d3114db34af6a3de66cc9, type: 2}
+  P4Color: {fileID: 2100000, guid: 7c01593c5d37ef04ab1b92759468326e, type: 2}
   speed: 1000

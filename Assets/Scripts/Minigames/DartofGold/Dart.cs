@@ -11,6 +11,12 @@ public class Dart : MonoBehaviour
     public int playerNum;
     public GameObject gameManager; // reference to GameManager
 
+    public Renderer baseRenderer;  // Reference to the renderer of the dart base
+    public Material P1Color;  // Player 1 color
+    public Material P2Color;
+    public Material P3Color;
+    public Material P4Color;
+
     [SerializeField]
     private float speed;
     private bool stuck = false;  // Becomes true when it hits an object, cause it to stop
@@ -20,7 +26,22 @@ public class Dart : MonoBehaviour
     {
         speed = speed * Time.fixedDeltaTime;
 
-
+        if (playerNum == 1)
+        {
+            baseRenderer.material = P1Color;
+        }
+        else if (playerNum == 2)
+        {
+            baseRenderer.material = P2Color;
+        }
+        else if (playerNum == 3)
+        {
+            baseRenderer.material = P3Color;
+        }
+        else if (playerNum == 4)
+        {
+            baseRenderer.material = P4Color;
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +68,11 @@ public class Dart : MonoBehaviour
     void OnCollisionEnter(Collision obj)
     {
         stuck = true;
+        
+        transform.parent = obj.transform;
+        Rigidbody myRigid = GetComponent<Rigidbody>();
+        myRigid.isKinematic = true;
+
         //Debug.Log(obj.gameObject.name);
         GetScore();
     }

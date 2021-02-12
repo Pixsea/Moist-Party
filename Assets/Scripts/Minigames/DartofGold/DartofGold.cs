@@ -11,8 +11,9 @@ public class DartofGold : MinigameManager
     public Text ScoreText3;
     public Text ScoreText4;
     public Text CenterText;  // text in the center of screen for reference
+    public Text Crosshair;  // crosshair text
 
-    [SerializeField]
+   [SerializeField]
     private string player1Button;  // Button for player 1 to mash
     [SerializeField]
     private string player2Button;
@@ -22,9 +23,9 @@ public class DartofGold : MinigameManager
     private string player4Button;
 
     public int player1Score = 0;  // How many times player 1 has mashed
-    public int player2Score = 0;  // How many times player 1 has mashed
-    public int player3Score = 0;  // How many times player 1 has mashed
-    public int player4Score = 0;  // How many times player 1 has mashed
+    public int player2Score = 0;  // How many times player 2 has mashed
+    public int player3Score = 0;  // How many times player 3 has mashed
+    public int player4Score = 0;  // How many times player 4 has mashed
 
     public bool playing = false;  // true while players can shoot
 
@@ -39,15 +40,19 @@ public class DartofGold : MinigameManager
 
     public override IEnumerator GameLoop()
     {
+        Crosshair.text = "";
+
         // Start off by running the 'GameStart'
         yield return StartCoroutine(GameStarting());
 
         playing = true;
+        Crosshair.text = "+";
 
         // Once the 'GameStart' coroutine is finished, run the 'GamePlaying' coroutine but don't return until it's finished.
         yield return StartCoroutine(GamePlaying());
 
         playing = false;
+        Crosshair.text = "";
 
         // Once execution has returned here, run the 'GameEnd' coroutine, again don't return until it's finished.
         yield return StartCoroutine(GameEnding());
