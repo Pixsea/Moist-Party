@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dart : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class Dart : MonoBehaviour
     [SerializeField]
     private float speed;
     private bool stuck = false;  // Becomes true when it hits an object, cause it to stop
+
+    private float timer = 100f;
+
+    public GameObject pointText;  // prefab used to display points earned
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +71,7 @@ public class Dart : MonoBehaviour
 
         if (timer <= 0)
         {
-            Dead();
+            DestroyObject(gameObject);
         }
 
         timer--;
@@ -74,14 +79,18 @@ public class Dart : MonoBehaviour
 
     void OnCollisionEnter(Collision obj)
     {
-        stuck = true;
-        
         transform.parent = obj.transform;
         Rigidbody myRigid = GetComponent<Rigidbody>();
         myRigid.isKinematic = true;
 
+        Debug.Log(obj.gameObject.name);
+
         //Debug.Log(obj.gameObject.name);
-        GetScore();
+        if (stuck == false)
+        {
+            stuck = true;
+            GetScore();
+        }
     }
 
     public void GetScore()
@@ -93,25 +102,54 @@ public class Dart : MonoBehaviour
         // Distance rANGES FOR EACH RING
         // 0 - .33 - .75 - 1.2 - 1.67
 
+        GameObject pointEffect = Instantiate(pointText, new Vector3(0, gameObject.transform.position.y, gameObject.transform.position.z - 1), Quaternion.Euler(0, 0, 0));
+        Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
+        if (playerNum == 1)
+        {
+            textEdit.color = Color.red;
+            pointEffect.transform.position += new Vector3(-1.5f, 0, 0);
+        }
+        if (playerNum == 2)
+        {
+            textEdit.color = Color.blue;
+            pointEffect.transform.position += new Vector3(-.5f, 0, 0);
+        }
+        if (playerNum == 3)
+        {
+            textEdit.color = Color.yellow;
+            pointEffect.transform.position += new Vector3(.5f, 0, 0);
+        }
+        if (playerNum == 4)
+        {
+            textEdit.color = Color.green;
+            pointEffect.transform.position += new Vector3(1.5f, 0, 0);
+        }
+
+
         if (distance < .33f)
         {
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 5);
+            textEdit.text = "+5";
         }
         else if (distance < .75f)
         {
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 4);
+            textEdit.text = "+4";
         }
         else if (distance < 1.2f)
         {
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 3);
+            textEdit.text = "+3";
         }
         else if (distance < 1.67f)
         {
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 2);
+            textEdit.text = "+2";
         }
         else if (distance < 2.5f)
         {
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 1);
+            textEdit.text = "+1";
         }
     }
 }

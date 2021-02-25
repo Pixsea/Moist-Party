@@ -121,7 +121,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 5906507095054871015}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -137,9 +137,9 @@ GameObject:
   - component: {fileID: 5906507095674850398}
   - component: {fileID: 5906507095674850370}
   - component: {fileID: 5906507095674850369}
-  - component: {fileID: 5906507095674850368}
   - component: {fileID: 5906507095674850399}
   - component: {fileID: 5906507095674850371}
+  - component: {fileID: 1826015741228583763}
   m_Layer: 6
   m_Name: Dart
   m_TagString: Untagged
@@ -212,20 +212,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5906507095674850368
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5906507095674850397}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 2.6538455
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.32691887, z: 0.00000018412624}
 --- !u!54 &5906507095674850399
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,3 +250,18 @@ MonoBehaviour:
   P3Color: {fileID: 2100000, guid: 6431a3d7e27d3114db34af6a3de66cc9, type: 2}
   P4Color: {fileID: 2100000, guid: 7c01593c5d37ef04ab1b92759468326e, type: 2}
   speed: 1000
+  pointText: {fileID: 6936563891406581997, guid: 52b193b170346e34bb8f0dc9991d0d83, type: 3}
+--- !u!136 &1826015741228583763
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906507095674850397}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 2.7634084
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.38170415, z: 0}
