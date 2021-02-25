@@ -63,6 +63,13 @@ public class Dart : MonoBehaviour
         {
             myRigid.velocity = Vector3.zero;
         }
+
+        if (timer <= 0)
+        {
+            Dead();
+        }
+
+        timer--;
     }
 
     void OnCollisionEnter(Collision obj)
