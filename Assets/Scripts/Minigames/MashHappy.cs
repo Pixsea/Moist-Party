@@ -27,6 +27,19 @@ public class MashHappy : MinigameManager
     private int player4Score = 0;  // How many times player 1 has mashed
 
 
+    [SerializeField]
+    private GameObject pointText;
+
+    [SerializeField]
+    private GameObject player1;  // Used to get the players position
+    [SerializeField]
+    private GameObject player2;
+    [SerializeField]
+    private GameObject player3;
+    [SerializeField]
+    private GameObject player4;
+
+
 
     public override void Update()
     {
@@ -35,21 +48,45 @@ public class MashHappy : MinigameManager
             if (Input.GetKeyDown(player1Button) && (Players.Length >= 1))
             {
                 player1Score += 1;
+
+                // Spawn point effect
+                GameObject pointEffect = Instantiate(pointText, player1.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
+                textEdit.color = Color.green;
+                textEdit.text = "$";
             }
 
             if (Input.GetKeyDown(player2Button) && (Players.Length >= 2))
             {
                 player2Score += 1;
+
+                // Spawn point effect
+                GameObject pointEffect = Instantiate(pointText, player2.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
+                textEdit.color = Color.green;
+                textEdit.text = "$";
             }
 
             if (Input.GetKeyDown(player3Button) && (Players.Length >= 3))
             {
                 player3Score += 1;
+
+                // Spawn point effect
+                GameObject pointEffect = Instantiate(pointText, player3.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
+                textEdit.color = Color.green;
+                textEdit.text = "$";
             }
 
             if (Input.GetKeyDown(player4Button) && (Players.Length >= 4))
             {
                 player4Score += 1;
+
+                // Spawn point effect
+                GameObject pointEffect = Instantiate(pointText, player4.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
+                textEdit.color = Color.green;
+                textEdit.text = "$";
             }
         }
     }

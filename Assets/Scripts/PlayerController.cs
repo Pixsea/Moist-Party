@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     public float m_gravityValue = -9.81f;
     public int playerNum;
 
-    public bool lockMovement = false;  //Whether the player's movement shoulkd be locked or not
+    [HideInInspector]
+    public bool lockMovement = false;  //Whether the player's movement should be able to move
+    public bool keepMovementLocked = false;  // Whether the movement should always be locked
 
     private CharacterController controller;
     private Animator animator; 
@@ -46,9 +48,9 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
 
         // If movement is locked, set velocity to zero
-        if (lockMovement)
+        if (lockMovement || keepMovementLocked)
         {
-            move = new Vector3(0, 0, 0);
+            move = Vector3.zero;
         }
 
         controller.Move(move * Time.deltaTime * m_playerSpeed);
