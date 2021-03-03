@@ -82,7 +82,7 @@ public class SimonSays : MinigameManager
         for (int i = 0; i < Players.Length; i++)
         {
             playerDict.Add(i+1, false);
-            playerDict[i] = false;
+            playerDict[i+1] = false;
         }
 
         StartCoroutine(GameLoop());
@@ -176,6 +176,7 @@ public class SimonSays : MinigameManager
             //Debug.Log("Player " + playerNum.ToString() + " Loses");
             playerDict.Remove(playerNum);
             Destroy(GameObject.Find("Player" + playerNum.ToString()));
+            //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().velocity = new Vector3(100, 99999999, 0);
         }
 
         else
@@ -219,9 +220,11 @@ public class SimonSays : MinigameManager
         UIMainText.text = "";
 
 
-        // While the game hasn't ended and while the timer is greater than 0
+        // While the more than 1 player is alive
         while (playerDict.Count > 1)
         {
+            Debug.Log(playerDict.Count);
+
             //  Delay between inputs
             ScreenText.text = "";
             yield return new WaitForSeconds(delayWindow);
@@ -281,6 +284,23 @@ public class SimonSays : MinigameManager
             }
 
             toRemove.Clear();
+
+
+            // Set all players back to false
+
+            List<int> toChange = new List<int>(); // Temp list of players change
+            
+            // get numbers of all living players
+            foreach (KeyValuePair<int, bool> kvp in playerDict)
+            {
+                toChange.Add(kvp.Key);
+            }
+
+            // Change them
+            foreach (int playerNum in toChange)
+            {
+                playerDict[playerNum] = false;
+            }
 
 
 
