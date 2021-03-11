@@ -54,6 +54,9 @@ public class MashHappy : MinigameManager
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
+
+                // Punch animation
+                player1.GetComponent<Animator>().SetTrigger("Punch");
             }
 
             if (Input.GetKeyDown(player2Button) && (Players.Length >= 2))
@@ -65,6 +68,9 @@ public class MashHappy : MinigameManager
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
+
+                // Punch animation
+                player2.GetComponent<Animator>().SetTrigger("Punch");
             }
 
             if (Input.GetKeyDown(player3Button) && (Players.Length >= 3))
@@ -76,6 +82,9 @@ public class MashHappy : MinigameManager
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
+
+                // Punch animation
+                player3.GetComponent<Animator>().SetTrigger("Punch");
             }
 
             if (Input.GetKeyDown(player4Button) && (Players.Length >= 4))
@@ -87,6 +96,9 @@ public class MashHappy : MinigameManager
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
+
+                // Punch animation
+                player4.GetComponent<Animator>().SetTrigger("Punch");
             }
         }
     }
