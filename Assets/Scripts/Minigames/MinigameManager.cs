@@ -34,6 +34,8 @@ public class MinigameManager : MonoBehaviour
     [HideInInspector]
     public WaitForSeconds resultsWait;  // Used for delay when results how
 
+    public GameObject scoreTracker;  // Reference to Scoretracker object
+
 
 
 

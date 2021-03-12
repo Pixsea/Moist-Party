@@ -353,6 +353,9 @@ public class SimonSays : MinigameManager
             foreach (KeyValuePair<int, bool> kvp in playerDict)
             {
                 UIMainText.text = "Player " + kvp.Key.ToString() + " Wins!";
+
+                // Increase the winner's score
+                scoreTracker.GetComponent<ScoreTracker>().IncreaseScore(kvp.Key);
             }
         }
 

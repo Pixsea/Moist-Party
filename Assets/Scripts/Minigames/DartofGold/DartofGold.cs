@@ -187,6 +187,9 @@ public class DartofGold : MinigameManager
         else
         {
             UIMainText.text = "Player " + winner.ToString() + " Wins!";
+
+            // Increase the winner's score
+            scoreTracker.GetComponent<ScoreTracker>().IncreaseScore(winner);
         }
 
         yield return resultsWait;
