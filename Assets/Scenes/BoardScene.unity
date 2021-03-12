@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1Text: {fileID: 1761464210}
-  player2Text: {fileID: 0}
-  player3Text: {fileID: 0}
-  player4Text: {fileID: 0}
+  player2Text: {fileID: 754668336}
+  player3Text: {fileID: 1589936325}
+  player4Text: {fileID: 315299401}
 --- !u!4 &60738221
 Transform:
   m_ObjectHideFlags: 0
