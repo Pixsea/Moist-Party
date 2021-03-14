@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
-            Debug.Log("Player is grounded");
             playerVelocity.y = 0f;
         }
 
@@ -85,7 +84,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("SOME TRIGGER");
         if (collider.gameObject.tag == "Pad")
         {
             //Destroy(collider.gameObject);
@@ -93,13 +91,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("SOME COLLISION");
+        // Debug.Log("SOME COLLISION");
         if (collision.gameObject.tag == "Pad")
         {
             // Destroy(GetComponent<Collider>().gameObject);
             Debug.Log("PAD COLLISION");
+            Debug.Log(gameObject.num)
         }
+
+        Debug.Log("clear");
     }
+
+    private void OnTriggerEnter(Collision other)
+    {
+        
+    }
+    */
+
 }

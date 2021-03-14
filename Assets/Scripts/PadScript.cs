@@ -10,11 +10,11 @@ public class PadScript : MonoBehaviour
     void Start()
     {
         //Fetch the GameObject's Collider (make sure they have a Collider component)
-        m_ObjectCollider = GetComponent<Collider>();
+        //m_ObjectCollider = GetComponent<Collider>();
         //Here the GameObject's Collider is not a trigger
-        m_ObjectCollider.isTrigger = false;
+        //m_ObjectCollider.isTrigger = false;
         //Output whether the Collider is a trigger type Collider or not
-        Debug.Log("Trigger On : " + m_ObjectCollider.isTrigger);
+        //Debug.Log("Trigger On : " + m_ObjectCollider.isTrigger);
 
     }
 
@@ -23,4 +23,5 @@ public class PadScript : MonoBehaviour
     {
         
     }
+
 }
