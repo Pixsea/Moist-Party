@@ -82,14 +82,14 @@ public class PlayerController : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "Pad")
-        {
-            //Destroy(collider.gameObject);
-            Debug.Log("PAD TRIGGER");
-        }
-    }
+    // private void OnTriggerEnter(Collider collider)
+    // {
+    //     if (collider.gameObject.tag == "Pad")
+    //     {
+    //         //Destroy(collider.gameObject);
+    //         Debug.Log("PAD TRIGGER");
+    //     }
+    // }
 
     /*
     private void OnCollisionEnter(Collision collision)

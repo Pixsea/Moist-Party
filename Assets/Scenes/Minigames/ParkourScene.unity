@@ -889,7 +889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -421.49573, y: -197.24081}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &901653213
@@ -1462,9 +1462,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1244358277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe22ac4ed990f14093d055b810521cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 58b692b0f83df2c45855ac7b0789308c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Players: []
+  phase: 
+  gameEnded: 0
+  UIMainText: {fileID: 901653213}
+  UITimerText: {fileID: 0}
+  UsesTimer: 1
+  TotalGameTime: 0
+  timer: 0
+  startWaitSec: 0
+  endWaitSec: 0
+  resultsWaitSec: 0
+  scoreTracker: {fileID: 0}
 --- !u!1 &1268454176
 GameObject:
   m_ObjectHideFlags: 0

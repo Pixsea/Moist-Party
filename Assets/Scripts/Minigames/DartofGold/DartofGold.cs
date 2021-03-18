@@ -33,7 +33,6 @@ public class DartofGold : MinigameManager
 
     public override void Update()
     {
-        
     }
 
 
