@@ -5,6 +5,7 @@ using UnityEngine;
 public class PadScript : MonoBehaviour
 {
     Collider m_ObjectCollider;
+    public GameObject manager;
 
     // Start is called before the first frame update
     void Start()
@@ -21,17 +22,15 @@ public class PadScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    // private void OnTriggerEnter(Collider collider)
-    // {
-    //     if (collider.gameObject.tag == "Player")
-    //     {
-    //         //Destroy(collider.gameObject);
-    //         Debug.Log(collider.gameObject.GetComponent<PlayerController>().playerNum);
-    //     }
-    // }
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            manager.GetComponent<ParkourManager>().playerWins(collider.gameObject.GetComponent<PlayerController>().playerNum);
+        }
+    }
 
 
 
