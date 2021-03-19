@@ -46,7 +46,7 @@ public class SimonSays : MinigameManager
     private Dictionary<int, bool> playerDict;  // List of player by number that can remove them as they do the wrong input,
                                                //boolian value represents if the player has inputted the correct input in time
 
-    private bool inputValid;  // Whether a player input is valid at this time
+    //private bool inputValid;  // Whether a player input is valid at this time
     private string correctInput;  //  The correct input to hit, can be "up", "down", "left", "right"
 
     private float inputWindow;  //  How long the player ahs to input the correct input in seconds
@@ -73,7 +73,7 @@ public class SimonSays : MinigameManager
         phase = "Start";
 
         playerDict = new Dictionary<int, bool>();
-        inputValid = false;
+        //inputValid = false;
         correctInput = "";
         inputWindow = inputWindowStart;
         delayWindow = delayWindowStart;
