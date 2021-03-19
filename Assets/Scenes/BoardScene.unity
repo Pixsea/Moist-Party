@@ -156,6 +156,12 @@ MonoBehaviour:
   player2Text: {fileID: 754668336}
   player3Text: {fileID: 1589936325}
   player4Text: {fileID: 315299401}
+  tournamentRunning: 1
+  mainText: {fileID: 445999673}
+  mashButton: {fileID: 841533081}
+  simonButton: {fileID: 2108690912}
+  dartButton: {fileID: 1015755046}
+  parkourButton: {fileID: 933390285}
 --- !u!4 &60738221
 Transform:
   m_ObjectHideFlags: 0
@@ -499,6 +505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 4897643888075612915, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
 --- !u!1 &619899954
@@ -602,7 +612,11 @@ RectTransform:
   - {fileID: 754668335}
   - {fileID: 1589936324}
   - {fileID: 315299400}
+<<<<<<< HEAD
   - {fileID: 964726671}
+=======
+  - {fileID: 1163253312}
+>>>>>>> main
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1541,7 +1555,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015755046}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &1051429260
+=======
+--- !u!1 &1163253311
+>>>>>>> main
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1549,22 +1567,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1051429261}
   - component: {fileID: 1051429263}
   - component: {fileID: 1051429262}
   m_Layer: 5
   m_Name: Text
+=======
+  - component: {fileID: 1163253312}
+  - component: {fileID: 1163253313}
+  - component: {fileID: 1163253314}
+  m_Layer: 5
+  m_Name: MainText
+>>>>>>> main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 1
 --- !u!224 &1051429261
+=======
+  m_IsActive: 0
+--- !u!224 &1163253312
+>>>>>>> main
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1051429260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1579,19 +1611,51 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1051429262
+=======
+  m_GameObject: {fileID: 1163253311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 619899958}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 500, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1163253313
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163253311}
+  m_CullTransparentMesh: 1
+--- !u!114 &1163253314
+>>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1051429260}
+=======
+  m_GameObject: {fileID: 1163253311}
+>>>>>>> main
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+=======
+  m_Color: {r: 1, g: 0, b: 0.9504633, a: 1}
+>>>>>>> main
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1600,10 +1664,17 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
+=======
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+>>>>>>> main
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1611,6 +1682,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
+<<<<<<< HEAD
   m_Text: Return to Menu
 --- !u!222 &1051429263
 CanvasRenderer:
@@ -1620,6 +1692,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051429260}
   m_CullTransparentMesh: 1
+=======
+  m_Text: Player 1 Wins it all!
+>>>>>>> main
 --- !u!1001 &1258304256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1674,6 +1749,10 @@ PrefabInstance:
     - target: {fileID: 4897643888075612915, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897643888075612915, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
@@ -2576,6 +2655,10 @@ PrefabInstance:
     - target: {fileID: 7250422920178579424, guid: fd08097c648989e4f8bc7c41272e8bdc, type: 3}
       propertyPath: m_Name
       value: Pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250422920178579424, guid: fd08097c648989e4f8bc7c41272e8bdc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7250422920178579436, guid: fd08097c648989e4f8bc7c41272e8bdc, type: 3}
       propertyPath: m_RootOrder

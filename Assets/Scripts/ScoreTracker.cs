@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -21,31 +22,53 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField]
     private Text player4Text;
 
+    public bool tournamentRunning;
+    private int scoreToWin;
+    public Text mainText;
+
+    public GameObject mashButton;  //  Buttons to disable when showing a win screen
+    public GameObject simonButton;
+    public GameObject dartButton;
+    public GameObject parkourButton;
+    private bool done = false;  // whether the game is done
+    private float timer = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        if (mainText != null)
+        {
+            //mainText.text = "";
+        }
+
         stats = new ScoreTrackerStats();
+        timer = 5f / Time.fixedDeltaTime;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (done)
+        {
+            if (timer <= 0)
+            {
+                ResetScore();
+                SceneManager.LoadScene("BoardScene");
+            }
+            timer--;
+        }
     }
 
     void OnEnable()
     {
-        //player1Score = PlayerPrefs.GetInt("player1Score");
-        //player2Score = PlayerPrefs.GetInt("player2Score");
-        //player3Score = PlayerPrefs.GetInt("player3Score");
-        //player4Score = PlayerPrefs.GetInt("player4Score");
-
         // Get scores from script
-
         player1Score = ScoreTrackerStats.player1Score;
         player2Score = ScoreTrackerStats.player2Score;
         player3Score = ScoreTrackerStats.player3Score;
         player4Score = ScoreTrackerStats.player4Score;
+        tournamentRunning = ScoreTrackerStats.tournamentRunning;
+        scoreToWin = ScoreTrackerStats.scoreToWin;
 
 
         if (player1Text != null)
@@ -64,22 +87,74 @@ public class ScoreTracker : MonoBehaviour
         {
             player4Text.text = player4Score.ToString();
         }
+
+
+        if (tournamentRunning && (mainText != null))
+        {
+            if (player1Score >= scoreToWin)
+            {
+                //Disable buttons
+                mashButton.SetActive(false);
+                simonButton.SetActive(false);
+                dartButton.SetActive(false);
+                parkourButton.SetActive(false);
+
+                mainText.text = "Player 1 Wins The Tournament!";
+
+                done = true;
+            }
+
+            else if (player2Score >= scoreToWin)
+            {
+                //Disable buttons
+                mashButton.SetActive(false);
+                simonButton.SetActive(false);
+                dartButton.SetActive(false);
+                parkourButton.SetActive(false);
+
+                mainText.text = "Player 2 Wins The Tournament!";
+
+                done = true;
+            }
+
+            else if (player3Score >= scoreToWin)
+            {
+                //Disable buttons
+                mashButton.SetActive(false);
+                simonButton.SetActive(false);
+                dartButton.SetActive(false);
+                parkourButton.SetActive(false);
+
+                mainText.text = "Player 3 Wins The Tournament!";
+
+                done = true;
+            }
+
+            else if (player4Score >= scoreToWin)
+            {
+                //Disable buttons
+                mashButton.SetActive(false);
+                simonButton.SetActive(false);
+                dartButton.SetActive(false);
+                parkourButton.SetActive(false);
+
+                mainText.text = "Player 4 Wins The Tournament!";
+
+                done = true;
+            }
+        }
     }
 
     void OnDisable()
     {
-        //PlayerPrefs.SetInt("player1Score", player1Score);
-        //PlayerPrefs.SetInt("player2Score", player2Score);
-        //PlayerPrefs.SetInt("player3Score", player3Score);
-        //PlayerPrefs.SetInt("player4Score", player4Score);
-
-
         // Set scores into script
 
         ScoreTrackerStats.player1Score = player1Score;
         ScoreTrackerStats.player2Score = player2Score;
         ScoreTrackerStats.player3Score = player3Score;
         ScoreTrackerStats.player4Score = player4Score;
+        ScoreTrackerStats.tournamentRunning = tournamentRunning;
+        ScoreTrackerStats.scoreToWin = scoreToWin;
     }
 
     public void IncreaseScore(int playerNum)
