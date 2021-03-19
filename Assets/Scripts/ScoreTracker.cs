@@ -101,4 +101,18 @@ public class ScoreTracker : MonoBehaviour
             player4Score += 1;
         }
     }
+
+
+    public void ResetScore()
+    {
+        player1Score = 0;
+        player2Score = 0;
+        player3Score = 0;
+        player4Score = 0;
+
+        ScoreTrackerStats.player1Score = 0;
+        ScoreTrackerStats.player2Score = 0;
+        ScoreTrackerStats.player3Score = 0;
+        ScoreTrackerStats.player4Score = 0;
+    }
 }
