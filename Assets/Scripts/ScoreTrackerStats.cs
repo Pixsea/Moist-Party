@@ -9,5 +9,5 @@ public class ScoreTrackerStats
     public static int player3Score = 0;
     public static int player4Score = 0;
     public static bool tournamentRunning = true;
-    public static int scoreToWin = 3;
+    public static int scoreToWin = 3;  // Amount to win
 }
