@@ -45,7 +45,7 @@ public class MashHappy : MinigameManager
     {
         if (phase == "Playing")
         {
-            if (Input.GetKeyDown(player1Button) && (Players.Length >= 1))
+            if (Input.GetKeyDown(player1Button) && (numPlayers >= 1))
             {
                 player1Score += 1;
 
@@ -59,7 +59,7 @@ public class MashHappy : MinigameManager
                 player1.GetComponent<Animator>().SetTrigger("Punch");
             }
 
-            if (Input.GetKeyDown(player2Button) && (Players.Length >= 2))
+            if (Input.GetKeyDown(player2Button) && (numPlayers >= 2))
             {
                 player2Score += 1;
 
@@ -73,7 +73,7 @@ public class MashHappy : MinigameManager
                 player2.GetComponent<Animator>().SetTrigger("Punch");
             }
 
-            if (Input.GetKeyDown(player3Button) && (Players.Length >= 3))
+            if (Input.GetKeyDown(player3Button) && (numPlayers >= 3))
             {
                 player3Score += 1;
 
@@ -87,7 +87,7 @@ public class MashHappy : MinigameManager
                 player3.GetComponent<Animator>().SetTrigger("Punch");
             }
 
-            if (Input.GetKeyDown(player4Button) && (Players.Length >= 4))
+            if (Input.GetKeyDown(player4Button) && (numPlayers >= 4))
             {
                 player4Score += 1;
 
@@ -102,6 +102,24 @@ public class MashHappy : MinigameManager
             }
         }
     }
+
+
+
+    //public override IEnumerator AdjustPlayers()
+    //{
+    //    // Remove players who aren't palying from the arena
+    //    if ((numPlayers < 4) && (Players.Length >= 4))
+    //    {
+    //        Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
+    //    }
+
+    //    if ((numPlayers < 3) && (Players.Length >= 3))
+    //    {
+    //        Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
+    //    }
+
+    //    yield return null;
+    //}
 
 
 

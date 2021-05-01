@@ -83,7 +83,7 @@ public class Dart : MonoBehaviour
         Rigidbody myRigid = GetComponent<Rigidbody>();
         myRigid.isKinematic = true;
 
-        Debug.Log(obj.gameObject.name);
+        //Debug.Log(obj.gameObject.name);
 
         //Debug.Log(obj.gameObject.name);
         if (stuck == false)

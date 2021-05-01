@@ -85,6 +85,9 @@ public class SimonSays : MinigameManager
             playerDict[i+1] = false;
         }
 
+        numPlayers = scoreTracker.GetComponent<ScoreTracker>().GetNumPlayers();
+        Debug.Log(numPlayers);
+
         StartCoroutine(GameLoop());
     }
 
@@ -206,6 +209,24 @@ public class SimonSays : MinigameManager
 
 
 
+    public override IEnumerator AdjustPlayers()
+    {
+        // Remove players who aren't palying from the arena
+        if (numPlayers < 4)
+        {
+            Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
+        }
+
+        if (numPlayers < 3)
+        {
+            Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
+        }
+
+        yield return null;
+    }
+
+
+
     public override IEnumerator GamePlaying()
     {
         phase = "Playing";
@@ -223,7 +244,7 @@ public class SimonSays : MinigameManager
         // While the more than 1 player is alive
         while (playerDict.Count > 1)
         {
-            Debug.Log(playerDict.Count);
+            //Debug.Log(playerDict.Count);
 
             //  Delay between inputs
             ScreenText.text = "";

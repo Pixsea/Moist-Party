@@ -33,6 +33,8 @@ public class ScoreTracker : MonoBehaviour
     private bool done = false;  // whether the game is done
     private float timer = 0;
 
+    public Text numPlayertext;  // text to change to show how many players are in
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,31 @@ public class ScoreTracker : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown("2"))
+        {
+            SetNumPlayers(2);
+
+            numPlayertext.text = "Players: 2";
+        }
+
+        else if (Input.GetKeyDown("3"))
+        {
+            SetNumPlayers(3);
+
+            numPlayertext.text = "Players: 3";
+        }
+
+        else if (Input.GetKeyDown("4"))
+        {
+            SetNumPlayers(4);
+
+            numPlayertext.text = "Players: 4";
+        }
+    }
+
+
     void FixedUpdate()
     {
         if (done)
@@ -189,5 +216,21 @@ public class ScoreTracker : MonoBehaviour
         ScoreTrackerStats.player2Score = 0;
         ScoreTrackerStats.player3Score = 0;
         ScoreTrackerStats.player4Score = 0;
+    }
+
+
+
+    //  Set how many people are num playing
+    public void SetNumPlayers(int numPlayers)
+    {
+        ScoreTrackerStats.numPlayers = numPlayers;
+    }
+
+
+
+    // Get the amount of players playing
+    public int GetNumPlayers()
+    {
+        return ScoreTrackerStats.numPlayers;
     }
 }

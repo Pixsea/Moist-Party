@@ -8,6 +8,8 @@ public class MinigameManager : MonoBehaviour
 {
     public GameObject[] Players;
     [HideInInspector]
+    public int numPlayers;  // How many players are currently playing
+    [HideInInspector]
     public string phase;  // Current phase
     [HideInInspector]
     public bool gameEnded = false;  // Is false while the game is running, can be turned true by calling EndGame
@@ -48,6 +50,9 @@ public class MinigameManager : MonoBehaviour
 
         startWait = new WaitForSeconds(startWaitSec);
         resultsWait = new WaitForSeconds(resultsWaitSec);
+
+        numPlayers = scoreTracker.GetComponent<ScoreTracker>().GetNumPlayers();
+        Debug.Log(numPlayers);
 
         phase = "Start";
         StartCoroutine(GameLoop());
@@ -101,8 +106,30 @@ public class MinigameManager : MonoBehaviour
 
         LockMovement();
 
+        // Adjust non used players
+        yield return StartCoroutine(AdjustPlayers());
+
         // Wait for the specified length of time until yielding control back to the game loop.
         yield return startWait;
+    }
+
+
+
+    // Called to move, disable, or delete players that aren't used, must be adjusted per minigame
+    public virtual IEnumerator AdjustPlayers()
+    {
+        // Remove players who aren't palying from the arena
+        if ((numPlayers < 4) && (Players.Length >= 4))
+        {
+            Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
+        }
+
+        if ((numPlayers < 3) && (Players.Length >= 3))
+        {
+            Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
+        }
+
+        yield return null;
     }
 
 

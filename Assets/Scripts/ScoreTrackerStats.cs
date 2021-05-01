@@ -10,4 +10,6 @@ public class ScoreTrackerStats
     public static int player4Score = 0;
     public static bool tournamentRunning = true;
     public static int scoreToWin = 3;  // Amount to win
+
+    public static int numPlayers = 4;
 }

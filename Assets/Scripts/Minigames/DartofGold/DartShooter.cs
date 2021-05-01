@@ -31,7 +31,9 @@ public class DartShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(fireButton) && (gameManager.GetComponent<DartofGold>().playing == true)  && (timer >= fireDelay))
+        // Each individual script on the dart spawner object handles one player
+        // Check if the player's button is pressed, the fire delay is up, the game is palying, and the player is actually playing
+        if (Input.GetKeyDown(fireButton) && (gameManager.GetComponent<DartofGold>().playing == true)  && (timer >= fireDelay) && (gameManager.GetComponent<DartofGold>().numPlayers >= playerNum))
         {
             Shoot();
             timer = 0;
