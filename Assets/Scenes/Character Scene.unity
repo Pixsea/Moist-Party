@@ -274,6 +274,8 @@ MonoBehaviour:
   m_jumpHeight: 3
   m_gravityValue: -9.81
   playerNum: 1
+  lockMovement: 0
+  keepMovementLocked: 0
 --- !u!1001 &1046108854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -295,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: eb062aa776e44954d94c4c2f76ebc148, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: eb062aa776e44954d94c4c2f76ebc148, type: 3}
       propertyPath: m_LocalPosition.z
