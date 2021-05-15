@@ -54,23 +54,22 @@ public class ScoreTracker : MonoBehaviour
         if (Input.GetKeyDown("2"))
         {
             SetNumPlayers(2);
-
-            numPlayertext.text = "Players: 2";
         }
 
         else if (Input.GetKeyDown("3"))
         {
             SetNumPlayers(3);
-
-            numPlayertext.text = "Players: 3";
         }
 
         else if (Input.GetKeyDown("4"))
         {
             SetNumPlayers(4);
-
-            numPlayertext.text = "Players: 4";
         }
+
+        //else if (Input.GetKeyDown("5"))
+        //{
+        //    SetWinScore(2);
+        //}
     }
 
 
@@ -224,6 +223,8 @@ public class ScoreTracker : MonoBehaviour
     public void SetNumPlayers(int numPlayers)
     {
         ScoreTrackerStats.numPlayers = numPlayers;
+
+        numPlayertext.text = "Players: " + numPlayers.ToString();
     }
 
 
@@ -232,5 +233,11 @@ public class ScoreTracker : MonoBehaviour
     public int GetNumPlayers()
     {
         return ScoreTrackerStats.numPlayers;
+    }
+
+
+    public void SetWinScore(int newScore)
+    {
+        scoreToWin = newScore;
     }
 }
