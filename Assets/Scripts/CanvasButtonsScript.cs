@@ -21,5 +21,10 @@ public class CanvasButtonsScript : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
-    
+
+    public void GoToBoard()
+    {
+        SceneManager.LoadScene("BoardScene", LoadSceneMode.Single);
+    }
+
 }

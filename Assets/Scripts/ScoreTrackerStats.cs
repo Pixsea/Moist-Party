@@ -12,4 +12,5 @@ public class ScoreTrackerStats
     public static int scoreToWin = 3;  // Amount to win
 
     public static int numPlayers = 4;
+    public static bool randomSelection = true;  // Whether minigames will be random
 }

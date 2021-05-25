@@ -118,14 +118,16 @@ public class MinigameManager : MonoBehaviour
     // Called to move, disable, or delete players that aren't used, must be adjusted per minigame
     public virtual IEnumerator AdjustPlayers()
     {
+        Debug.Log("test1");
         // Remove players who aren't palying from the arena
-        if ((numPlayers < 4) && (Players.Length >= 4))
+        if (numPlayers < 4)
         {
             Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
         }
 
-        if ((numPlayers < 3) && (Players.Length >= 3))
+        if (numPlayers < 3)
         {
+            //Debug.Log("test");
             Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
         }
 

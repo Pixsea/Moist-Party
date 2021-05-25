@@ -21,6 +21,8 @@ public class ScoreTracker : MonoBehaviour
     private Text player3Text;
     [SerializeField]
     private Text player4Text;
+    [SerializeField]
+    private Text scoretoWinText;
 
     public bool tournamentRunning;
     private int scoreToWin;
@@ -34,6 +36,10 @@ public class ScoreTracker : MonoBehaviour
     private float timer = 0;
 
     public Text numPlayertext;  // text to change to show how many players are in
+    public Text scoreText;  // text to change to show score to win
+    public Text randomSelectionText;  // text to change to show if minigame selection will be random
+
+
 
 
     // Start is called before the first frame update
@@ -51,20 +57,20 @@ public class ScoreTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("2"))
-        {
-            SetNumPlayers(2);
-        }
+        //if (Input.GetKeyDown("2"))
+        //{
+        //    SetNumPlayers(2);
+        //}
 
-        else if (Input.GetKeyDown("3"))
-        {
-            SetNumPlayers(3);
-        }
+        //else if (Input.GetKeyDown("3"))
+        //{
+        //    SetNumPlayers(3);
+        //}
 
-        else if (Input.GetKeyDown("4"))
-        {
-            SetNumPlayers(4);
-        }
+        //else if (Input.GetKeyDown("4"))
+        //{
+        //    SetNumPlayers(4);
+        //}
 
         //else if (Input.GetKeyDown("5"))
         //{
@@ -107,11 +113,31 @@ public class ScoreTracker : MonoBehaviour
         }
         if (player3Text != null)
         {
-            player3Text.text = player3Score.ToString();
+            if (ScoreTrackerStats.numPlayers < 3)
+            {
+                player3Text.gameObject.SetActive(false);
+            }
+            else
+            {
+                player3Text.gameObject.SetActive(true);
+                player3Text.text = player3Score.ToString();
+            }
         }
         if (player4Text != null)
         {
-            player4Text.text = player4Score.ToString();
+            if (ScoreTrackerStats.numPlayers < 4)
+            {
+                player4Text.gameObject.SetActive(false);
+            }
+            else
+            {
+                player4Text.gameObject.SetActive(true);
+                player4Text.text = player4Score.ToString();
+            }
+        }
+        if (scoretoWinText != null)
+        {
+            scoretoWinText.text = "Points to Win: " + scoreToWin.ToString();
         }
 
 
@@ -124,6 +150,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                scoretoWinText.text = "";
 
                 mainText.text = "Player 1 Wins The Tournament!";
 
@@ -137,6 +164,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                scoretoWinText.text = "";
 
                 mainText.text = "Player 2 Wins The Tournament!";
 
@@ -150,6 +178,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                scoretoWinText.text = "";
 
                 mainText.text = "Player 3 Wins The Tournament!";
 
@@ -163,6 +192,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                scoretoWinText.text = "";
 
                 mainText.text = "Player 4 Wins The Tournament!";
 
@@ -180,7 +210,7 @@ public class ScoreTracker : MonoBehaviour
         ScoreTrackerStats.player3Score = player3Score;
         ScoreTrackerStats.player4Score = player4Score;
         ScoreTrackerStats.tournamentRunning = tournamentRunning;
-        ScoreTrackerStats.scoreToWin = scoreToWin;
+        //ScoreTrackerStats.scoreToWin = scoreToWin;
     }
 
     public void IncreaseScore(int playerNum)
@@ -224,7 +254,10 @@ public class ScoreTracker : MonoBehaviour
     {
         ScoreTrackerStats.numPlayers = numPlayers;
 
-        numPlayertext.text = "Players: " + numPlayers.ToString();
+        if (numPlayertext != null)
+        {
+            numPlayertext.text = "Players: " + numPlayers.ToString();
+        }
     }
 
 
@@ -236,8 +269,57 @@ public class ScoreTracker : MonoBehaviour
     }
 
 
+    // -1 = decrease by one, -2 = increase by 1
     public void SetWinScore(int newScore)
     {
-        scoreToWin = newScore;
+        if (newScore == -2)
+        {
+            ScoreTrackerStats.scoreToWin += 1;
+        }
+        else if (newScore == -1)
+        {
+            ScoreTrackerStats.scoreToWin -= 1;
+        }
+        else
+        {
+            ScoreTrackerStats.scoreToWin = newScore;
+        }
+
+        if (ScoreTrackerStats.scoreToWin < 1)
+        {
+            ScoreTrackerStats.scoreToWin = 1;
+        }
+        else if (ScoreTrackerStats.scoreToWin > 9)
+        {
+            ScoreTrackerStats.scoreToWin = 9;
+        }
+
+        if (scoreText != null)
+        {
+            scoreText.text = ScoreTrackerStats.scoreToWin.ToString();
+        }
     }
+
+
+    // Change whether minigame selection is random or not
+    public void ChangeRandomSelection()
+    {
+        ScoreTrackerStats.randomSelection = !ScoreTrackerStats.randomSelection;
+        
+        if (randomSelectionText != null)
+        {
+            if (ScoreTrackerStats.randomSelection == true)
+            {
+                randomSelectionText.text = "Random";
+                //Debug.Log("random");
+            }
+            else
+            {
+                randomSelectionText.text = "Choose";
+                //Debug.Log("choose");
+            }
+            //randomSelectionText.text = ScoreTrackerStats.randomSelection.ToString();
+        }
+    }
+
 }
