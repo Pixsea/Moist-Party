@@ -166,6 +166,7 @@ MonoBehaviour:
   numPlayertext: {fileID: 2005170653}
   scoreText: {fileID: 0}
   randomSelectionText: {fileID: 0}
+  onBoardScene: 1
 --- !u!4 &60738221
 Transform:
   m_ObjectHideFlags: 0

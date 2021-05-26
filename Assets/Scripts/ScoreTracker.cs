@@ -40,6 +40,12 @@ public class ScoreTracker : MonoBehaviour
     public Text randomSelectionText;  // text to change to show if minigame selection will be random
 
 
+    // stuff to handle choosing random
+    [SerializeField]
+    private bool onBoardScene;
+    private float randomTimer;  //How long the player is on the board scene
+
+
 
 
     // Start is called before the first frame update
@@ -81,14 +87,51 @@ public class ScoreTracker : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (done)
+        //if (done)
+        //{
+        //    if (timer <= 0)
+        //    {
+        //        ResetScore();
+        //        SceneManager.LoadScene("BoardScene");
+        //    }
+        //    timer--;
+        //}
+
+
+        // Random selection logic
+        if (ScoreTrackerStats.randomSelection && onBoardScene && !done)
         {
-            if (timer <= 0)
+            //Disable buttons
+            mashButton.SetActive(false);
+            simonButton.SetActive(false);
+            dartButton.SetActive(false);
+            parkourButton.SetActive(false);
+            scoretoWinText.text = "";
+
+            mainText.text = "Selecting next minigame...";
+
+            if (randomTimer <= 0)
             {
-                ResetScore();
-                SceneManager.LoadScene("BoardScene");
+                float temp = Random.Range(0f, 4f);
+
+                if (temp <= 1)
+                {
+                    SceneManager.LoadScene("MashHappy");
+                }
+                else if (temp <= 2)
+                {
+                    SceneManager.LoadScene("SimonSays");
+                }
+                else if (temp <= 3)
+                {
+                    SceneManager.LoadScene("DartofGold");
+                }
+                else if (temp <= 4)
+                {
+                    SceneManager.LoadScene("ParkourScene");
+                }
             }
-            timer--;
+            randomTimer--;
         }
     }
 
@@ -101,6 +144,9 @@ public class ScoreTracker : MonoBehaviour
         player4Score = ScoreTrackerStats.player4Score;
         tournamentRunning = ScoreTrackerStats.tournamentRunning;
         scoreToWin = ScoreTrackerStats.scoreToWin;
+        randomTimer = 5f / Time.fixedDeltaTime;
+
+        done = false;
 
 
         if (player1Text != null)
@@ -141,10 +187,13 @@ public class ScoreTracker : MonoBehaviour
         }
 
 
-        if (tournamentRunning && (mainText != null))
+        if (tournamentRunning && onBoardScene)
         {
+            // Check for winners
             if (player1Score >= scoreToWin)
             {
+                done = true;
+
                 //Disable buttons
                 mashButton.SetActive(false);
                 simonButton.SetActive(false);
@@ -159,6 +208,8 @@ public class ScoreTracker : MonoBehaviour
 
             else if (player2Score >= scoreToWin)
             {
+                done = true;
+
                 //Disable buttons
                 mashButton.SetActive(false);
                 simonButton.SetActive(false);
@@ -173,6 +224,8 @@ public class ScoreTracker : MonoBehaviour
 
             else if (player3Score >= scoreToWin)
             {
+                done = true;
+
                 //Disable buttons
                 mashButton.SetActive(false);
                 simonButton.SetActive(false);
@@ -187,6 +240,8 @@ public class ScoreTracker : MonoBehaviour
 
             else if (player4Score >= scoreToWin)
             {
+                done = true;
+
                 //Disable buttons
                 mashButton.SetActive(false);
                 simonButton.SetActive(false);
