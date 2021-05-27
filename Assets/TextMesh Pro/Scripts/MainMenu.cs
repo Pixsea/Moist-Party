@@ -11,7 +11,8 @@ public class MainMenu : MonoBehaviour
     // The next scene comes from the "Build Settings" window in the editor
     public void PlayGame()
     {
-        SceneManager.LoadScene("BoardScene", LoadSceneMode.Single);
+        //SceneManager.LoadScene("BoardScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
     }
 
     // Quits game when "QUIT" is selected

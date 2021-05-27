@@ -71,7 +71,7 @@ public class Dart : MonoBehaviour
 
         if (timer <= 0)
         {
-            Destroy(gameObject);
+            DestroyObject(gameObject);
         }
 
         timer--;

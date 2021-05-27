@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(move * Time.deltaTime * m_playerSpeed);
 
         // if player is moving, make them move
-        if (move != Vector3.zero)
+        if (move.x != 0 && move.z != 0)
         {
             animator.SetInteger("condition",1); //changes animation from idle to walking if they are moving 
             gameObject.transform.forward = move;
@@ -67,19 +67,21 @@ public class PlayerController : MonoBehaviour
         }
 
         // Changes the height position of the player..
+
         if (Input.GetButton("Jump" + playerNum.ToString()) && groundedPlayer  && !lockMovement)
         {
             Debug.Log("Jump recognized");
             // initial vertical velocity calculation
-            playerVelocity.y += Mathf.Sqrt(- m_jumpHeight * m_gravityValue);
+            playerVelocity.y = Mathf.Sqrt(- m_jumpHeight * m_gravityValue);
         }
 
         // drag player down with gravity
         playerVelocity.y += m_gravityValue * Time.deltaTime;
-
+        
+        Debug.Log(playerVelocity.y);
 
         // move player with their velocity
-        controller.Move(playerVelocity * Time.deltaTime);
+        //controller.Move(playerVelocity * Time.deltaTime);
     }
 
     // private void OnTriggerEnter(Collider collider)
