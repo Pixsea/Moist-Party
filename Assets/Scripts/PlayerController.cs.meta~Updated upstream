@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/PlayerController.cs.meta
 guid: 98b4284290022904481e28ac751f003f
+=======
+guid: fabad74059f3599498cd3cccb103be86
+>>>>>>> Stashed changes:Assets/TextMesh Pro/Scripts/PlayerController.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

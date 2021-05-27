@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/Minigames/DartofGold/PointEffect.cs.meta
 guid: a8dace29714320749b78b425ac6ec64a
+=======
+guid: 639c03f68cf15be47b880c4c85400eac
+>>>>>>> Stashed changes:Assets/TextMesh Pro/Scripts/Minigames/PointEffect.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

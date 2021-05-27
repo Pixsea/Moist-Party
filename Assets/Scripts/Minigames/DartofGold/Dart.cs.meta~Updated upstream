@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/Minigames/DartofGold/Dart.cs.meta
 guid: 82d10c9e020206342b695d608e8e5b51
+=======
+guid: c6dbceb63c7940b4a898e03b8450a3b4
+>>>>>>> Stashed changes:Assets/TextMesh Pro/Scripts/Minigames/DartofGold/Dart.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

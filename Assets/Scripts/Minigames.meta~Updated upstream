@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/Minigames.meta
 guid: 299c062780f2746438a0dd159f25c0a0
+=======
+guid: fb9c4af154164ee449cc61d1302ec7c7
+>>>>>>> Stashed changes:Assets/TextMesh Pro/Scripts/Minigames.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
