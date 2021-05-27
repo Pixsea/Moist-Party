@@ -52,7 +52,7 @@ public class MinigameManager : MonoBehaviour
         resultsWait = new WaitForSeconds(resultsWaitSec);
 
         numPlayers = scoreTracker.GetComponent<ScoreTracker>().GetNumPlayers();
-        //Debug.Log(numPlayers);
+        Debug.Log(numPlayers);
 
         phase = "Start";
         StartCoroutine(GameLoop());
@@ -115,28 +115,20 @@ public class MinigameManager : MonoBehaviour
 
 
 
-    // Called to move, disable, or delete players that aren't used, might have to be adjusted per minigame
+    // Called to move, disable, or delete players that aren't used, must be adjusted per minigame
     public virtual IEnumerator AdjustPlayers()
     {
         Debug.Log("test1");
-        Debug.Log(Players.Length);
-        // Only c=change players if there are players to change
-        if (Players.Length > 0)
+        // Remove players who aren't palying from the arena
+        if (numPlayers < 4)
         {
-            Debug.Log("test1");
-            // Remove players who aren't palying from the arena
-            if (numPlayers < 4)
-            {
-                //Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
-                Players[3].gameObject.SetActive(false);
-            }
+            Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
+        }
 
-            if (numPlayers < 3)
-            {
-                Debug.Log(Players[2].gameObject.name);
-                //Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
-                Players[2].gameObject.SetActive(false);
-            }
+        if (numPlayers < 3)
+        {
+            //Debug.Log("test");
+            Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
         }
 
         yield return null;
