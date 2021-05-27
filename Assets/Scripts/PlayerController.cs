@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Jump recognized");
             // initial vertical velocity calculation
+            groundedPlayer = false;
             playerVelocity.y += Mathf.Sqrt(- m_jumpHeight * m_gravityValue);
         }
 

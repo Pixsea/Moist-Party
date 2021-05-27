@@ -25,7 +25,7 @@ public class PointEffect : MonoBehaviour
     {
         if (timer <= 0)
         {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
 
         timer--;
