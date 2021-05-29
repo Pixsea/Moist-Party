@@ -2083,6 +2083,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4897643888075612915, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
   m_PrefabInstance: {fileID: 1467403407}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1160533582 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4897643888075587219, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+  m_PrefabInstance: {fileID: 1467403407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1176275624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +2572,8 @@ MonoBehaviour:
   players:
   - {fileID: 880470362}
   - {fileID: 1085049256}
+  - {fileID: 1160533582}
+  - {fileID: 1893073238}
 --- !u!4 &1640576030
 Transform:
   m_ObjectHideFlags: 0
@@ -2792,6 +2799,11 @@ BoxCollider:
 --- !u!1 &1893073233 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4897643888075612915, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+  m_PrefabInstance: {fileID: 1043901648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1893073238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4897643888075587219, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
   m_PrefabInstance: {fileID: 1043901648}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1899995105
