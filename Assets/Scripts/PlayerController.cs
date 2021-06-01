@@ -54,23 +54,25 @@ public class PlayerController : MonoBehaviour
         }
         /*/
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        float horizontalMove = Input.GetAxis("Horizontal" + playerNum.ToString());
-        float verticalMove = Input.GetAxis("Vertical" + playerNum.ToString());
-        
-        if (m_isGrounded) {
-            if (Input.GetButton("Jump" + playerNum.ToString())) {
-                verticalSpeed = m_jumpSpeed;
+        if (!lockMovement && !keepMovementLocked) {
+            float horizontalMove = Input.GetAxis("Horizontal" + playerNum.ToString());
+            float verticalMove = Input.GetAxis("Vertical" + playerNum.ToString());
+            
+            if (m_isGrounded) {
+                if (Input.GetButton("Jump" + playerNum.ToString())) {
+                    verticalSpeed = m_jumpSpeed;
+                } else {
+                    verticalSpeed = 0;
+                }
             } else {
-                verticalSpeed = 0;
+                verticalSpeed += m_gravityValue * Time.deltaTime;
             }
-        } else {
-            verticalSpeed += m_gravityValue * Time.deltaTime;
-        }
-        
+            
 
-        Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
-        Vector3 move = transform.forward * verticalMove + transform.right * horizontalMove;
-        controller.Move(m_playerSpeed * Time.deltaTime * move + gravityMove * Time.deltaTime);
+            Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
+            Vector3 move = transform.forward * verticalMove + transform.right * horizontalMove;
+            controller.Move(m_playerSpeed * Time.deltaTime * move + gravityMove * Time.deltaTime);
+        }
         
 
 
