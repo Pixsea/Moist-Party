@@ -58,6 +58,15 @@ public class SimonSays : MinigameManager
 
     public Text ScreenText;  // Text to show the the correct inputs
 
+    [SerializeField]
+    private GameObject player1;  // Used to get the players position
+    [SerializeField]
+    private GameObject player2;
+    [SerializeField]
+    private GameObject player3;
+    [SerializeField]
+    private GameObject player4;
+
 
 
 
@@ -99,72 +108,88 @@ public class SimonSays : MinigameManager
         {
             if (Input.GetKeyDown(player1Up) && (Players.Length >= 1))
             {
+                player1.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(1, "up");
             }
             else if (Input.GetKeyDown(player1Down) && (Players.Length >= 1))
             {
+                player1.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(1, "down");
             }
             else if (Input.GetKeyDown(player1Left) && (Players.Length >= 1))
             {
+                player1.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(1, "left");
             }
             else if (Input.GetKeyDown(player1Right) && (Players.Length >= 1))
             {
+                player1.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(1, "right");
             }
 
 
             if (Input.GetKeyDown(player2Up) && (Players.Length >= 2))
             {
+                player2.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(2, "up");
             }
             else if (Input.GetKeyDown(player2Down) && (Players.Length >= 2))
             {
+                player2.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(2, "down");
             }
             else if (Input.GetKeyDown(player2Left) && (Players.Length >= 2))
             {
+                player2.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(2, "left");
             }
             else if (Input.GetKeyDown(player2Right) && (Players.Length >= 2))
             {
+                player2.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(2, "right");
             }
 
 
             if (Input.GetKeyDown(player3Up) && (Players.Length >= 3))
             {
+                player3.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(3, "up");
             }
             else if (Input.GetKeyDown(player3Down) && (Players.Length >= 3))
             {
+                player3.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(3, "down");
             }
             else if (Input.GetKeyDown(player3Left) && (Players.Length >= 3))
             {
+                player3.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(3, "left");
             }
             else if (Input.GetKeyDown(player3Right) && (Players.Length >= 3))
             {
+                player3.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(3, "right");
             }
 
 
             if (Input.GetKeyDown(player4Up) && (Players.Length >= 4))
             {
+                player4.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(4, "up");
             }
             else if (Input.GetKeyDown(player4Down) && (Players.Length >= 4))
             {
+                player4.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(4, "down");
             }
             else if (Input.GetKeyDown(player4Left) && (Players.Length >= 4))
             {
+                player4.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(4, "left");
             }
             else if (Input.GetKeyDown(player4Right) && (Players.Length >= 4))
             {
+                player4.GetComponent<Animator>().SetTrigger("Punch");
                 PlayerInput(4, "right");
             }
         }
@@ -178,8 +203,12 @@ public class SimonSays : MinigameManager
         {
             //Debug.Log("Player " + playerNum.ToString() + " Loses");
             playerDict.Remove(playerNum);
-            Destroy(GameObject.Find("Player" + playerNum.ToString()));
-            //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().velocity = new Vector3(100, 99999999, 0);
+            //Destroy(GameObject.Find("Player" + playerNum.ToString()));
+            //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().velocity = new Vector3(0, 1000, 0);
+            //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().AddForce(transform.up * 100);
+            GameObject.Find("Player" + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+            GameObject.Find("Spring " + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+
         }
 
         else
@@ -301,7 +330,11 @@ public class SimonSays : MinigameManager
             foreach (int playerNum in toRemove)
             {
                 playerDict.Remove(playerNum);
-                Destroy(GameObject.Find("Player" + playerNum.ToString()));
+                //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().velocity = new Vector3(0, 1000, 0);
+                //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().AddForce(transform.up * 100);
+                //Destroy(GameObject.Find("Player" + playerNum.ToString()));
+                GameObject.Find("Player" + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+                GameObject.Find("Spring " + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
             }
 
             toRemove.Clear();
