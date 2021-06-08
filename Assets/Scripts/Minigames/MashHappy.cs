@@ -50,7 +50,7 @@ public class MashHappy : MinigameManager
                 player1Score += 1;
 
                 // Spawn point effect
-                GameObject pointEffect = Instantiate(pointText, player1.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                GameObject pointEffect = Instantiate(pointText, player1.gameObject.transform.position + new Vector3(0, 1.8f, 1.73f), Quaternion.Euler(0, 0, 0));
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
@@ -64,7 +64,7 @@ public class MashHappy : MinigameManager
                 player2Score += 1;
 
                 // Spawn point effect
-                GameObject pointEffect = Instantiate(pointText, player2.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                GameObject pointEffect = Instantiate(pointText, player2.gameObject.transform.position + new Vector3(0, 1.8f, 1.73f), Quaternion.Euler(0, 0, 0));
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
@@ -78,7 +78,7 @@ public class MashHappy : MinigameManager
                 player3Score += 1;
 
                 // Spawn point effect
-                GameObject pointEffect = Instantiate(pointText, player3.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                GameObject pointEffect = Instantiate(pointText, player3.gameObject.transform.position + new Vector3(0, 1.8f, 1.73f), Quaternion.Euler(0, 0, 0));
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
@@ -92,7 +92,7 @@ public class MashHappy : MinigameManager
                 player4Score += 1;
 
                 // Spawn point effect
-                GameObject pointEffect = Instantiate(pointText, player4.gameObject.transform.position + new Vector3(0, 1, 1.73f), Quaternion.Euler(0, 0, 0));
+                GameObject pointEffect = Instantiate(pointText, player4.gameObject.transform.position + new Vector3(0, 1.8f, 1.73f), Quaternion.Euler(0, 0, 0));
                 Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
                 textEdit.color = Color.green;
                 textEdit.text = "$";
