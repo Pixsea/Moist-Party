@@ -70,7 +70,11 @@ public class SimonSays : MinigameManager
 
     private void Awake()
     {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<BackGroundAudio>().StopMusic();       
+        GameObject temp = GameObject.FindGameObjectWithTag("Music");
+        if (temp != null)
+        {
+            temp.GetComponent<BackGroundAudio>().StopMusic();
+        }
     } 
 
     public override void Start()
@@ -98,7 +102,7 @@ public class SimonSays : MinigameManager
         }
 
         numPlayers = scoreTracker.GetComponent<ScoreTracker>().GetNumPlayers();
-        Debug.Log(numPlayers);
+        //Debug.Log(numPlayers);
 
         StartCoroutine(GameLoop());
     }
@@ -209,8 +213,11 @@ public class SimonSays : MinigameManager
             //Destroy(GameObject.Find("Player" + playerNum.ToString()));
             //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().velocity = new Vector3(0, 1000, 0);
             //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().AddForce(transform.up * 100);
-            GameObject.Find("Player" + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
-            GameObject.Find("Spring " + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+            if (playerNum <= numPlayers)
+            {
+                GameObject.Find("Player" + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+                GameObject.Find("Spring " + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+            }
 
         }
 
@@ -246,12 +253,12 @@ public class SimonSays : MinigameManager
         // Remove players who aren't palying from the arena
         if (numPlayers < 4)
         {
-            Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
+            Players[3].gameObject.transform.position -= new Vector3(100, 100, 0);
         }
 
         if (numPlayers < 3)
         {
-            Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
+            Players[2].gameObject.transform.position -= new Vector3(100, 100, 0);
         }
 
         yield return null;
@@ -304,7 +311,7 @@ public class SimonSays : MinigameManager
             }
             else
             {
-                Debug.Log(temp);
+                //Debug.Log(temp);
             }
             ScreenText.text = correctInput;
 
@@ -312,8 +319,8 @@ public class SimonSays : MinigameManager
             // Input window
             yield return new WaitForSeconds(inputWindow);
 
-            delayWindow *= .95f;
-            inputWindow *= .95f;
+            delayWindow *= .9f;
+            inputWindow *= .9f;
 
 
             //  if a player didn't hit the correct input, kill them
@@ -336,8 +343,11 @@ public class SimonSays : MinigameManager
                 //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().velocity = new Vector3(0, 1000, 0);
                 //GameObject.Find("Player" + playerNum.ToString()).GetComponent<Rigidbody>().AddForce(transform.up * 100);
                 //Destroy(GameObject.Find("Player" + playerNum.ToString()));
-                GameObject.Find("Player" + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
-                GameObject.Find("Spring " + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+                if (playerNum <= numPlayers)
+                {
+                    GameObject.Find("Player" + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+                    GameObject.Find("Spring " + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+                }
             }
 
             toRemove.Clear();
