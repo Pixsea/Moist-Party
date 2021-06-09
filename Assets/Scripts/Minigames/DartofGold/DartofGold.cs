@@ -29,7 +29,10 @@ public class DartofGold : MinigameManager
 
     public bool playing = false;  // true while players can shoot
 
-
+    private void Awake()
+   {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<BackGroundAudio>().StopMusic();       
+   } 
 
     public override void Update()
     {

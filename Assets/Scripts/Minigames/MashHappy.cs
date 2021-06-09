@@ -39,7 +39,10 @@ public class MashHappy : MinigameManager
     [SerializeField]
     private GameObject player4;
 
-
+    private void Awake()
+    {
+            GameObject.FindGameObjectWithTag("Music").GetComponent<BackGroundAudio>().StopMusic();       
+    } 
 
     public override void Update()
     {

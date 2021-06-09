@@ -68,7 +68,10 @@ public class SimonSays : MinigameManager
     private GameObject player4;
 
 
-
+    private void Awake()
+    {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<BackGroundAudio>().StopMusic();       
+    } 
 
     public override void Start()
     {

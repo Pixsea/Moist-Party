@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 527747283}
   m_Layer: 0
   m_Name: BackgroundAudio
-  m_TagString: Untagged
+  m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 527747282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 357cd51e10a31c5468b6bdafaafb916a, type: 3}
+  m_Script: {fileID: 11500000, guid: cf69899390f1cab46b612a331cbc8640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!82 &527747284
@@ -542,7 +542,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 17703563d2b9f11478141aac2a3763c1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 603a2b165638bb64b87f6ec6b07e8e70, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
