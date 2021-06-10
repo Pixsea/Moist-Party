@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BoardScene.unity
     guid: 20c081d5c687d6e4fb189d435843ccf6
-  - enabled: 1
-    path: Assets/Scenes/Minigames/ParkourScene.unity
-    guid: d75c84658a65a30499f650e4ede69d4c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Minigames/MashHappy.unity
     guid: de6833d89557c92429377e75f15c0e32
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OptionsScene.unity
     guid: f422bb6035426ce45be8da3eac5b74fa
+  - enabled: 1
+    path: Assets/Scenes/Minigames/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
