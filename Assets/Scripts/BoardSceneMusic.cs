@@ -7,6 +7,10 @@ public class BoardSceneMusic : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
    {
-    GameObject.FindGameObjectWithTag("Music").GetComponent<BackGroundAudio>().PlayMusic();       
+        GameObject temp = GameObject.FindGameObjectWithTag("Music");
+        if (temp != null)
+        {
+            temp.GetComponent<BackGroundAudio>().PlayMusic();
+        }       
    } 
 }

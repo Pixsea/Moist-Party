@@ -31,7 +31,11 @@ public class DartofGold : MinigameManager
 
     private void Awake()
    {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<BackGroundAudio>().StopMusic();       
+       GameObject temp = GameObject.FindGameObjectWithTag("Music");
+        if (temp != null)
+        {
+            temp.GetComponent<BackGroundAudio>().StopMusic();
+        }       
    } 
 
     public override void Update()
