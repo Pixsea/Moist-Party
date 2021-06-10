@@ -1171,6 +1171,7 @@ MonoBehaviour:
   simonButton: {fileID: 0}
   dartButton: {fileID: 0}
   parkourButton: {fileID: 0}
+  glowRunnerButton: {fileID: 0}
   numPlayertext: {fileID: 0}
   scoreText: {fileID: 0}
   randomSelectionText: {fileID: 0}
@@ -1636,6 +1637,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player3
       objectReference: {fileID: 0}
+    - target: {fileID: 4897643888077880485, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40da5099c1a4ec34ebc64b16ddfc2f2a, type: 2}
+    - target: {fileID: 4897643888077880783, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40da5099c1a4ec34ebc64b16ddfc2f2a, type: 2}
+    - target: {fileID: 4897643888087182871, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40da5099c1a4ec34ebc64b16ddfc2f2a, type: 2}
     - target: {fileID: 5167999110717942040, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: playerNum
       value: 3
@@ -4604,6 +4617,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 4897643888077880485, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fcc887ee6afe374cb81f9b8d432109c, type: 2}
+    - target: {fileID: 4897643888077880783, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fcc887ee6afe374cb81f9b8d432109c, type: 2}
+    - target: {fileID: 4897643888087182871, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fcc887ee6afe374cb81f9b8d432109c, type: 2}
     - target: {fileID: 5167999110717942040, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: playerNum
       value: 2
@@ -6219,6 +6244,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player4
       objectReference: {fileID: 0}
+    - target: {fileID: 4897643888077880485, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a02abb15e62a1c34d95ff133b94d7f10, type: 2}
+    - target: {fileID: 4897643888077880783, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a02abb15e62a1c34d95ff133b94d7f10, type: 2}
+    - target: {fileID: 4897643888087182871, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a02abb15e62a1c34d95ff133b94d7f10, type: 2}
     - target: {fileID: 5167999110717942040, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: playerNum
       value: 4
