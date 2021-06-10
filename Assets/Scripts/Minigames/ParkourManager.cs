@@ -21,20 +21,18 @@ public class ParkourManager : MinigameManager
     public int winner;
 
     // Update is called once per frame
-
-    public override void Update()
+    private void Awake()
     {
-    }
-
-    public override void Start()
-    {
-        base.Start();
         GameObject temp = GameObject.FindGameObjectWithTag("Music");
         if (temp != null)
         {
             temp.GetComponent<BackGroundAudio>().StopMusic();
         }
     }
+    public override void Update()
+    {
+    }
+
     public override IEnumerator GameLoop()
     {
         LockMovement();
