@@ -166,8 +166,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        m_playerSpeed /= 0.75f;
-        m_canJump = true;
+        if (collision.tag == "Slime")
+        {
+            m_playerSpeed /= 0.75f;
+            m_canJump = true;
+        }
     }
 
 }
