@@ -10,6 +10,7 @@ public class PlatformMovement : MonoBehaviour
     private int direction = 1;
     private Vector3 movement;
     public bool oppositeDirection = false;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +33,22 @@ public class PlatformMovement : MonoBehaviour
 
         movement = Vector3.right * direction * speed * Time.deltaTime; 
         transform.Translate(movement); 
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("COLLISION DETECTED");
+        if (collision.tag == "Player")
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collision.transform.SetParent(transform);
+        }
     }
 }
