@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private float verticalSpeed;
     private bool m_isGrounded;
 
+    private bool m_canJump = true;
+
     private void Start()
     {
         // for movement 
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
             float verticalMove = Input.GetAxis("Vertical" + playerNum.ToString());
             
             if (m_isGrounded) {
-                if (Input.GetButton("Jump" + playerNum.ToString())) {
+                if (Input.GetButton("Jump" + playerNum.ToString()) && m_canJump == true) {
                     verticalSpeed = m_jumpSpeed;
                 } else {
                     verticalSpeed = 0;
@@ -146,6 +148,26 @@ public class PlayerController : MonoBehaviour
         m_isGrounded = true;
     }
 
-    
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "Slime")
+        {
+            m_playerSpeed *= 0.75f;
+        }
+    }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if (collision.tag == "Slime")
+        {
+            m_canJump = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        m_playerSpeed /= 0.75f;
+        m_canJump = true;
+    }
 
 }
