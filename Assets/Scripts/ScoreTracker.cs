@@ -32,6 +32,7 @@ public class ScoreTracker : MonoBehaviour
     public GameObject simonButton;
     public GameObject dartButton;
     public GameObject parkourButton;
+    public GameObject glowRunnerButton;
     private bool done = false;  // whether the game is done
     private float timer = 0;
 
@@ -106,13 +107,14 @@ public class ScoreTracker : MonoBehaviour
             simonButton.SetActive(false);
             dartButton.SetActive(false);
             parkourButton.SetActive(false);
+            glowRunnerButton.SetActive(false);
             scoretoWinText.text = "";
 
             mainText.text = "Selecting next minigame...";
 
             if (randomTimer <= 0)
             {
-                float temp = Random.Range(0f, 4f);
+                float temp = Random.Range(0f, 5f);
 
                 if (temp <= 1)
                 {
@@ -129,6 +131,10 @@ public class ScoreTracker : MonoBehaviour
                 else if (temp <= 4)
                 {
                     SceneManager.LoadScene("ParkourScene");
+                }
+                else if (temp <= 5)
+                {
+                    SceneManager.LoadScene("SampleScene");
                 }
             }
             randomTimer--;
@@ -199,6 +205,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                glowRunnerButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 1 Wins The Tournament!";
@@ -215,6 +222,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                glowRunnerButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 2 Wins The Tournament!";
@@ -231,6 +239,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                glowRunnerButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 3 Wins The Tournament!";
@@ -247,6 +256,7 @@ public class ScoreTracker : MonoBehaviour
                 simonButton.SetActive(false);
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
+                glowRunnerButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 4 Wins The Tournament!";

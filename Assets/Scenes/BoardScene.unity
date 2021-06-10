@@ -163,6 +163,7 @@ MonoBehaviour:
   simonButton: {fileID: 2108690912}
   dartButton: {fileID: 1015755046}
   parkourButton: {fileID: 933390285}
+  glowRunnerButton: {fileID: 1026252228}
   numPlayertext: {fileID: 2005170653}
   scoreText: {fileID: 0}
   randomSelectionText: {fileID: 0}

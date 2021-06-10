@@ -470,9 +470,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 31126178}
     m_Modifications:
+    - target: {fileID: 1177714288447128, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1926217271815222, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
       propertyPath: m_Name
       value: Upperlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926217271815222, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4453307896952178, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -512,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4971448306444522, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.25
+      value: -14.8
       objectReference: {fileID: 0}
     - target: {fileID: 4971448306444522, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
       propertyPath: m_LocalRotation.w
@@ -560,7 +568,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108564059493829346, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
       propertyPath: m_Intensity
-      value: 10
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 108564059493829346, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
+      propertyPath: m_SpotAngle
+      value: 68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 900e0a564b4cc2844b91c1560a5e39ab, type: 3}
@@ -2196,6 +2208,7 @@ MonoBehaviour:
   simonButton: {fileID: 0}
   dartButton: {fileID: 0}
   parkourButton: {fileID: 0}
+  glowRunnerButton: {fileID: 0}
   numPlayertext: {fileID: 0}
   scoreText: {fileID: 0}
   randomSelectionText: {fileID: 0}
