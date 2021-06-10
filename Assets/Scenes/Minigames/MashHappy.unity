@@ -3443,10 +3443,10 @@ MonoBehaviour:
   ScoreText3: {fileID: 1720248231}
   ScoreText4: {fileID: 130537963}
   CenterText: {fileID: 1826154208}
-  player1Button: w
-  player2Button: a
-  player3Button: s
-  player4Button: d
+  player1Button: a
+  player2Button: c
+  player3Button: y
+  player4Button: l
   pointText: {fileID: 6936563891406581997, guid: 52b193b170346e34bb8f0dc9991d0d83, type: 3}
   player1: {fileID: 1694271375}
   player2: {fileID: 1607005710}
@@ -4312,9 +4312,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'P1: W        P2: A
+  m_Text: 'P1: A        P2: C
 
-    P3: S        P4: D'
+    P3: Y        P4: L'
 --- !u!222 &1528868929
 CanvasRenderer:
   m_ObjectHideFlags: 0
