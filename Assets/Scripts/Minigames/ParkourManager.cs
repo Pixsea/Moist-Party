@@ -80,4 +80,30 @@ public class ParkourManager : MinigameManager
 
         yield return resultsWait;
     }
+
+    public override IEnumerator AdjustPlayers()
+    {
+        Debug.Log("test1");
+        Debug.Log(Players.Length);
+        // Only c=change players if there are players to change
+        if (Players.Length > 0)
+        {
+            Debug.Log("test1");
+            // Remove players who aren't palying from the arena
+            if (numPlayers < 4)
+            {
+                Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
+                //Players[3].gameObject.SetActive(false);
+            }
+
+            if (numPlayers < 3)
+            {
+                Debug.Log(Players[2].gameObject.name);
+                Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
+                //Players[2].gameObject.SetActive(false);
+            }
+        }
+
+        yield return null;
+    }
 }

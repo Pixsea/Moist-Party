@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BoardScene.unity
     guid: 20c081d5c687d6e4fb189d435843ccf6
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Minigames/MashHappy.unity
     guid: de6833d89557c92429377e75f15c0e32
