@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private bool m_canJump = true;
 
+    float distToGround; // the distance between the center of the rigid boidy to the ground to draw a raycast to check if grounded
+
     private void Start()
     {
         // for movement 
@@ -33,11 +35,14 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         animator = gameObject.GetComponent<Animator>(); 
         collider = gameObject.GetComponent<CapsuleCollider>();
+
+        // get the distance to ground
+        float distToGround = collider.bounds.extents.y;
     }
 
     void Update()
     {
-        Move();
+        Move2();
     }
 
     private void Move()
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
             float horizontalMove = Input.GetAxis("Horizontal" + playerNum.ToString());
             float verticalMove = Input.GetAxis("Vertical" + playerNum.ToString());
             
+            //if (IsGrounded()) {
             if (m_isGrounded) {
                 if (Input.GetButton("Jump" + playerNum.ToString()) && m_canJump == true) {
                     verticalSpeed = m_jumpSpeed;
@@ -132,6 +138,43 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void Move2()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (!lockMovement && !keepMovementLocked)
+        {
+            float horizontalMove = Input.GetAxis("Horizontal" + playerNum.ToString());
+            float verticalMove = Input.GetAxis("Vertical" + playerNum.ToString());
+
+            if (IsGrounded())
+            {
+                if (Input.GetButton("Jump" + playerNum.ToString()) && m_canJump == true)
+                {
+                    verticalSpeed = m_jumpSpeed;
+                }
+                //else
+                //{
+                //    verticalSpeed = 0;
+                //}
+            }
+            else if (Input.GetButton("Jump" + playerNum.ToString()))
+            {
+                // Makes it so that if you hold the jump button in the air, you fall slower,
+                // can probably make it less floaty by adding half the gravityValue to verticalSpeed here
+            }
+            else
+            {
+                verticalSpeed += m_gravityValue * Time.deltaTime;
+            }
+
+
+            Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
+            Vector3 move = transform.forward * verticalMove + transform.right * horizontalMove;
+            controller.Move(m_playerSpeed * Time.deltaTime * move + gravityMove * Time.deltaTime);
+        }
+    }
+
+
     // private void OnTriggerEnter(Collider collider)
     // {
     //     if (collider.gameObject.tag == "Pad")
@@ -140,9 +183,16 @@ public class PlayerController : MonoBehaviour
     //         Debug.Log("PAD TRIGGER");
     //     }
     // }
-    
-    
-    private void OnCollisionEnter(Collision collision)
+
+
+    bool IsGrounded()
+    {
+        //return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        return Physics.CheckBox(transform.position - new Vector3(0, distToGround, 0), new Vector3(.5f, .1f, .5f));
+    }
+
+
+private void OnCollisionEnter(Collision collision)
     {
         // Debug.Log("SOME COLLISION");
         m_isGrounded = true;
