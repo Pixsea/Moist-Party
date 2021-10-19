@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private float verticalSpeed;
     private bool m_isGrounded;
+    private Vector3 spawnPos;
 
     private bool m_canJump = true;
 
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         animator = gameObject.GetComponent<Animator>(); 
         collider = gameObject.GetComponent<CapsuleCollider>();
+        spawnPos = gameObject.transform.position;
     }
 
     void Update()
@@ -171,6 +173,11 @@ public class PlayerController : MonoBehaviour
             m_playerSpeed /= 0.75f;
             m_canJump = true;
         }
+    }
+
+    public void GetHit()
+    {
+        transform.position = spawnPos;
     }
 
 }
