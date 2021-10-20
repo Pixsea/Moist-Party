@@ -4,6 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Left stick, right stick, and the dPad
+/// </summary>
+public enum sticks
+{
+    leftStick,
+    rightStick,
+    dPad,
+    triggers
+}
+
+/// <summary>
+/// All of the in game actions. Buttons are bound to this
+/// </summary>
+public enum Actions
+{
+    Mash,
+    Fire
+}
+
 namespace MultiInput
 {
     public class ControlManager : MonoBehaviour
@@ -17,24 +37,23 @@ namespace MultiInput
         /// The HashSet of all keys that were down that frame
         /// </summary>
         public HashSet<KeyCode> Keys { get; private set; } = new HashSet<KeyCode>();
+        
         /// <summary>
         /// The list of held down keys, for debug purposes
         /// </summary>
         [SerializeField]
         public List<KeyCode> downList = new List<KeyCode>();
 
-        public bool joystickHeld;
-        public float horizontalAxis;
-        public float verticalAxis;
+        public Vector2 leftStick;
 
         // Update is called once per frame
         void Update()
         {
             GetButtonsPressed();
             downList = Keys.ToList();
-            horizontalAxis = Input.GetAxis("HorizontalTest");
-            verticalAxis = Input.GetAxis("VerticalTest");
-            joystickHeld = (Input.GetAxis("HorizontalTest") != 0);
+            leftStick.x = Input.GetAxis("HorizontalTest");
+            leftStick.y = Input.GetAxis("VerticalTest");
+
         }
         
         /// <summary>

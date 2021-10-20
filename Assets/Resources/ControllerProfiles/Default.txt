@@ -1,0 +1,15 @@
+#Comments are marked with #
+#On Xbox remotes:
+#0 is A
+#1 is B
+#2 is X
+#3 is Y
+#4 is LB
+#5 is RB
+#6 select
+#7 is start
+#lt is left trigger
+#rt is right trigger
+
+Mash : 0
+Fire : rt

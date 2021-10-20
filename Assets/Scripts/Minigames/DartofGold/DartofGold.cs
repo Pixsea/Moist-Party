@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class DartofGold : MinigameManager
 {
-    public Text ScoreText1;  // Text to show the score for player 1
+    /// <summary>
+    /// Text to show the score for player 1
+    /// </summary>
+    public Text ScoreText1;  // 
     public Text ScoreText2;
     public Text ScoreText3;
     public Text ScoreText4;
-    public Text CenterText;  // text in the center of screen for reference
+    /// <summary>
+    /// text in the center of screen for reference
+    /// </summary>
+    public Text CenterText;  // 
     public Text Crosshair;  // crosshair text
 
    [SerializeField]
