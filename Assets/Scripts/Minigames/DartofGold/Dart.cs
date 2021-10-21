@@ -86,7 +86,7 @@ public class Dart : MonoBehaviour
         //Debug.Log(obj.gameObject.name);
 
         //Debug.Log(obj.gameObject.name);
-        if (stuck == false)
+        if ((stuck == false) && (obj.gameObject == target))
         {
             stuck = true;
             GetScore();
@@ -116,12 +116,12 @@ public class Dart : MonoBehaviour
         }
         if (playerNum == 3)
         {
-            textEdit.color = Color.yellow;
+            textEdit.color = Color.green;
             pointEffect.transform.position += new Vector3(.5f, 0, 0);
         }
         if (playerNum == 4)
         {
-            textEdit.color = Color.green;
+            textEdit.color = Color.yellow;
             pointEffect.transform.position += new Vector3(1.5f, 0, 0);
         }
 
