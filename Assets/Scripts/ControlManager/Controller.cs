@@ -62,6 +62,10 @@ public class Controller : MonoBehaviour
         triggers = GetStick(sticks.triggers);
         aDown = GetAction(Actions.Mash);
         fireHeld = GetAction(Actions.Fire);
+        if (GetActionDown(Actions.Fire))
+        {
+            print("Firing!");
+        }
         //Handle controller end of frame actions
         if (controllerNum > 0)
         {
@@ -110,13 +114,13 @@ public class Controller : MonoBehaviour
     public bool GetAction(Actions action)
     {
         string binding = _currentBindings[action];
-        //If there is a valid keycode for the given string, return Input.GetKey
-        try
+        //Gets the keycode if it exists
+        KeyCode key = GetBinding(binding);
+        if (key != KeyCode.None)
         {
-            KeyCode key = (KeyCode) Enum.Parse(typeof(KeyCode), _currentBindings[action]);
             return Input.GetKey(key);
         }
-        catch(ArgumentException e)
+        else
         {
             //left trigger
             if (binding == "lt")
@@ -147,6 +151,28 @@ public class Controller : MonoBehaviour
     /// <returns>Returns Input.GetKeyDown for the given Action</returns>
     public bool GetActionDown(Actions action)
     {
+        string binding = _currentBindings[action];
+        //Gets the keycode if it exists
+        KeyCode key = GetBinding(binding);
+        if (key != KeyCode.None)
+        {
+            return Input.GetKeyDown(key);
+        }
+        else
+        {
+            //Return if the triggers started being held down this time
+            Vector2 triggers = GetStick(sticks.triggers);
+            if (binding == "lt")
+            {
+                //if the trigger started being held down this frame
+                return (lastTriggers.x == 0f && triggers.x == 1f);
+            }
+            if (binding == "rt")
+            {
+                //if the trigger started being held down this frame
+                return (lastTriggers.y <= 0.5f && triggers.y >= 0.5f);
+            }
+        }
         //Multiple actions can map to the same button
         return Input.GetKeyDown(_currentBindings[action]);
     }
@@ -178,11 +204,39 @@ public class Controller : MonoBehaviour
             string button = line.Split(':')[1].Trim();
             Actions action = (Actions)Enum.Parse(typeof(Actions), actionString);
             
-            
             _currentBindings.Add(action, button);
         }
     }
+    /// <summary>
+    /// A helper function to get the KeyCode from a binding string
+    /// </summary>
+    /// <param name="bindingString"></param>
+    /// <returns>Returns the proper key code if it exists, None otherwise</returns>
+    private KeyCode GetBinding(string bindingString)
+    {
+        KeyCode binding = KeyCode.None;
+        //triggers are always None
+        if (bindingString == "rt" || bindingString == "lt")
+        {
+            return binding;
+        }
+        
+        else if (controllerNum > 0)
+        {
+            string input = $"Joystick{controllerNum}Button{bindingString}";
+            try
+            {
+                binding = (KeyCode) Enum.Parse(typeof(KeyCode), input);
+                return binding;
+            }
+            catch (ArgumentException)
+            {
+                binding = KeyCode.None;
+            }
+        }
 
+        return binding;
+    }
     IEnumerator SetLastTriggers()
     {
         yield return new WaitForEndOfFrame();
