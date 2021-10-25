@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/ParkourScene.unity
     guid: 013e29f46ede41a4fb97c70de4bd3326
+  - enabled: 1
+    path: Assets/Scenes/DirectionsScreen.unity
+    guid: cd63393b8849bb544afc20bb4f8cbde7
   m_configObjects: {}
