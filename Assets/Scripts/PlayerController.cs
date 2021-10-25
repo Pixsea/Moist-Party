@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         Move3();
     }
 
@@ -187,39 +188,42 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
-        move *= m_playerSpeed;
-        //controller.Move(move * Time.deltaTime * m_playerSpeed);
-
-
-        // Rotate character
-        if (move != Vector3.zero)
+        if (!lockMovement && !keepMovementLocked)
         {
-            gameObject.transform.forward = move;
+            Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
+            move *= m_playerSpeed;
+            //controller.Move(move * Time.deltaTime * m_playerSpeed);
+
+
+            // Rotate character
+            if (move != Vector3.zero)
+            {
+                gameObject.transform.forward = move;
+            }
+
+            // Changes the height position of the player/make player jump
+            if (Input.GetButton("Jump" + playerNum.ToString()) && playerGrounded && m_canJump)
+            {
+                playerVelocity.y += Mathf.Sqrt(m_jumpSpeed * -3.0f * m_gravityValue);
+            }
+
+            // Apply gravity
+            if (!playerGrounded && Input.GetButton("Jump" + playerNum.ToString()))
+            {
+                playerVelocity.y += m_gravityValue * Time.deltaTime;
+            }
+            else if (!playerGrounded && !Input.GetButton("Jump" + playerNum.ToString()))
+            {
+                playerVelocity.y += m_gravityValue * Time.deltaTime * 2;
+            }
+
+            //playerVelocity.y += m_gravityValue * Time.deltaTime;
+
+
+            // Apply movements
+            controller.Move(move * Time.deltaTime);
+            controller.Move(playerVelocity * Time.deltaTime);
         }
-
-        // Changes the height position of the player/make player jump
-        if (Input.GetButton("Jump" + playerNum.ToString()) && playerGrounded && m_canJump)
-        {
-            playerVelocity.y += Mathf.Sqrt(m_jumpSpeed * -3.0f * m_gravityValue);
-        }
-
-        // Apply gravity
-        if (!playerGrounded && Input.GetButton("Jump" + playerNum.ToString()))
-        {
-            playerVelocity.y += m_gravityValue * Time.deltaTime;
-        }
-        else if (!playerGrounded && !Input.GetButton("Jump" + playerNum.ToString()))
-        {
-            playerVelocity.y += m_gravityValue * Time.deltaTime * 2;
-        }
-
-        //playerVelocity.y += m_gravityValue * Time.deltaTime;
-
-
-        // Apply movements
-        controller.Move(move * Time.deltaTime);
-        controller.Move(playerVelocity * Time.deltaTime);
     }
 
 
