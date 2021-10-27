@@ -27,7 +27,6 @@ public class IncreaseHeight : MonoBehaviour
 
     public void Rise()
     {
-        Debug.Log("temp");
         rising = true;
     }
 }

@@ -281,7 +281,8 @@ MonoBehaviour:
   leftStick: {x: 0, y: 0}
   rightStick: {x: 0, y: 0}
   dPad: {x: 0, y: 0}
-  aDown: 0
+  triggers: {x: 0, y: 0}
+  leftStickUp: 0
 --- !u!114 &1636210336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +301,8 @@ MonoBehaviour:
   leftStick: {x: 0, y: 0}
   rightStick: {x: 0, y: 0}
   dPad: {x: 0, y: 0}
-  aDown: 0
+  triggers: {x: 0, y: 0}
+  leftStickUp: 0
 --- !u!1 &1726815929
 GameObject:
   m_ObjectHideFlags: 0

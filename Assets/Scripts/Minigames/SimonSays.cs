@@ -67,6 +67,9 @@ public class SimonSays : MinigameManager
     [SerializeField]
     private GameObject player4;
 
+    public Controller player1Controller;
+    public Controller player2Controller;
+    public bool NewInput = false;
 
     private void Awake()
     {
@@ -111,6 +114,24 @@ public class SimonSays : MinigameManager
 
     public override void Update()
     {
+        if (phase == "Playing" && NewInput)
+        {
+            Vector2 p1input = player1Controller.GetStick(sticks.dPad);
+            if (p1input != Vector2.zero)
+            {
+                player1.GetComponent<Animator>().SetTrigger("Punch");
+                PlayerInput(1, p1input);
+                
+            }
+
+            Vector2 p2input = player2Controller.GetStick(sticks.dPad);
+            if (p2input != Vector2.zero)
+            {
+                player2.GetComponent<Animator>().SetTrigger("Punch");
+                PlayerInput(2, p2input);
+            }
+            return;
+        }
         if (phase == "Playing")
         {
             if (Input.GetKeyDown(player1Up) && (Players.Length >= 1))
@@ -226,6 +247,44 @@ public class SimonSays : MinigameManager
             // Record that the player hit he right input
             playerDict[playerNum] = true;
         }
+    }
+
+    public void PlayerInput(int playerNum, Vector2 input)
+    {
+        
+        //If the given input does not match the correct vector2
+        if (input != GetCorrectInput())
+        {
+            //removes the player from the game
+            playerDict.Remove(playerNum);
+            if (playerNum <= numPlayers)
+            {
+                GameObject.Find("Player" + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+                GameObject.Find("Spring " + playerNum.ToString()).GetComponent<IncreaseHeight>().Rise();
+            }
+        }
+        else
+        {
+            // Record that the player hit he right input
+            playerDict[playerNum] = true;
+        }
+    }
+    
+    /// <summary>
+    /// Gets the Vector2 representation of the correct direction
+    /// </summary>
+    /// <returns>Returns the Vector2 representation of the direction</returns>
+    private Vector2 GetCorrectInput()
+    {
+        if (correctInput == "left")
+            return Vector2.left;
+        if (correctInput == "right")
+            return Vector2.right;
+        if (correctInput == "up")
+            return Vector2.up;
+        if (correctInput == "down")
+            return Vector2.down;
+        return Vector2.zero;
     }
 
 

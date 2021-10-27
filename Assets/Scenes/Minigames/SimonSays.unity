@@ -5459,6 +5459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818568677}
   - component: {fileID: 818568676}
+  - component: {fileID: 818568678}
   m_Layer: 0
   m_Name: SimonSaysManager
   m_TagString: Untagged
@@ -5518,6 +5519,7 @@ MonoBehaviour:
   player2: {fileID: 1657245079}
   player3: {fileID: 2072573886}
   player4: {fileID: 1364458479}
+  player1Controller: {fileID: 818568678}
 --- !u!4 &818568677
 Transform:
   m_ObjectHideFlags: 0
@@ -5533,6 +5535,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &818568678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818568675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b5fb391f635ed489a8e43c6d4e1972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerNum: 1
+  BindingName: Default
+  deadZone: 0.7
+  leftStick: {x: 0, y: 0}
+  rightStick: {x: 0, y: 0}
+  dPad: {x: 0, y: 0}
+  triggers: {x: 0, y: 0}
+  aDown: 0
+  fireHeld: 0
 --- !u!114 &832620081
 MonoBehaviour:
   m_ObjectHideFlags: 0
