@@ -177,7 +177,8 @@ public class PlayerController : MonoBehaviour
 
     public void GetHit()
     {
-        transform.position = spawnPos;
+        gameObject.transform.localPosition = spawnPos;
+        Physics.SyncTransforms();
     }
 
 }

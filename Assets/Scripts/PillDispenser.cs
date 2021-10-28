@@ -5,8 +5,8 @@ using UnityEngine;
 public class PillDispenser : MonoBehaviour
 {
     public GameObject pill;
-    public float reloadTime;
-    public float fireSpeed;
+    public float reloadTime = 1f;
+    public float fireSpeed = 2f;
 
     private bool canShoot;
     // Start is called before the first frame update
@@ -18,19 +18,25 @@ public class PillDispenser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canShoot)
+        if (canShoot)
         {
-            FirePills();
+            StartCoroutine (FirePills());
         }
     }
 
     // This fires the pills.
-    void FirePills()
+    IEnumerator FirePills()
     {
         GameObject firedpill = Object.Instantiate(pill);
+        firedpill.GetComponent<Pill>().dispenser = this.gameObject;
+        firedpill.transform.position = transform.position + transform.forward;
+        firedpill.transform.eulerAngles += transform.eulerAngles;
         Rigidbody rb = firedpill.GetComponent<Rigidbody>();
-        Vector3 direction = firedpill.transform.forward;
+        Vector3 direction = transform.forward;
         Vector3 velocity = direction * fireSpeed;
         rb.velocity = velocity;
+        canShoot = false;
+        yield return new WaitForSeconds(reloadTime);
+        canShoot = true;
     }
 }

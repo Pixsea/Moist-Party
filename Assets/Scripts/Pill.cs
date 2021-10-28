@@ -5,11 +5,12 @@ using UnityEngine;
 public class Pill : MonoBehaviour
 {
     public float destroyTimer = 3f;
+    public GameObject dispenser;
 
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this.gameObject, destroyTimer);
+        StartCoroutine(TimedDestroy());
     }
 
     // Update is called once per frame
@@ -17,11 +18,23 @@ public class Pill : MonoBehaviour
     {
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private IEnumerator TimedDestroy()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        yield return new WaitForSeconds(destroyTimer);
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().GetHit();
+            other.gameObject.GetComponent<PlayerController>().GetHit();
+        }
+        if (other.gameObject != dispenser)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
