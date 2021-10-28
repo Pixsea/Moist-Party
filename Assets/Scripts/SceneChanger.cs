@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
@@ -9,7 +10,27 @@ public class SceneChanger : MonoBehaviour
 
     private string nextScene;
 
-    public bool isDirectionScreen = false;
+    [SerializeField]
+    private bool isDirectionScreen = false;
+
+    [SerializeField]
+    private ScoreTracker scoreTracker;
+
+    [SerializeField]
+    private RawImage directionImage;
+
+    [SerializeField]
+    private Texture mashHappyDirections;
+
+
+    [SerializeField]
+    private Text player1Ready;
+    [SerializeField]
+    private Text player2Ready;
+    [SerializeField]
+    private Text player3Ready;
+    [SerializeField]
+    private Text player4Ready;
 
 
 
@@ -23,7 +44,15 @@ public class SceneChanger : MonoBehaviour
     {
         if (isDirectionScreen)
         {
+            if (directionImage != null)
+            {
+                if (SceneChangerInfo.nextScene == "MashHappy")
+                {
+                    directionImage.texture = mashHappyDirections;
+                }
+            }
 
+            Debug.Log(SceneChangerInfo.numPlayers);
         }
     }
 
@@ -42,12 +71,18 @@ public class SceneChanger : MonoBehaviour
     public void LoadMiniGame(string sceneName)
     {
         SceneChangerInfo.nextScene = sceneName;
-        Debug.Log(SceneChangerInfo.nextScene);
         SceneManager.LoadScene("DirectionsScreen");
     }
 
     private void LeaveDirectionsScreen()
     {
         SceneManager.LoadScene(SceneChangerInfo.nextScene);
+    }
+
+
+    //  Set how many people are num playing
+    public void SetNumPlayers(int numPlayers)
+    {
+        SceneChangerInfo.numPlayers = numPlayers;
     }
 }
