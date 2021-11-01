@@ -37,7 +37,7 @@ public class PlayerController2 : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         // Jump
         if (Input.GetButtonDown("Jump" + playerNum.ToString()) && isGrounded && m_canJump && !lockMovement && !keepMovementLocked)
         {
