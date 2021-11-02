@@ -10,6 +10,14 @@ public class DirectionsManager : MonoBehaviour
 
     [SerializeField]
     private Texture mashHappyDirections;
+    [SerializeField]
+    private Texture simonSaysDirections;
+    [SerializeField]
+    private Texture dartofGoldDirections;
+    [SerializeField]
+    private Texture glowRunDirections;
+    [SerializeField]
+    private Texture parkourDirections;
 
     [SerializeField]
     private SceneChanger sceneChanger;
@@ -37,11 +45,10 @@ public class DirectionsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Leave the screen, go to minigame
         if (Input.GetKeyDown("space"))
@@ -71,11 +78,31 @@ public class DirectionsManager : MonoBehaviour
 
     private void OnEnable()
     {
+        Wait();
+
+        Debug.Log("TEST");
         if (directionImage != null)
         {
+            Debug.Log(sceneChanger.nextScene);
             if (sceneChanger.nextScene == "MashHappy")
             {
                 directionImage.texture = mashHappyDirections;
+            }
+            else if (sceneChanger.nextScene == "SimonSays")
+            {
+                directionImage.texture = simonSaysDirections;
+            }
+            else if (sceneChanger.nextScene == "DartofGold")
+            {
+                directionImage.texture = dartofGoldDirections;
+            }
+            else if (sceneChanger.nextScene == "SampleScene")
+            {
+                directionImage.texture = glowRunDirections;
+            }
+            else if (sceneChanger.nextScene == "ParkourScene")
+            {
+                directionImage.texture = parkourDirections;
             }
         }
 
@@ -83,5 +110,10 @@ public class DirectionsManager : MonoBehaviour
         player2Ready = false;
         player3Ready = false;
         player4Ready = false;
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(.5f);
     }
 }

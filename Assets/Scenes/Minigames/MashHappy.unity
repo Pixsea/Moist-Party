@@ -3465,9 +3465,9 @@ MonoBehaviour:
   ScoreText4: {fileID: 130537963}
   CenterText: {fileID: 1826154208}
   player1Button: a
-  player2Button: c
-  player3Button: y
-  player4Button: l
+  player2Button: up
+  player3Button: t
+  player4Button: i
   pointText: {fileID: 6936563891406581997, guid: 52b193b170346e34bb8f0dc9991d0d83, type: 3}
   player1: {fileID: 1694271375}
   player2: {fileID: 1607005710}
@@ -4327,15 +4327,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'P1: A        P2: C
-
-    P3: Y        P4: L'
+  m_Text: "    P1: A        P2: UP\n    P3: T        P4: I"
 --- !u!222 &1528868929
 CanvasRenderer:
   m_ObjectHideFlags: 0

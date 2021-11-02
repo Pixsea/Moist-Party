@@ -34,7 +34,7 @@ public class DartofGold : MinigameManager
        GameObject temp = GameObject.FindGameObjectWithTag("Music");
         if (temp != null)
         {
-            temp.GetComponent<BackGroundAudio>().StopMusic();
+            //temp.GetComponent<BackGroundAudio>().StopMusic();
         }       
    } 
 

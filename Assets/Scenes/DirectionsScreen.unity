@@ -678,7 +678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1132570341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +693,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionImage: {fileID: 558933490}
   mashHappyDirections: {fileID: 2800000, guid: 59be4fbaf659af94c941c1f0f2763d01, type: 3}
+  simonSaysDirections: {fileID: 2800000, guid: 4cd4a7ac705ad824892b0371cffed56e, type: 3}
+  dartofGoldDirections: {fileID: 2800000, guid: 9c838d4c605d3b843b4c3dbf688f31f6, type: 3}
+  glowRunDirections: {fileID: 2800000, guid: 66c5ee42c0e504e409610578595b6eea, type: 3}
+  parkourDirections: {fileID: 2800000, guid: b5662de16b232b94aa89cbc9fe41f106, type: 3}
   sceneChanger: {fileID: 1141492658}
   player1ReadyText: {fileID: 2135579556}
   player2ReadyText: {fileID: 101361922}
@@ -745,8 +749,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f92b27a1955d049a24e6d05acd02dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDirectionScreen: 1
+  nextScene: 
   scoreTracker: {fileID: 0}
+  isDirectionScreen: 1
+  directionImage: {fileID: 558933490}
+  mashHappyDirections: {fileID: 2800000, guid: 59be4fbaf659af94c941c1f0f2763d01, type: 3}
+  simonSaysDirections: {fileID: 2800000, guid: 4cd4a7ac705ad824892b0371cffed56e, type: 3}
+  dartofGoldDirections: {fileID: 2800000, guid: 9c838d4c605d3b843b4c3dbf688f31f6, type: 3}
+  glowRunDirections: {fileID: 2800000, guid: 66c5ee42c0e504e409610578595b6eea, type: 3}
+  parkourDirections: {fileID: 2800000, guid: b5662de16b232b94aa89cbc9fe41f106, type: 3}
+  player1ReadyText: {fileID: 2135579556}
+  player2ReadyText: {fileID: 101361922}
+  player3ReadyText: {fileID: 331706842}
+  player4ReadyText: {fileID: 939715659}
+  player1Ready: 0
+  player2Ready: 0
+  player3Ready: 0
+  player4Ready: 0
 --- !u!4 &1141492659
 Transform:
   m_ObjectHideFlags: 0
