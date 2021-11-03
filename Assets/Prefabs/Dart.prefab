@@ -227,7 +227,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5906507095674850371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   P2Color: {fileID: 2100000, guid: 093c9e3d3892dd645b6bd388db690d2b, type: 2}
   P3Color: {fileID: 2100000, guid: 6f71eab7fe221ad468a607f1a31552b3, type: 2}
   P4Color: {fileID: 2100000, guid: d9fd5013a10a6434989c8f6c05472359, type: 2}
-  speed: 1000
+  speed: 1750
   pointText: {fileID: 6936563891406581997, guid: 52b193b170346e34bb8f0dc9991d0d83, type: 3}
 --- !u!136 &1826015741228583763
 CapsuleCollider:

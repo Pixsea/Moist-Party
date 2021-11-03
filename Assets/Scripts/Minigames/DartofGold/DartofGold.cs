@@ -29,6 +29,17 @@ public class DartofGold : MinigameManager
 
     public bool playing = false;  // true while players can shoot
 
+    float cycleTimer;  // Used to change the target's animation
+
+
+    [SerializeField]
+    private GameObject target;
+
+    [SerializeField]
+    private Animator animator;
+
+
+
     private void Awake()
    {
        GameObject temp = GameObject.FindGameObjectWithTag("Music");
@@ -40,6 +51,17 @@ public class DartofGold : MinigameManager
 
     public override void Update()
     {
+    }
+
+
+    public override void FixedUpdate()
+    {
+        //Debug.Log(timer);
+        if (phase == "Playing" || phase == "End")
+        {
+            timer--;
+            cycleTimer--;
+        }
     }
 
 
@@ -68,6 +90,94 @@ public class DartofGold : MinigameManager
         yield return StartCoroutine(ShowResults());
 
         yield return StartCoroutine(ReturnToBoard());
+    }
+
+
+
+    public override IEnumerator GamePlaying()
+    {
+        phase = "Playing";
+        UIMainText.text = "GO!";
+
+        UnlockMovement();
+
+        timer = TotalGameTime / Time.fixedDeltaTime;
+
+        cycleTimer = 5.0f / Time.fixedDeltaTime;
+
+        // Play the default slide animation for the target
+        animator.SetTrigger("Cycle1");
+
+
+        // While the game hasn't ended and while the timer is greater than 0
+        while (!gameEnded && (timer > 0))
+        {
+            // If more than 1.5 seconds has past, remove "GO!" from the UI
+            if (((TotalGameTime / Time.fixedDeltaTime) - timer) > (1.5 / Time.fixedDeltaTime))
+            {
+                UIMainText.text = "";
+            }
+
+            if (cycleTimer <= 0)
+            {
+                ChangeAnimation();
+
+                cycleTimer = 5.0f / Time.fixedDeltaTime;
+            }
+
+            Debug.Log(cycleTimer);
+
+            UITimerText.text = (Mathf.Ceil(timer * Time.fixedDeltaTime)).ToString();
+
+            // ... return on the next frame.
+            yield return null;
+        }
+
+        // Game ended, so stop animations
+        target.transform.position = new Vector3(0, 40, 0);
+        animator.SetTrigger("Stop");
+    }
+
+
+
+    //  Switches the target's animation
+    private void ChangeAnimation()
+    {
+        int cycleNum = Random.Range(1, 7);
+
+        switch (cycleNum)
+        {
+            // Standard Slide
+            case 1:
+                target.transform.position = new Vector3(-20, 14, 7);
+                animator.SetTrigger("Cycle" + cycleNum.ToString());
+                break;
+
+            case 2:
+                target.transform.position = new Vector3(-20, 14, 7);
+                animator.SetTrigger("Cycle" + cycleNum.ToString());
+                break;
+
+            case 3:
+                target.transform.position = new Vector3(-20, 14, 7);
+                animator.SetTrigger("Cycle" + cycleNum.ToString());
+                break;
+
+            case 4:
+                target.transform.position = new Vector3(-20, 14, 7);
+                animator.SetTrigger("Cycle" + cycleNum.ToString());
+                break;
+
+            case 5:
+                target.transform.position = new Vector3(-20, 14, 7);
+                animator.SetTrigger("Cycle" + cycleNum.ToString());
+                break;
+
+            case 6:
+                target.transform.position = new Vector3(-20, 14, 7);
+                animator.SetTrigger("Cycle" + cycleNum.ToString());
+                break;
+        }
     }
 
 
