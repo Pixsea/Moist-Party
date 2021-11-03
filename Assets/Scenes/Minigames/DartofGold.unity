@@ -594,9 +594,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Controls:
 
-    P1: W        P2: A
+    P1: W        P2: Up
 
-    P3: S        P4: D'
+    P3: T          P4: I   '
 --- !u!222 &141878125
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1445,6 +1445,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   randomSelectionText: {fileID: 0}
   onBoardScene: 0
+  sceneChanger: {fileID: 0}
 --- !u!4 &521356024
 Transform:
   m_ObjectHideFlags: 0
@@ -2619,7 +2620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 4
-  fireButton: d
+  fireButton: i
   dart: {fileID: 5906507095674850397, guid: aa12b5bff9bfe844cb34090a7383b2ea, type: 3}
   target: {fileID: 741571486}
   gameManager: {fileID: 1094715884}
@@ -2637,7 +2638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 3
-  fireButton: s
+  fireButton: t
   dart: {fileID: 5906507095674850397, guid: aa12b5bff9bfe844cb34090a7383b2ea, type: 3}
   target: {fileID: 741571486}
   gameManager: {fileID: 1094715884}
@@ -2655,7 +2656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 2
-  fireButton: a
+  fireButton: up
   dart: {fileID: 5906507095674850397, guid: aa12b5bff9bfe844cb34090a7383b2ea, type: 3}
   target: {fileID: 741571486}
   gameManager: {fileID: 1094715884}

@@ -6,31 +6,51 @@ using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
-    private SceneChangerInfo info;
+    [HideInInspector]
+    public SceneChangerInfo info;
 
-    private string nextScene;
-
-    [SerializeField]
-    private bool isDirectionScreen = false;
+    public string nextScene;
 
     [SerializeField]
     private ScoreTracker scoreTracker;
+
+
+    //  Direction scene things
+    [SerializeField]
+    private bool isDirectionScreen = false;
 
     [SerializeField]
     private RawImage directionImage;
 
     [SerializeField]
     private Texture mashHappyDirections;
+    [SerializeField]
+    private Texture simonSaysDirections;
+    [SerializeField]
+    private Texture dartofGoldDirections;
+    [SerializeField]
+    private Texture glowRunDirections;
+    [SerializeField]
+    private Texture parkourDirections;
 
 
     [SerializeField]
-    private Text player1Ready;
+    private Text player1ReadyText;
     [SerializeField]
-    private Text player2Ready;
+    private Text player2ReadyText;
     [SerializeField]
-    private Text player3Ready;
+    private Text player3ReadyText;
     [SerializeField]
-    private Text player4Ready;
+    private Text player4ReadyText;
+
+    [SerializeField]
+    private bool player1Ready;
+    [SerializeField]
+    private bool player2Ready;
+    [SerializeField]
+    private bool player3Ready;
+    [SerializeField]
+    private bool player4Ready;
 
 
 
@@ -42,28 +62,63 @@ public class SceneChanger : MonoBehaviour
 
     private void OnEnable()
     {
-        if (isDirectionScreen)
-        {
-            if (directionImage != null)
-            {
-                if (SceneChangerInfo.nextScene == "MashHappy")
-                {
-                    directionImage.texture = mashHappyDirections;
-                }
-            }
+        nextScene = SceneChangerInfo.nextScene;
 
-            Debug.Log(SceneChangerInfo.numPlayers);
+        if (directionImage != null)
+        {
+            if (nextScene == "MashHappy")
+            {
+                directionImage.texture = mashHappyDirections;
+            }
+            else if (nextScene == "SimonSays")
+            {
+                directionImage.texture = simonSaysDirections;
+            }
+            else if (nextScene == "DartofGold")
+            {
+                directionImage.texture = dartofGoldDirections;
+            }
+            else if (nextScene == "SampleScene")
+            {
+                directionImage.texture = glowRunDirections;
+            }
+            else if (nextScene == "ParkourScene")
+            {
+                directionImage.texture = parkourDirections;
+            }
         }
+
+        player1Ready = false;
+        player2Ready = false;
+        player3Ready = false;
+        player4Ready = false;
     }
 
     private void Update()
     {
-        if (isDirectionScreen)
+        // Leave the screen, go to minigame
+        if (Input.GetKeyDown("space"))
         {
-            if (Input.GetKeyDown("space"))
-            {
-                LeaveDirectionsScreen();
-            }
+            LeaveDirectionsScreen();
+        }
+
+        if (Input.GetKeyDown("w"))
+        {
+            player1Ready = !player1Ready;
+
+            //if (player)
+        }
+        if (Input.GetKeyDown("a"))
+        {
+            player1Ready = !player1Ready;
+        }
+        if (Input.GetKeyDown("s"))
+        {
+            player1Ready = !player1Ready;
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            player1Ready = !player1Ready;
         }
     }
 
@@ -74,7 +129,7 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("DirectionsScreen");
     }
 
-    private void LeaveDirectionsScreen()
+    public void LeaveDirectionsScreen()
     {
         SceneManager.LoadScene(SceneChangerInfo.nextScene);
     }
