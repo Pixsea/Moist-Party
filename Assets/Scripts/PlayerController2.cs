@@ -70,7 +70,50 @@ public class PlayerController2 : MonoBehaviour
         }
 
         // Apply movements
-        rigidbody.MovePosition(rigidbody.position + move * speed * Time.fixedDeltaTime);
+        //rigidbody.MovePosition(rigidbody.position + move * speed * Time.fixedDeltaTime);
+        rigidbody.AddForce(move * speed, ForceMode.VelocityChange);
+
+
+        ////Gravity stuff
+        ////isGrounded = controller.isGrounded;
+        //isGrounded = CheckGrounded();
+
+        //Vector3 gravity = new Vector3(0, rigidbody.velocity.y, 0);
+
+        //// If touching the ground, set y velocity toxzero if fallign so that they dont fall through the floor
+        //if (isGrounded && rigidbody.velocity.y < 0)
+        //{
+        //    gravity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+        //}
+
+        //// Apply gravity, higher gravuty increases fall speed, but requires higher jump power
+        //if (!isGrounded)
+        //{
+        //    if (Input.GetButton("Jump" + playerNum.ToString()))
+        //    {
+        //        gravity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        gravity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime * 2;
+        //    }
+        //}
+
+
+
+        //// Get the direction the player is moving
+        //Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
+
+        //// Rotate character
+        //if (move != Vector3.zero)
+        //{
+        //    gameObject.transform.forward = move;
+        //}
+
+        //// Apply movements
+        ////rigidbody.MovePosition(rigidbody.position + move * speed * Time.fixedDeltaTime);
+        //Vector3 movement = move * speed;
+        //rigidbody.velocity = new Vector3(movement.x, gravity.y, movement.z) * Time.fixedDeltaTime;
     }
 
 
