@@ -70,8 +70,7 @@ public class Controller : MonoBehaviour
         dPad = GetStick(sticks.dPad);
         triggers = GetStick(sticks.triggers);
         leftStickUp = GetStickDirection(sticks.leftStick, Vector2.up);
-        if ((GetStickDirectionDown(sticks.leftStick, Vector2.up) && false) || Input.GetKeyDown(KeyCode.Space))
-            print("Left Stick up");
+        
         if (GetActionDown(Actions.Fire))
         {
             print("Firing!");
@@ -118,7 +117,7 @@ public class Controller : MonoBehaviour
 
     /// <summary>
     /// Gets whether a stick is held in a particular direction that frame
-    /// <para>45 degrees is not considered valid input</para>
+    /// <para><b>Be aware, Unity registers a direction pressed with a stick only pressed about 10 degrees</b></para>
     /// </summary>
     /// <param name="stick">Which stick to get the input from
     /// <para>sticks.triggers will always return false</para></param>
@@ -132,8 +131,8 @@ public class Controller : MonoBehaviour
             return false;
         //Get the input from GetStick
         Vector2 input = GetStick(stick);
-        //Then, we round to int to eliminate half pushed values
-        Vector2Int intInput = Vector2Int.RoundToInt(input);
+        //Then, we floor to int to eliminate half pushed values
+        Vector2Int intInput = Vector2Int.FloorToInt(input);
         input = intInput;
         //45 degrees is not considered valid
         if (Math.Abs(input.x) == Math.Abs(input.y))
@@ -158,7 +157,8 @@ public class Controller : MonoBehaviour
 
     /// <summary>
     /// Moral equivalent of GetKeyDown, but for a stick and a direction
-    /// Gets whether or a stick began being held in a direction that frame
+    /// Gets whether or a stick began being held in a direction that frame. Last value is set in
+    /// <see cref="SetLastDown"/>
     /// </summary>
     /// <param name="stick">Which stick to get the input from
     /// <para>sticks.triggers will always return false</para></param>
@@ -176,7 +176,7 @@ public class Controller : MonoBehaviour
         //Get the input from GetStick
         Vector2 input = GetStick(stick);
         //Then, we round to int to eliminate half pushed values
-        Vector2Int intInput = Vector2Int.RoundToInt(input);
+        Vector2Int intInput = Vector2Int.FloorToInt(input);
         input = intInput;
         //45 degrees is not considered valid
         if (Math.Abs(input.x) == Math.Abs(input.y))
@@ -254,6 +254,7 @@ public class Controller : MonoBehaviour
         //Multiple actions can map to the same button
         return Input.GetKeyDown(_currentBindings[action]);
     }
+    
     #endregion
 
     #region InternalFunctions
@@ -316,9 +317,12 @@ public class Controller : MonoBehaviour
         return binding;
     }
     /// <summary>
-    /// Waits until the end of frame, and then sets all the last frame variables for GetButtonDown functions. Currently implemented:
-    /// <para>>triggers</para>
-    /// <para>>sticks</para>
+    /// Waits until the end of frame, and then sets all the last frame variables for GetButtonDown functions.
+    /// Currently implemented:
+    /// <list type="bullet">
+    ///<item>triggers</item>
+    /// <item>sticks</item>
+    /// </list>
     /// </summary>
     /// <returns>yield returns WaitForEndOfFrame so that it's the last thing to run in any frame</returns>
     IEnumerator SetLastDown()
@@ -329,7 +333,10 @@ public class Controller : MonoBehaviour
         //Set each of the last sticks
         foreach (sticks stick in Enum.GetValues(typeof(sticks)))
         {
-            lastStickDirections[stick] = Vector2Int.RoundToInt(GetStick(stick));
+            Vector2 dir = GetStick(stick);
+            //The direction needs to be floored
+            dir = Vector2Int.FloorToInt(dir);
+            lastStickDirections[stick] = dir;
         }
     }
 

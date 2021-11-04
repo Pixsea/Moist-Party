@@ -5460,6 +5460,7 @@ GameObject:
   - component: {fileID: 818568677}
   - component: {fileID: 818568676}
   - component: {fileID: 818568678}
+  - component: {fileID: 818568679}
   m_Layer: 0
   m_Name: SimonSaysManager
   m_TagString: Untagged
@@ -5520,6 +5521,8 @@ MonoBehaviour:
   player3: {fileID: 2072573886}
   player4: {fileID: 1364458479}
   player1Controller: {fileID: 818568678}
+  player2Controller: {fileID: 818568679}
+  NewInput: 1
 --- !u!4 &818568677
 Transform:
   m_ObjectHideFlags: 0
@@ -5549,13 +5552,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerNum: 1
   BindingName: Default
-  deadZone: 0.7
+  deadZone: 0.5
   leftStick: {x: 0, y: 0}
   rightStick: {x: 0, y: 0}
   dPad: {x: 0, y: 0}
   triggers: {x: 0, y: 0}
-  aDown: 0
-  fireHeld: 0
+  leftStickUp: 0
+--- !u!114 &818568679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818568675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b5fb391f635ed489a8e43c6d4e1972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerNum: 2
+  BindingName: Default
+  deadZone: 0.2
+  leftStick: {x: 0, y: 0}
+  rightStick: {x: 0, y: 0}
+  dPad: {x: 0, y: 0}
+  triggers: {x: 0, y: 0}
+  leftStickUp: 0
 --- !u!114 &832620081
 MonoBehaviour:
   m_ObjectHideFlags: 0

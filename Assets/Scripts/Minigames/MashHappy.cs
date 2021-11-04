@@ -39,6 +39,9 @@ public class MashHappy : MinigameManager
     [SerializeField]
     private GameObject player4;
 
+    public Controller p1cont;
+
+    public bool newInput;
     private void Awake()
     {
         GameObject temp = GameObject.FindGameObjectWithTag("Music");
@@ -46,10 +49,41 @@ public class MashHappy : MinigameManager
         {
             temp.GetComponent<BackGroundAudio>().StopMusic();
         }
-    } 
+    }
+    /// <summary>
+    /// The logic for when a character mashes the button
+    /// </summary>
+    /// <param name="player">Which player to mash</param>
+    private void MashedButton(GameObject player)
+    {
+        Vector3 pos = player.transform.position + new Vector3(0, 1.8f, 1.73f);
+        // Spawn point effect
+        GameObject pointEffect = Instantiate(pointText, pos, Quaternion.identity);
+        Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
+        textEdit.color = Color.green;
+        textEdit.text = "$";
+
+        // Punch animation
+        player.GetComponent<Animator>().SetTrigger("Punch");
+    }
 
     public override void Update()
     {
+        if (newInput && phase == "Playing")
+        {
+            if (p1cont.GetActionDown(Actions.Mash) && (numPlayers >= 1))
+            {
+                player1Score++;
+                MashedButton(player1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && (numPlayers >= 2))
+            {
+                player2Score++;
+                MashedButton(player2);
+            }
+            return;
+        }
         if (phase == "Playing")
         {
             if (Input.GetKeyDown(player1Button) && (numPlayers >= 1))

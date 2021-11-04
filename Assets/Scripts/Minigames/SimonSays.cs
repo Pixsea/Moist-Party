@@ -116,20 +116,28 @@ public class SimonSays : MinigameManager
     {
         if (phase == "Playing" && NewInput)
         {
-            Vector2 p1input = player1Controller.GetStick(sticks.dPad);
-            if (p1input != Vector2.zero)
+            bool p1Correct = player1Controller.GetStickDirectionDown(sticks.leftStick, GetCorrectInput());
+            foreach (Vector2 dir in GetIncorrectInputs())
             {
-                player1.GetComponent<Animator>().SetTrigger("Punch");
-                PlayerInput(1, p1input);
-                
+                if (player1Controller.GetStickDirectionDown(sticks.leftStick, dir))
+                {
+                    player2.GetComponent<Animator>().SetTrigger("Punch");
+                    RemovePlayer(1);
+                    print($"Player pressed: {dir}, value at the time was {player1Controller.GetStick(sticks.leftStick)}");
+                    //Debug.Break();
+                }
+                    
             }
 
-            Vector2 p2input = player2Controller.GetStick(sticks.dPad);
-            if (p2input != Vector2.zero)
+            if (p1Correct)
             {
+                player1.GetComponent<Animator>().SetTrigger("Punch");
                 player2.GetComponent<Animator>().SetTrigger("Punch");
-                PlayerInput(2, p2input);
+                RemovePlayer(1, false);
             }
+                
+            //Test to have p2 always be correct;
+            RemovePlayer(2, false);
             return;
         }
         if (phase == "Playing")
@@ -248,12 +256,16 @@ public class SimonSays : MinigameManager
             playerDict[playerNum] = true;
         }
     }
-
-    public void PlayerInput(int playerNum, Vector2 input)
+    /// <summary>
+    /// The logic for removing a player from the game
+    /// </summary>
+    /// <param name="playerNum">Which player to remove</param>
+    /// <param name="remove">Whether or not to remove the player</param>
+    private void RemovePlayer(int playerNum, bool remove = true)
     {
         
         //If the given input does not match the correct vector2
-        if (input != GetCorrectInput())
+        if (remove)
         {
             //removes the player from the game
             playerDict.Remove(playerNum);
@@ -265,7 +277,7 @@ public class SimonSays : MinigameManager
         }
         else
         {
-            // Record that the player hit he right input
+            // Record that the player hit the right input
             playerDict[playerNum] = true;
         }
     }
@@ -285,6 +297,18 @@ public class SimonSays : MinigameManager
         if (correctInput == "down")
             return Vector2.down;
         return Vector2.zero;
+    }
+    /// <summary>
+    /// Gets a list of the incorrect inputs
+    /// </summary>
+    /// <returns>Returns a list of Vector2.directions, minus the correct input</returns>
+    private List<Vector2> GetIncorrectInputs()
+    {
+        //inits a list of all 4 directions
+        List<Vector2> incorrect = new List<Vector2>() {Vector2.left, Vector2.right, Vector2.up, Vector2.down};
+        //removes the correct input
+        incorrect.Remove(GetCorrectInput());
+        return incorrect;
     }
 
 
