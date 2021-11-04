@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class SpotlightMazeManager : ParkourManager
+public class SpotlightMazeManager : MinigameManager
 {
     public Text ScoreText1;  // Text to show the score for player 1
     public Text ScoreText2;
@@ -16,16 +16,11 @@ public class SpotlightMazeManager : ParkourManager
     public int player3Score = 0;  // player 3
     public int player4Score = 0;  // player 4
     public PointLights pLs;
-    public Color colorP1;
-
-    public void setColor()
-    {
-        ScoreText1.color = Players[0].gameObject.GetComponent<MeshRenderer>().material.color;
-    }
+    
     public override IEnumerator GameLoop()
     {
         LockMovement();
-        setColor();
+        Debug.Log("Active");
 
         // Start off by running the 'GameStart'
         yield return StartCoroutine(GameStarting());
@@ -50,6 +45,7 @@ public class SpotlightMazeManager : ParkourManager
 
     public override IEnumerator GamePlaying()
     {
+        Debug.Log("Active");
         phase = "Playing";
         UIMainText.text = "GO!";
 
@@ -220,5 +216,29 @@ public class SpotlightMazeManager : ParkourManager
             player4Score += score;
         }
     }
+    public override IEnumerator AdjustPlayers()
+    {
+        Debug.Log("test1");
+        Debug.Log(Players.Length);
+        // Only c=change players if there are players to change
+        if (Players.Length > 0)
+        {
+            Debug.Log("test1");
+            // Remove players who aren't palying from the arena
+            if (numPlayers < 4)
+            {
+                Players[3].gameObject.transform.position -= new Vector3(0, 100, 0);
+                //Players[3].gameObject.SetActive(false);
+            }
 
+            if (numPlayers < 3)
+            {
+                Debug.Log(Players[2].gameObject.name);
+                Players[2].gameObject.transform.position -= new Vector3(0, 100, 0);
+                //Players[2].gameObject.SetActive(false);
+            }
+        }
+
+        yield return null;
+    }
 }

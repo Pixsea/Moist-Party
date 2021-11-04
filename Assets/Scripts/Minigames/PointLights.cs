@@ -30,6 +30,8 @@ public class PointLights : MonoBehaviour
     {
        if(other.gameObject.CompareTag("Player"))
        {
+
+            Debug.Log("Added Player");
             int pNum = other.GetComponent<PlayerController2>().playerNum;
             if (!whoGetPoints.Contains(pNum))
             { 
