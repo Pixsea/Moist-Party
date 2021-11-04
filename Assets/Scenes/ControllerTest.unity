@@ -225,9 +225,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1636210334}
-  - component: {fileID: 1636210333}
-  - component: {fileID: 1636210336}
   - component: {fileID: 1636210335}
+  - component: {fileID: 1636210333}
   m_Layer: 0
   m_Name: ControllerManager
   m_TagString: Untagged
@@ -244,11 +243,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636210332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28376d59965cae14cb2b6ab4d074bc2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 22e003f157779fe4d8875efe8eec0cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downList: 
-  leftStick: {x: 0, y: 0}
 --- !u!4 &1636210334
 Transform:
   m_ObjectHideFlags: 0
@@ -272,37 +269,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636210332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b5fb391f635ed489a8e43c6d4e1972, type: 3}
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerNum: 2
-  BindingName: Default
-  deadZone: 0.2
-  leftStick: {x: 0, y: 0}
-  rightStick: {x: 0, y: 0}
-  dPad: {x: 0, y: 0}
-  triggers: {x: 0, y: 0}
-  leftStickUp: 0
---- !u!114 &1636210336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636210332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b5fb391f635ed489a8e43c6d4e1972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerNum: 1
-  BindingName: Default
-  deadZone: 0.3
-  leftStick: {x: 0, y: 0}
-  rightStick: {x: 0, y: 0}
-  dPad: {x: 0, y: 0}
-  triggers: {x: 0, y: 0}
-  leftStickUp: 0
+  m_NotificationBehavior: 2
+  m_MaxPlayerCount: -1
+  m_AllowJoining: 1
+  m_JoinBehavior: 0
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1636210333}
+        m_TargetAssemblyTypeName: ControllerTest, Assembly-CSharp
+        m_MethodName: PlayerJoined
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Join
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 507ab000-acdc-4071-b7e1-ba3b472e2383
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 5430038940390840946, guid: d670c377fcce11041a8a2b2362229731, type: 3}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &1726815929
 GameObject:
   m_ObjectHideFlags: 0
