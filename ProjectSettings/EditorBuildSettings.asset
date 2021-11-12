@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/ParkourScene.unity
     guid: 013e29f46ede41a4fb97c70de4bd3326
+  - enabled: 1
+    path: Assets/Scenes/NewOptions.unity
+    guid: 7b61f4f56aaf6a645bf264e1927d3663
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f581d4b4d01940447835829764669e4d, type: 2}

@@ -19,7 +19,15 @@
                     "id": "e5f40fa4-04f2-4442-8fa6-ddbf75bc8c72",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap"
+                    "interactions": ""
+                },
+                {
+                    "name": "A",
+                    "type": "Button",
+                    "id": "bf7b8ef3-2d44-400c-9d13-5d8ccfd3f40c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -42,6 +50,17 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "515f7228-7e56-4d0b-a4d8-30d6210f6add",
+                    "path": "<Gamepad>/A",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "A",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
