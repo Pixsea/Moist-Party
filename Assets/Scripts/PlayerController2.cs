@@ -25,6 +25,16 @@ public class PlayerController2 : MonoBehaviour
     public bool lockMovement = false;  //Whether the player's movement should locked
     public bool keepMovementLocked = false;  // Whether the movement should always be locked
 
+
+    // Knockback avriables
+    private bool beingKnockbacked;
+    private Vector3 knockbackAngle;
+    private float knockbackStrength;
+    private float knockbackDelay;  // How long before the player can be knocked back again
+    private bool knockbackRefresh = false;  //A bool that controls how long knockback must eb applied for before stopping
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +47,7 @@ public class PlayerController2 : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         // Jump
         if (Input.GetButtonDown("Jump" + playerNum.ToString()) && isGrounded && m_canJump && !lockMovement && !keepMovementLocked)
         {
@@ -55,6 +65,17 @@ public class PlayerController2 : MonoBehaviour
         }
         
         Gravity();
+
+        //Debug.Log(beingKnockbacked);
+        if (beingKnockbacked)
+        {
+            rigidbody.AddForce(knockbackAngle * knockbackStrength * Time.fixedDeltaTime, ForceMode.VelocityChange);
+
+            if (CheckGrounded() && !knockbackRefresh)
+            {
+                beingKnockbacked = false;
+            }
+        }
     }
 
 
@@ -124,10 +145,10 @@ public class PlayerController2 : MonoBehaviour
         //isGrounded = controller.isGrounded;
         isGrounded = CheckGrounded();
 
-        // If touching the ground, set y velocity toxzero if fallign so that they dont fall through the floor
+        // If touching the ground, set y velocity to zero if falling so that they dont fall through the floor
         if (isGrounded && rigidbody.velocity.y < 0)
         {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, -.05f, rigidbody.velocity.z);
         }
 
         // Apply gravity, higher gravuty increases fall speed, but requires higher jump power
@@ -135,18 +156,25 @@ public class PlayerController2 : MonoBehaviour
         {
             if (Input.GetButton("Jump" + playerNum.ToString()))
             {
+                // Apply less gravity if holding jump for a floaty jump
                 rigidbody.velocity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
+
+                //Vector3 gravity = Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
+                //rigidbody.velocity = new Vector3(rigidbody.velocity.x * .95f, rigidbody.velocity.y + gravity.y, rigidbody.velocity.z * .95f);
             }
             else
             {
                 rigidbody.velocity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime * 2;
+
+                //Vector3 gravity = Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
+                //rigidbody.velocity = new Vector3(rigidbody.velocity.x * .95f, rigidbody.velocity.y + gravity.y, rigidbody.velocity.z * .95f);
             }
         }
     }
 
     bool CheckGrounded()
     {
-        return Physics.CheckBox(transform.position - new Vector3(0, distToGround / 2 - .9f, 0), new Vector3(collider.radius*2, .1f, collider.radius*2), Quaternion.identity, ground);
+        return Physics.CheckBox(transform.position - new Vector3(0, distToGround / 2 - .9f, 0), new Vector3(collider.radius, .05f, collider.radius), Quaternion.identity, ground);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -172,5 +200,34 @@ public class PlayerController2 : MonoBehaviour
             speed /= 0.5f;
             m_canJump = true;
         }
+    }
+
+
+    public void ApplyKnockback(Vector3 direction, float power, float delay)
+    {
+        // Upwards knockback
+        if (!beingKnockbacked)
+        {
+            rigidbody.AddForce(Vector3.up * Mathf.Sqrt(power * 2), ForceMode.VelocityChange);
+        }
+
+        knockbackRefresh = true;
+
+        knockbackAngle = direction;
+        knockbackStrength = power;
+        knockbackDelay = delay;
+
+        beingKnockbacked = true;
+
+        StartCoroutine(KnockbackWait());
+    }
+
+    public IEnumerator KnockbackWait()
+    {
+        yield return new WaitForSeconds(knockbackDelay);
+
+        knockbackRefresh = false;
+
+        yield return null;
     }
 }
