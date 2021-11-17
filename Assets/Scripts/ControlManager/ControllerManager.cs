@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class ControllerManager : MonoBehaviour
 {
     public const string defaultPlayerName = "Player";
-    public ControllerManager instance { get; private set; }
+    public static ControllerManager instance { get; private set; }
     [SerializeField]
     public List<GameObject> players { get; private set; } = new List<GameObject>();
     private void Awake()
@@ -24,5 +24,6 @@ public class ControllerManager : MonoBehaviour
         player.gameObject.name = $"{defaultPlayerName}{num}";
         print($"Player {num} joined!");
         players.Add(player.gameObject);
+        player.transform.position = Vector3.zero;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 56241340865047843}
   - component: {fileID: 56241340865047842}
+  - component: {fileID: 401389450}
   m_Layer: 0
   m_Name: ControllerManager
   m_TagString: Untagged
@@ -51,7 +52,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ControllerTest, Assembly-CSharp
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: StartPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 401389450}
+        m_TargetAssemblyTypeName: ControllerManager, Assembly-CSharp
         m_MethodName: PlayerJoined
         m_Mode: 0
         m_Arguments:
@@ -102,3 +115,15 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &401389450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56241340865047841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8b0cd37a2cf8144b1eed3a49f228c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

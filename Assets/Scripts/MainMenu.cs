@@ -70,6 +70,10 @@ public class MainMenu : MonoBehaviour
     {
         //SceneManager.LoadScene("BoardScene", LoadSceneMode.Single);
         SceneManager.LoadScene("NewOptions", LoadSceneMode.Single);
+        foreach (GameObject player in ControllerManager.instance.players)
+        {
+            player.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     // Quits game when "QUIT" is selected
