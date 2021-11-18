@@ -6,13 +6,15 @@ public class CardScript : MonoBehaviour
 {
     public int cardValue;
     public bool faceUp;
+    public int player; // 0 is no player selected; ints 1-4 represents player that has selected the 
     public int timer;
     public GameObject card;
 
     // Start is called before the first frame update
     void Start()
     {
-        faceUp = true;
+        faceUp = false;
+        player = 0;
     }
 
     // Update is called once per frame
@@ -21,6 +23,8 @@ public class CardScript : MonoBehaviour
         if (Input.GetKeyDown("a")) {
             StartFlip();
         }
+
+        
     }
 
     public void StartFlip() {
@@ -36,11 +40,13 @@ public class CardScript : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             transform.Rotate(new Vector3(2f, 0f, 0f));
             timer++;
-
-            if (timer == 45 || timer == -45) {
-                Flip();
-            }
         }
         timer = 0;
+        Flip();
+    }
+
+    public void Remove() {
+        Destroy(card);
+        Destroy(this);
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ConcentrationManager : MonoBehaviour
 {
+
+    public GameObject CardPrefab;
+    public CardScript[] cards;
+
     // Start is called before the first frame update
     void Start()
     {
