@@ -175,6 +175,8 @@ GameObject:
   - component: {fileID: 4897643887855190626}
   - component: {fileID: 4897643887855190625}
   - component: {fileID: 5167999110717942040}
+  - component: {fileID: 1662811265698929492}
+  - component: {fileID: 862922859688312605}
   m_Layer: 0
   m_Name: Player (Guy)
   m_TagString: Untagged
@@ -231,7 +233,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!143 &4897643887855190625
 CharacterController:
@@ -242,7 +244,7 @@ CharacterController:
   m_GameObject: {fileID: 4897643888075612915}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1.8
   m_Radius: 0.5
@@ -258,17 +260,55 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4897643888075612915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb488e4f9fe640e4dbecb09c5d6c51b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerSpeed: 10
-  m_jumpHeight: 3
+  m_jumpSpeed: 10
   m_gravityValue: -9.81
   playerNum: 0
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
   lockMovement: 0
   keepMovementLocked: 0
+--- !u!114 &1662811265698929492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897643888075612915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3bd253ff59c77a429a5e3e7a56100aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 0
+  speed: 10
+  jumpPower: 200
+  gravityPower: 3
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  lockMovement: 0
+  keepMovementLocked: 0
+--- !u!136 &862922859688312605
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897643888075612915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &4897643888075612919
 GameObject:
   m_ObjectHideFlags: 0
