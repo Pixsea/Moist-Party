@@ -45,6 +45,8 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField]
     private bool onBoardScene;
     private float randomTimer;  //How long the player is on the board scene
+    [SerializeField]
+    private SceneChanger sceneChanger;
 
 
 
@@ -118,23 +120,23 @@ public class ScoreTracker : MonoBehaviour
 
                 if (temp <= 1)
                 {
-                    SceneManager.LoadScene("MashHappy");
+                    sceneChanger.LoadMiniGame("MashHappy");
                 }
                 else if (temp <= 2)
                 {
-                    SceneManager.LoadScene("SimonSays");
+                    sceneChanger.LoadMiniGame("SimonSays");
                 }
                 else if (temp <= 3)
                 {
-                    SceneManager.LoadScene("DartofGold");
+                    sceneChanger.LoadMiniGame("DartofGold");
                 }
                 else if (temp <= 4)
                 {
-                    SceneManager.LoadScene("ParkourScene");
+                    sceneChanger.LoadMiniGame("ParkourScene");
                 }
                 else if (temp <= 5)
                 {
-                    SceneManager.LoadScene("SampleScene");
+                    sceneChanger.LoadMiniGame("SampleScene");
                 }
             }
             randomTimer--;

@@ -218,7 +218,7 @@ public class MinigameManager : MonoBehaviour
         // Create the player Dictionary from the player array
         for (int i = 0; i < Players.Length; i++)
         {
-            Players[i].gameObject.GetComponent<PlayerController>().lockMovement = true;
+            Players[i].gameObject.GetComponent<PlayerController2>().lockMovement = true;
         }
     }
 
@@ -228,7 +228,7 @@ public class MinigameManager : MonoBehaviour
         // Create the player Dictionary from the player array
         for (int i = 0; i < Players.Length; i++)
         {
-            Players[i].gameObject.GetComponent <PlayerController> ().lockMovement = false;
+            Players[i].gameObject.GetComponent <PlayerController2> ().lockMovement = false;
         }
     }
 }
