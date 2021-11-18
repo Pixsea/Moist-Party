@@ -23,8 +23,8 @@ public class UpdatedPlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float verticalSpeed;
-    private bool m_isGrounded;
-    private bool isJumping = false;
+    public bool m_isGrounded;
+    public bool isJumping = false;
     private bool m_canJump = true;
     public Vector2 lastDir;
 
@@ -63,7 +63,8 @@ public class UpdatedPlayerController : MonoBehaviour
         }
         print($"Jumped {(Vector3.up * jumpForce)}! velocity is now {rigidbody.velocity}");
         rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        print($"Jumped {(Vector3.up * jumpForce)}! velocity is now {rigidbody.velocity}");
+        transform.Translate(Vector3.up * 3);
+        print($"Jumped {(Vector3.up * jumpForce)}! velocity is now {rigidbody.velocity}, pos is now {transform.position}");
     }
 
     private void Update()
@@ -77,12 +78,22 @@ public class UpdatedPlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, 0);
         if (!lockMovement && !keepMovementLocked) {
             
-            //calculate speed due to gravity
+            if (m_isGrounded) {
+                if (isJumping) {
+                    verticalSpeed = jumpForce;
+                    print("Jumped!");
+                } else {
+                    print("Not jumping");
+                    verticalSpeed = 0;
+                }
+            } else {
+                verticalSpeed += -9.81f * Time.deltaTime;
+            }
             
             Vector3 move = new Vector3(dir.x, 0f, dir.y);
             move = m_playerSpeed * Time.deltaTime * move;
-            //move.y = transform.position.y;
-            //move += gravityMove;
+            move.y = verticalSpeed;
+            
             controller.Move(move);
         }
         
@@ -138,6 +149,7 @@ public class UpdatedPlayerController : MonoBehaviour
         {
             m_canJump = false;
         }
+        rigidbody.velocity = Vector3.zero;
     }
 
     private void OnTriggerExit(Collider collision)
