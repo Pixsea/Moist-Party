@@ -46,8 +46,10 @@ public class DartofGold : MinigameManager
         if (temp != null)
         {
             //temp.GetComponent<BackGroundAudio>().StopMusic();
-        }       
-   } 
+        }
+
+        //Debug.Log(numPlayers);
+    } 
 
     public override void Update()
     {

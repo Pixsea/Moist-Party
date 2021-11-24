@@ -42,7 +42,7 @@ public class KnockbackArm : MonoBehaviour
 
 
             //other.gameObject.GetComponent<PlayerController2>().ApplyKnockback(transform.forward.normalized, knockbackStrength, .2f);
-            other.gameObject.GetComponent<PlayerController2>().ApplyKnockback(direction, knockbackStrength, .2f);
+            other.gameObject.GetComponent<PlayerController2>().ApplyKnockback(direction, knockbackStrength, 20, .2f);
 
         }
     }

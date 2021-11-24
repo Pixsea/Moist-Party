@@ -34,6 +34,12 @@ public class PlayerController2 : MonoBehaviour
     private bool knockbackRefresh = false;  //A bool that controls how long knockback must eb applied for before stopping
 
 
+    [SerializeField]
+    private Animator playerAnimator;
+
+    private bool canAttack = true;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +60,13 @@ public class PlayerController2 : MonoBehaviour
             //playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravityPower);
             rigidbody.AddForce(Vector3.up * Mathf.Sqrt(jumpPower), ForceMode.VelocityChange);
         }
+
+        if (Input.GetButtonDown("Jump" + playerNum.ToString()) && !lockMovement && !keepMovementLocked && canAttack)
+        {
+            canAttack = false;
+
+            StartCoroutine(Attack());
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +84,8 @@ public class PlayerController2 : MonoBehaviour
         {
             rigidbody.AddForce(knockbackAngle * knockbackStrength * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
+
+            // STop applying knockback when it hits the ground
             if (CheckGrounded() && !knockbackRefresh)
             {
                 beingKnockbacked = false;
@@ -203,18 +218,18 @@ public class PlayerController2 : MonoBehaviour
     }
 
 
-    public void ApplyKnockback(Vector3 direction, float power, float delay)
+    public void ApplyKnockback(Vector3 direction, float horizontalPower, float verticalPower, float delay)
     {
         // Upwards knockback
         if (!beingKnockbacked)
         {
-            rigidbody.AddForce(Vector3.up * Mathf.Sqrt(power * 2), ForceMode.VelocityChange);
+            rigidbody.AddForce(Vector3.up * verticalPower, ForceMode.VelocityChange);
         }
 
         knockbackRefresh = true;
 
         knockbackAngle = direction;
-        knockbackStrength = power;
+        knockbackStrength = horizontalPower;
         knockbackDelay = delay;
 
         beingKnockbacked = true;
@@ -229,5 +244,31 @@ public class PlayerController2 : MonoBehaviour
         knockbackRefresh = false;
 
         yield return null;
+    }
+
+    
+
+    IEnumerator Attack()
+    {
+        playerAnimator.SetTrigger("Punch");
+        Collider[] hits = Physics.OverlapBox(transform.position + (transform.forward * 1), new Vector3(1, 2, 1), transform.rotation);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if ((hits[i].tag == "Player")  && (hits[i].gameObject != gameObject))
+            {
+                hits[i].GetComponent<PlayerController2>().ApplyKnockback(transform.forward, 400, 20, .2f);
+                //Debug.Log("test");
+            }
+        }
+        yield return new WaitForSeconds(.5f);
+
+        canAttack = true;
+
+        yield return null;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position + (transform.forward * 1) + (transform.up * 1), new Vector3(1, 2, 1));
     }
 }
