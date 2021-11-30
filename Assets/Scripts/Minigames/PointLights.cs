@@ -8,9 +8,12 @@ public class PointLights : MonoBehaviour
     public SpotlightMazeManager sMM;
     public bool givesPoints = true;
     [SerializeField]
+    //The list of players who will get points when the time comes
     private List<int> whoGetPoints;
+    //Who's been given points in each time they allot points
     private List<int> whoGotPoints;
     [SerializeField]
+    //How long between points
     private float pointGiveTime;
     [SerializeField]
     private GameObject pointText;
@@ -31,6 +34,7 @@ public class PointLights : MonoBehaviour
 
     }
 
+    //When a player enters the light, they will be listed in the points
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -40,6 +44,7 @@ public class PointLights : MonoBehaviour
         }
     }
 
+    //When they leave, they will be unlisted
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -47,7 +52,7 @@ public class PointLights : MonoBehaviour
             whoGetPoints.Remove(other.GetComponent<PlayerController2>().playerNum);
         }
     }
-
+    //This gives the points to whoever is in the light at the alloted time
     private IEnumerator GivePoints()
     {
         while (givesPoints)
@@ -67,6 +72,7 @@ public class PointLights : MonoBehaviour
         }
     }
 
+    //Shows the point effects when the points are alloted
     private void ShowPoints(int playerNum)
     {
         Debug.Log("Tried to spawn point effect");
