@@ -39,7 +39,7 @@ public class CubeController : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < gameObjectList.Count - 1; i++)
+            for (int i = 0; i < gameObjectList.Count; i++)
             {
                 gameObjectList[i].GetComponent<DeathObstacleContainer>().flashType = i;
             }
