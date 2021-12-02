@@ -33,6 +33,7 @@ public class ScoreTracker : MonoBehaviour
     public GameObject dartButton;
     public GameObject parkourButton;
     public GameObject glowRunnerButton;
+    public GameObject jumpRopeButton;
     private bool done = false;  // whether the game is done
     private float timer = 0;
 
@@ -110,6 +111,7 @@ public class ScoreTracker : MonoBehaviour
             dartButton.SetActive(false);
             parkourButton.SetActive(false);
             glowRunnerButton.SetActive(false);
+            jumpRopeButton.SetActive(false);
             scoretoWinText.text = "";
 
             mainText.text = "Selecting next minigame...";
@@ -208,6 +210,7 @@ public class ScoreTracker : MonoBehaviour
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
                 glowRunnerButton.SetActive(false);
+                jumpRopeButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 1 Wins The Tournament!";
@@ -225,6 +228,7 @@ public class ScoreTracker : MonoBehaviour
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
                 glowRunnerButton.SetActive(false);
+                jumpRopeButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 2 Wins The Tournament!";
@@ -242,6 +246,7 @@ public class ScoreTracker : MonoBehaviour
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
                 glowRunnerButton.SetActive(false);
+                jumpRopeButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 3 Wins The Tournament!";
@@ -259,6 +264,7 @@ public class ScoreTracker : MonoBehaviour
                 dartButton.SetActive(false);
                 parkourButton.SetActive(false);
                 glowRunnerButton.SetActive(false);
+                jumpRopeButton.SetActive(false);
                 scoretoWinText.text = "";
 
                 mainText.text = "Player 4 Wins The Tournament!";

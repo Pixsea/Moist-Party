@@ -295,6 +295,7 @@ MonoBehaviour:
     m_Bits: 64
   lockMovement: 0
   keepMovementLocked: 0
+  playerAnimator: {fileID: 4897643888083030229}
 --- !u!136 &862922859688312605
 CapsuleCollider:
   m_ObjectHideFlags: 0

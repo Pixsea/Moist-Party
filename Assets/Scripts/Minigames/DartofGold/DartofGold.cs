@@ -46,8 +46,10 @@ public class DartofGold : MinigameManager
         if (temp != null)
         {
             //temp.GetComponent<BackGroundAudio>().StopMusic();
-        }       
-   } 
+        }
+
+        //Debug.Log(numPlayers);
+    } 
 
     public override void Update()
     {
@@ -125,7 +127,7 @@ public class DartofGold : MinigameManager
                 cycleTimer = 5.0f / Time.fixedDeltaTime;
             }
 
-            Debug.Log(cycleTimer);
+            //Debug.Log(cycleTimer);
 
             UITimerText.text = (Mathf.Ceil(timer * Time.fixedDeltaTime)).ToString();
 
