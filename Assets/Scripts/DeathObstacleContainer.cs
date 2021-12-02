@@ -24,11 +24,7 @@ public class DeathObstacleContainer : MonoBehaviour
         }
         else if (flashType == 3)
         {
-            StartCoroutine(Flash2());
-        }
-        else
-        {
-            willFlash = false;
+            StartCoroutine(Flash3());
         }
     }
 
@@ -42,7 +38,7 @@ public class DeathObstacleContainer : MonoBehaviour
     {
         while (willFlash)
         {
-            yield return new WaitForSeconds(flashTimer * 2);
+            yield return new WaitForSeconds(flashTimer*2);
             foreach (Transform child in transform)
             {
                 if (child.gameObject.activeSelf)
@@ -61,6 +57,26 @@ public class DeathObstacleContainer : MonoBehaviour
     {
         while (willFlash)
         {
+            yield return new WaitForSeconds(flashTimer);
+            foreach (Transform child in transform)
+            {
+                if (child.gameObject.activeSelf)
+                {
+                    child.gameObject.SetActive(false);
+                }
+                else
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+            yield return new WaitForSeconds(flashTimer);
+        }
+    }
+
+    private IEnumerator Flash3()
+    {
+        while (willFlash)
+        {
             foreach (Transform child in transform)
             {
                 if (child.gameObject.activeSelf)
@@ -73,26 +89,6 @@ public class DeathObstacleContainer : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(flashTimer * 2);
-        }
-    }
-
-    private IEnumerator Flash3()
-    {
-        while (willFlash)
-        {
-            yield return new WaitForSeconds(flashTimer);
-            foreach (Transform child in transform)
-            {
-                if (child.gameObject.activeSelf)
-                {
-                    child.gameObject.SetActive(false);
-                }
-                else
-                {
-                    child.gameObject.SetActive(true);
-                }
-            }
-            yield return new WaitForSeconds(flashTimer);
         }
     }
 

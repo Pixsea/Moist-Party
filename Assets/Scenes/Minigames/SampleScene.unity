@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &228327778
 Transform:
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &233767498
 Transform:
@@ -1752,7 +1752,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: speed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: playerNum
@@ -2202,7 +2202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &313030581
 Transform:
@@ -2715,6 +2715,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: playerNum
       value: 2
@@ -3797,7 +3801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &606518913
 Transform:
@@ -4073,6 +4077,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: playerNum
       value: 3
       objectReference: {fileID: 0}
@@ -4188,7 +4196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &697701566
 Transform:
@@ -5075,7 +5083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &895463511
 Transform:
@@ -5581,7 +5589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &1047787711
 Transform:
@@ -6960,6 +6968,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: playerNum
       value: 4
       objectReference: {fileID: 0}
@@ -8053,7 +8065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &1514402945
 Transform:
@@ -8103,7 +8115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &1525741621
 Transform:
@@ -8277,7 +8289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &1604127205
 Transform:
@@ -9349,7 +9361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &1825287872
 Transform:
@@ -10613,7 +10625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willFlash: 1
-  flashTimer: 2
+  flashTimer: 1
   flashType: 0
 --- !u!4 &1989053755
 Transform:
