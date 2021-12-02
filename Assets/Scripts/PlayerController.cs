@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool playerGrounded;
     private float verticalSpeed;
     private bool m_isGrounded;
+    private Vector3 spawnPos;
 
     private bool m_canJump = true;
 
@@ -35,14 +36,12 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         animator = gameObject.GetComponent<Animator>(); 
         collider = gameObject.GetComponent<CapsuleCollider>();
-
-        // get the distance to ground
-        float distToGround = collider.bounds.extents.y;
+        spawnPos = gameObject.transform.position;
     }
 
     void Update()
     {
-        
+        
         Move3();
     }
 
@@ -142,88 +141,88 @@ public class PlayerController : MonoBehaviour
     private void Move2()
     {
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        if (!lockMovement && !keepMovementLocked)
+        if (!lockMovement && !keepMovementLocked)
         {
             float horizontalMove = Input.GetAxis("Horizontal" + playerNum.ToString());
-            float verticalMove = Input.GetAxis("Vertical" + playerNum.ToString());
-
-            Debug.Log(IsGrounded());
-
-            if (IsGrounded())
+            float verticalMove = Input.GetAxis("Vertical" + playerNum.ToString());
+
+            Debug.Log(IsGrounded());
+
+            if (IsGrounded())
             {
-                if (Input.GetButton("Jump" + playerNum.ToString()) && m_canJump == true)
+                if (Input.GetButton("Jump" + playerNum.ToString()) && m_canJump == true)
                 {
                     verticalSpeed = m_jumpSpeed;
-                }
-                //else
+                }
+                //else
                 //{
                 //    verticalSpeed = 0;
                 //}
-            }
-            else if (Input.GetButton("Jump" + playerNum.ToString()))
-            {
-                // Makes it so that if you hold the jump button in the air, you fall slower,
-                // can probably make it less floaty by adding half the gravityValue to verticalSpeed here
-
-                verticalSpeed += m_gravityValue * Time.deltaTime *.5f;
-            }
-            else
+            }
+            else if (Input.GetButton("Jump" + playerNum.ToString()))
+            {
+                // Makes it so that if you hold the jump button in the air, you fall slower,
+                // can probably make it less floaty by adding half the gravityValue to verticalSpeed here
+
+                verticalSpeed += m_gravityValue * Time.deltaTime *.5f;
+            }
+            else
             {
                 verticalSpeed += m_gravityValue * Time.deltaTime;
-            }
-
-
+            }
+
+
             Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
             Vector3 move = transform.forward * verticalMove + transform.right * horizontalMove;
             controller.Move(m_playerSpeed * Time.deltaTime * move + gravityMove * Time.deltaTime);
-        }
+        }
     }
 
 
-    private void Move3()
-    {
-        playerGrounded = controller.isGrounded;
-        if (playerGrounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
-
-        if (!lockMovement && !keepMovementLocked)
-        {
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
-            move *= m_playerSpeed;
-            //controller.Move(move * Time.deltaTime * m_playerSpeed);
-
-
-            // Rotate character
-            if (move != Vector3.zero)
-            {
-                gameObject.transform.forward = move;
-            }
-
-            // Changes the height position of the player/make player jump
-            if (Input.GetButton("Jump" + playerNum.ToString()) && playerGrounded && m_canJump)
-            {
-                playerVelocity.y += Mathf.Sqrt(m_jumpSpeed * -3.0f * m_gravityValue);
-            }
-
-            // Apply gravity
-            if (!playerGrounded && Input.GetButton("Jump" + playerNum.ToString()))
-            {
-                playerVelocity.y += m_gravityValue * Time.deltaTime;
-            }
-            else if (!playerGrounded && !Input.GetButton("Jump" + playerNum.ToString()))
-            {
-                playerVelocity.y += m_gravityValue * Time.deltaTime * 2;
-            }
-
-            //playerVelocity.y += m_gravityValue * Time.deltaTime;
-
-
-            // Apply movements
-            controller.Move(move * Time.deltaTime);
-            controller.Move(playerVelocity * Time.deltaTime);
-        }
+    private void Move3()
+    {
+        playerGrounded = controller.isGrounded;
+        if (playerGrounded && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
+        if (!lockMovement && !keepMovementLocked)
+        {
+            Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
+            move *= m_playerSpeed;
+            //controller.Move(move * Time.deltaTime * m_playerSpeed);
+
+
+            // Rotate character
+            if (move != Vector3.zero)
+            {
+                gameObject.transform.forward = move;
+            }
+
+            // Changes the height position of the player/make player jump
+            if (Input.GetButton("Jump" + playerNum.ToString()) && playerGrounded && m_canJump)
+            {
+                playerVelocity.y += Mathf.Sqrt(m_jumpSpeed * -3.0f * m_gravityValue);
+            }
+
+            // Apply gravity
+            if (!playerGrounded && Input.GetButton("Jump" + playerNum.ToString()))
+            {
+                playerVelocity.y += m_gravityValue * Time.deltaTime;
+            }
+            else if (!playerGrounded && !Input.GetButton("Jump" + playerNum.ToString()))
+            {
+                playerVelocity.y += m_gravityValue * Time.deltaTime * 2;
+            }
+
+            //playerVelocity.y += m_gravityValue * Time.deltaTime;
+
+
+            // Apply movements
+            controller.Move(move * Time.deltaTime);
+            controller.Move(playerVelocity * Time.deltaTime);
+        }
     }
 
 
@@ -237,22 +236,22 @@ public class PlayerController : MonoBehaviour
     // }
 
 
-    bool IsGrounded()
-    {
-        //return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
-        return Physics.CheckBox(transform.position - new Vector3(0, distToGround, 0), new Vector3(.5f, .1f, .5f));
-        
-    }
-
-    // Fucntion to show box check for if the player is grounded
-    void OnDrawGizmos()
-    {
-        // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(transform.position - new Vector3(0, distToGround, 0), new Vector3(.5f, .1f, .5f));
-    }
-
-
+    bool IsGrounded()
+    {
+        //return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        return Physics.CheckBox(transform.position - new Vector3(0, distToGround, 0), new Vector3(.5f, .1f, .5f));
+        
+    }
+
+    // Fucntion to show box check for if the player is grounded
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawCube(transform.position - new Vector3(0, distToGround, 0), new Vector3(.5f, .1f, .5f));
+    }
+
+
     private void OnCollisionEnter(Collision collision)
     {
         // Debug.Log("SOME COLLISION");
@@ -282,6 +281,12 @@ public class PlayerController : MonoBehaviour
             m_playerSpeed /= 0.75f;
             m_canJump = true;
         }
+    }
+
+    public void GetHit()
+    {
+        gameObject.transform.localPosition = spawnPos;
+        Physics.SyncTransforms();
     }
 
 }
