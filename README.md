@@ -1,15 +1,15 @@
 # Moist-Party
 Who is on your team?
 Hunter Trigo 
-Art Leader/ Programmer / Sound
+Art Leader/ Programmer / Sound / 3D character modeling
 Jason Iino
-Paid Poogramming Lead/Design
+Paid Pogramming Lead/Design / bug fixing new mini game jump rope and target update
 Christopher Chereque
-Programmer/ Design / Art
+Programmer/ Design / Art / parkour respawn update
 Kenneth Lin
-Sound Lead/ Designer / Programmer
+Sound Lead/ Designer / Programmer / new mini game concentration   
 Andie Yu
-Production Leader/Programmer
+Production Leader/Programmer / Assignement submission 
 Alexander Sun
 Design Lead / Production / Programmer
 Dane Carstens
