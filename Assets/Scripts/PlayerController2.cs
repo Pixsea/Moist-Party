@@ -85,7 +85,7 @@ public class PlayerController2 : MonoBehaviour
             rigidbody.AddForce(knockbackAngle * knockbackStrength * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
 
-            // STop applying knockback when it hits the ground
+            // STop applying knockback when it hits the ground or after a delay
             if (CheckGrounded() && !knockbackRefresh)
             {
                 beingKnockbacked = false;
@@ -234,14 +234,18 @@ public class PlayerController2 : MonoBehaviour
 
         beingKnockbacked = true;
 
-        StartCoroutine(KnockbackWait());
+        StartCoroutine(KnockbackWait(knockbackDelay));
     }
 
-    public IEnumerator KnockbackWait()
+    public IEnumerator KnockbackWait(float delay)
     {
-        yield return new WaitForSeconds(knockbackDelay);
+        yield return new WaitForSeconds(delay);
 
         knockbackRefresh = false;
+
+        yield return new WaitForSeconds(delay);
+
+        beingKnockbacked = false;
 
         yield return null;
     }
@@ -251,12 +255,12 @@ public class PlayerController2 : MonoBehaviour
     IEnumerator Attack()
     {
         playerAnimator.SetTrigger("Punch");
-        Collider[] hits = Physics.OverlapBox(transform.position + (transform.forward * 1), new Vector3(1, 2, 1), transform.rotation);
+        Collider[] hits = Physics.OverlapBox(transform.position + (transform.forward * 1), new Vector3(1, 2, .2f), transform.rotation);
         for (int i = 0; i < hits.Length; i++)
         {
             if ((hits[i].tag == "Player")  && (hits[i].gameObject != gameObject))
             {
-                hits[i].GetComponent<PlayerController2>().ApplyKnockback(transform.forward, 400, 20, .2f);
+                hits[i].GetComponent<PlayerController2>().ApplyKnockback(transform.forward, 400, 20, 1f);
                 //Debug.Log("test");
             }
         }

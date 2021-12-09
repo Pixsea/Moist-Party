@@ -17,6 +17,7 @@ public class DeathBarrier : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             manager.playerDies(collision.gameObject.GetComponent<PlayerController2>().playerNum);
+            collision.gameObject.transform.position -= new Vector3(0, 1000, 0);
         }
     }
 }
