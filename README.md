@@ -15,4 +15,7 @@ Design Lead / Production / Programmer
 Dane Carstens
 Programmer
 
-Credit for Assessts
+Credits for Assets
+Toony Tiny People Demo by Polygon Blacksmith
+Office enviroment set in Unity Standard Assets
+Free to use texture from assets store
