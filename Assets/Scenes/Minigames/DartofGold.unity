@@ -594,9 +594,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Controls:
 
-    P1: W        P2: A
+    P1: W        P2: Up
 
-    P3: S        P4: D'
+    P3: T          P4: I   '
 --- !u!222 &141878125
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1445,6 +1445,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   randomSelectionText: {fileID: 0}
   onBoardScene: 0
+  sceneChanger: {fileID: 0}
 --- !u!4 &521356024
 Transform:
   m_ObjectHideFlags: 0
@@ -2240,6 +2241,7 @@ GameObject:
   - component: {fileID: 741571488}
   - component: {fileID: 741571489}
   - component: {fileID: 741571490}
+  - component: {fileID: 741571491}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -2273,7 +2275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741571486}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 402a90b39b434ad45a0c2b0bdadb5522, type: 3}
   m_Name: 
@@ -2308,6 +2310,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &741571491
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741571486}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c7a2497104451743833dd9023e169c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &755246448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,7 +2640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 4
-  fireButton: d
+  fireButton: i
   dart: {fileID: 5906507095674850397, guid: aa12b5bff9bfe844cb34090a7383b2ea, type: 3}
   target: {fileID: 741571486}
   gameManager: {fileID: 1094715884}
@@ -2637,7 +2658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 3
-  fireButton: s
+  fireButton: t
   dart: {fileID: 5906507095674850397, guid: aa12b5bff9bfe844cb34090a7383b2ea, type: 3}
   target: {fileID: 741571486}
   gameManager: {fileID: 1094715884}
@@ -2655,7 +2676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 2
-  fireButton: a
+  fireButton: up
   dart: {fileID: 5906507095674850397, guid: aa12b5bff9bfe844cb34090a7383b2ea, type: 3}
   target: {fileID: 741571486}
   gameManager: {fileID: 1094715884}
@@ -2870,7 +2891,7 @@ MonoBehaviour:
   UIMainText: {fileID: 1437222526}
   UITimerText: {fileID: 1446241018}
   UsesTimer: 1
-  TotalGameTime: 20
+  TotalGameTime: 40
   timer: 0
   startWaitSec: 2
   endWaitSec: 3
@@ -2891,6 +2912,8 @@ MonoBehaviour:
   player3Score: 0
   player4Score: 0
   playing: 0
+  target: {fileID: 741571486}
+  animator: {fileID: 741571491}
 --- !u!4 &1094715886
 Transform:
   m_ObjectHideFlags: 0

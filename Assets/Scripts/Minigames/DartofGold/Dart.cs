@@ -125,6 +125,8 @@ public class Dart : MonoBehaviour
             pointEffect.transform.position += new Vector3(1.5f, 0, 0);
         }
 
+        Debug.Log(distance);
+
 
         if (distance < .33f)
         {
@@ -146,7 +148,8 @@ public class Dart : MonoBehaviour
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 2);
             textEdit.text = "+2";
         }
-        else if (distance < 2.5f)
+        //else if (distance < 2.5f)
+        else
         {
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 1);
             textEdit.text = "+1";
