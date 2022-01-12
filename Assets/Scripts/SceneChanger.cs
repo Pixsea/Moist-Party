@@ -45,14 +45,8 @@ public class SceneChanger : MonoBehaviour
     [SerializeField]
     private Text player4ReadyText;
 
-    [SerializeField]
-    private bool player1Ready;
-    [SerializeField]
-    private bool player2Ready;
-    [SerializeField]
-    private bool player3Ready;
-    [SerializeField]
-    private bool player4Ready;
+    private int[] playersReady = { -1, -1, -1, -1 };
+    private Text[] playerReadytext = { null, null, null, null };
 
 
 
@@ -92,12 +86,45 @@ public class SceneChanger : MonoBehaviour
             {
                 directionImage.texture = jumpRopeDirections;
             }
-        }
 
-        player1Ready = false;
-        player2Ready = false;
-        player3Ready = false;
-        player4Ready = false;
+
+
+            // Add player ready texts to the player ready texts array
+            playerReadytext[0] = player1ReadyText;
+            playerReadytext[1] = player2ReadyText;
+            playerReadytext[2] = player3ReadyText;
+            playerReadytext[3] = player4ReadyText;
+
+            // Set the players to not ready, represented by 0
+            playersReady[0] = 0;
+            playersReady[1] = 0;
+            if (SceneChangerInfo.numPlayers >= 3)
+            {
+                playersReady[2] = 0;
+            }
+            if (SceneChangerInfo.numPlayers == 4)
+            {
+                playersReady[3] = 0;
+            }
+
+            // Change the text/disable the ready texts for ach player
+            for (int i = 0; i < playersReady.Length; i++)
+            {
+                if (playersReady[i] == 0)
+                {
+                    playerReadytext[i].text = "Not Ready";
+                }
+                else if (playersReady[i] == 1)
+                {
+                    playerReadytext[i].text = "Ready";
+                }
+                else if (playersReady[i] == -1)
+                {
+                    playerReadytext[i].gameObject.SetActive(false);
+                }
+
+            }
+        }
     }
 
     private void Update()
@@ -110,21 +137,19 @@ public class SceneChanger : MonoBehaviour
 
         if (Input.GetKeyDown("w"))
         {
-            player1Ready = !player1Ready;
-
-            //if (player)
+            ReadyUpPlayer(1);
         }
         if (Input.GetKeyDown("a"))
         {
-            player1Ready = !player1Ready;
+            ReadyUpPlayer(2);
         }
         if (Input.GetKeyDown("s"))
         {
-            player1Ready = !player1Ready;
+            ReadyUpPlayer(3);
         }
         if (Input.GetKeyDown("d"))
         {
-            player1Ready = !player1Ready;
+            ReadyUpPlayer(4);
         }
     }
 
@@ -145,5 +170,27 @@ public class SceneChanger : MonoBehaviour
     public void SetNumPlayers(int numPlayers)
     {
         SceneChangerInfo.numPlayers = numPlayers;
+    }
+
+
+    public void ReadyUpPlayer(int playerNum)
+    {
+        playersReady[playerNum - 1] = 1;
+        playerReadytext[playerNum - 1].text = "Ready";
+
+        bool allReady = true;
+        // Check to see if everyone is readied up, 0 is not ready, 1 is ready, -1 is not a player
+        for (int i = 0; i < playersReady.Length; i+=1)
+        {
+            if (playersReady[i] == 0)
+            {
+                allReady = false;
+            }
+        }
+
+        if (allReady)
+        {
+            LeaveDirectionsScreen();
+        }
     }
 }
