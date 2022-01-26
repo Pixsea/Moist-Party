@@ -44,7 +44,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 10
-  m_Range: 15
+  m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -460,6 +460,7 @@ MonoBehaviour:
     m_Bits: 64
   lockMovement: 0
   keepMovementLocked: 0
+  playerAnimator: {fileID: 0}
 --- !u!136 &3463019886311270296
 CapsuleCollider:
   m_ObjectHideFlags: 0
