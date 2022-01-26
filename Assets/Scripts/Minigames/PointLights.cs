@@ -7,6 +7,8 @@ public class PointLights : MonoBehaviour
 {
     public SpotlightMazeManager sMM;
     public bool givesPoints = true;
+    public bool lightMove = false;
+    private bool lightActive = false;
     [SerializeField]
     //The list of players who will get points when the time comes
     private List<int> whoGetPoints;
@@ -17,6 +19,7 @@ public class PointLights : MonoBehaviour
     private float pointGiveTime;
     [SerializeField]
     private GameObject pointText;
+    private float arriveTime = 1.5f;
 
 
 
@@ -25,13 +28,19 @@ public class PointLights : MonoBehaviour
     {
         whoGetPoints = new List<int>();
         whoGotPoints = new List<int>();
-        StartCoroutine(GivePoints());
+        StartCoroutine(GivePoints()); 
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (!lightActive && lightMove)
+        {
+            StartCoroutine(LightMovement());
+            lightActive = true;
+            Debug.Log("Activated");
+        }
     }
 
     //When a player enters the light, they will be listed in the points
@@ -101,5 +110,39 @@ public class PointLights : MonoBehaviour
         }
 
         textEdit.text = "+1";
+    }
+
+    //Picks a random move place between 9 options, then moves there.
+    public IEnumerator LightMovement()
+    {
+        while(lightMove)
+        { 
+            Vector3 pos = transform.position;
+            int x = Random.Range(-1, 2) * 9;
+            int z = Random.Range(-1, 2) * 9;
+            Vector3 dest = new Vector3(x, pos.y, z);
+            while (dest == pos)
+            {
+                x = Random.Range(-1, 2) * 9;
+                z = Random.Range(-1, 2) * 9;
+                dest = new Vector3(x, pos.y, z);
+            }
+            yield return StartCoroutine(MoveToDestination(this.gameObject, dest, arriveTime));
+        }
+    }
+
+    //This should move to a destination within a specific amount of seconds.
+    public IEnumerator MoveToDestination(GameObject objectToMove, Vector3 end, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startingPos = objectToMove.transform.position;
+        Debug.Log("New Dest");
+        while (elapsedTime < seconds)
+        {
+            objectToMove.transform.position = Vector3.Lerp(startingPos, end, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        objectToMove.transform.position = end;
     }
 }

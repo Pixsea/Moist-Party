@@ -19,19 +19,19 @@ public class SpotlightMazeManager : MinigameManager
     
     public override IEnumerator GameLoop()
     {
-        LockMovement();
         Debug.Log("Active");
 
         // Start off by running the 'GameStart'
         yield return StartCoroutine(GameStarting());
-        UnlockMovement();
+        UnlockMovement2();
         pLs.givesPoints = true;
+        pLs.lightMove = true;
 
         // Once the 'GameStart' coroutine is finished, run the 'GamePlaying' coroutine but don't return until it's finished.
         yield return StartCoroutine(GamePlaying());
 
-        LockMovement();
         pLs.givesPoints = false;
+        pLs.lightMove = false;
 
         // Once execution has returned here, run the 'GameEnd' coroutine, again don't return until it's finished.
         yield return StartCoroutine(GameEnding());
@@ -41,6 +41,20 @@ public class SpotlightMazeManager : MinigameManager
         yield return StartCoroutine(ShowResults());
 
         yield return StartCoroutine(ReturnToBoard());
+    }
+
+    public override IEnumerator GameStarting()
+    {
+        UIMainText.text = "Ready?";
+        UITimerText.text = "";
+
+        LockMovement2();
+
+        // Adjust non used players
+        yield return StartCoroutine(AdjustPlayers());
+
+        // Wait for the specified length of time until yielding control back to the game loop.
+        yield return startWait;
     }
 
     public override IEnumerator GamePlaying()
@@ -197,6 +211,28 @@ public class SpotlightMazeManager : MinigameManager
         yield return resultsWait;
     }
 
+    public override IEnumerator GameEnding()
+    {
+        phase = "End";
+        UIMainText.text = "Finish";
+        UITimerText.text = "";
+
+        LockMovement2();
+
+        timer = endWaitSec / Time.fixedDeltaTime;
+
+        while (timer > 0)
+        {
+            // If more than 1.5 seconds has past, remove "Finish!" from the UI
+            if (((endWaitSec / Time.fixedDeltaTime) - timer) > (1.5 / Time.fixedDeltaTime))
+            {
+                UIMainText.text = "";
+            }
+
+            yield return null;
+        }
+    }
+
     public void IncreaseScore(int playerNum, int score)
     {
         if (playerNum == 1)
@@ -240,5 +276,31 @@ public class SpotlightMazeManager : MinigameManager
         }
 
         yield return null;
+    }
+
+    // Locks all player movement
+    public void LockMovement2()
+    {
+        // Create the player Dictionary from the player array
+        for (int i = 0; i < Players.Length; i++)
+        {
+            foreach (PlayerController2 pObject in Players[i].gameObject.GetComponentsInChildren<PlayerController2>())
+            {
+                pObject.lockMovement = true;
+            }
+        }
+    }
+
+    // Unlocks all player movement
+    public void UnlockMovement2()
+    {
+        // Create the player Dictionary from the player array
+        for (int i = 0; i < Players.Length; i++)
+        {
+            foreach (PlayerController2 pObject in Players[i].gameObject.GetComponentsInChildren<PlayerController2>())
+            {
+                pObject.lockMovement = false;
+            }
+        }
     }
 }
