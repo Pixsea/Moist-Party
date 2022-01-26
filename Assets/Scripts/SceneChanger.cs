@@ -129,27 +129,30 @@ public class SceneChanger : MonoBehaviour
 
     private void Update()
     {
-        // Leave the screen, go to minigame
-        if (Input.GetKeyDown("space"))
+        if (isDirectionScreen)
         {
-            LeaveDirectionsScreen();
-        }
+            // Leave the screen, go to minigame
+            if (Input.GetKeyDown("space"))
+            {
+                LeaveDirectionsScreen();
+            }
 
-        if (Input.GetKeyDown("w"))
-        {
-            ReadyUpPlayer(1);
-        }
-        if (Input.GetKeyDown("a"))
-        {
-            ReadyUpPlayer(2);
-        }
-        if (Input.GetKeyDown("s"))
-        {
-            ReadyUpPlayer(3);
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            ReadyUpPlayer(4);
+            if (Input.GetKeyDown("w"))
+            {
+                ReadyUpPlayer(1);
+            }
+            if (Input.GetKeyDown("a"))
+            {
+                ReadyUpPlayer(2);
+            }
+            if (Input.GetKeyDown("s"))
+            {
+                ReadyUpPlayer(3);
+            }
+            if (Input.GetKeyDown("d"))
+            {
+                ReadyUpPlayer(4);
+            }
         }
     }
 

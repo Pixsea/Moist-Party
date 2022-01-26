@@ -369,7 +369,7 @@ public class ScoreTracker : MonoBehaviour
 
         if (scoreText != null)
         {
-            scoreText.text = ScoreTrackerStats.scoreToWin.ToString();
+            scoreText.text = "Points to win:\n" + ScoreTrackerStats.scoreToWin.ToString();
         }
     }
 
@@ -383,12 +383,12 @@ public class ScoreTracker : MonoBehaviour
         {
             if (ScoreTrackerStats.randomSelection == true)
             {
-                randomSelectionText.text = "Random";
+                randomSelectionText.text = "Minigame selection:\nRandom";
                 //Debug.Log("random");
             }
             else
             {
-                randomSelectionText.text = "Choose";
+                randomSelectionText.text = "Minigame selection:\nChoose";
                 //Debug.Log("choose");
             }
             //randomSelectionText.text = ScoreTrackerStats.randomSelection.ToString();

@@ -12,7 +12,8 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         //SceneManager.LoadScene("BoardScene", LoadSceneMode.Single);
-        SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
+        //SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("BetterOptions", LoadSceneMode.Single);
     }
 
     // Quits game when "QUIT" is selected
