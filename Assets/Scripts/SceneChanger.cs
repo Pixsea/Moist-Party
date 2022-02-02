@@ -141,15 +141,15 @@ public class SceneChanger : MonoBehaviour
             {
                 ReadyUpPlayer(1);
             }
-            if (Input.GetKeyDown("a"))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 ReadyUpPlayer(2);
             }
-            if (Input.GetKeyDown("s"))
+            if (Input.GetKeyDown("t"))
             {
                 ReadyUpPlayer(3);
             }
-            if (Input.GetKeyDown("d"))
+            if (Input.GetKeyDown("i"))
             {
                 ReadyUpPlayer(4);
             }

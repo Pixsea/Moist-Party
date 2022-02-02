@@ -10,6 +10,7 @@ public class PlayerButton : MonoBehaviour
 {
     public enum buttonType { start, scoreIncrease, scoreDecrease, toggleSelection, minigame};
 
+    
 
     public int minPlayers = 3;
     private int currPlayers = 0;  // How many players are on the button
@@ -20,7 +21,9 @@ public class PlayerButton : MonoBehaviour
 
     public buttonType buttontype = buttonType.start;
 
-    public UnityEvent buttonAction;
+    public string minigameScene = "";
+
+    //public UnityEvent buttonAction;
 
     public ScoreTracker scoretracker;
 
@@ -30,19 +33,27 @@ public class PlayerButton : MonoBehaviour
     public float pressedHeightChange = .25f;
     public float changeSpeed = .001f;
 
+    [SerializeField]
+    private SceneChanger sceneChanger;
+
 
     private void Start()
     {
         startHeight = buttonBlock.transform.position.y;
+
+        if (buttontype == buttonType.minigame)
+        {
+            minPlayers = scoretracker.GetNumPlayers();
+        }
     }
 
 
     private void Awake()
     {
-        if (buttonAction == null)
-        {
-            buttonAction = new UnityEvent();
-        }
+        //if (buttonAction == null)
+        //{
+        //    buttonAction = new UnityEvent();
+        //}
     }
 
 
@@ -118,17 +129,27 @@ public class PlayerButton : MonoBehaviour
         }
         else
         {
-            GameObject pointEffect = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(0, 0, 0));
+            float rotation = 0;
+
+            if (buttontype == buttonType.minigame)
+            {
+                rotation = 45f;
+            }
+
+            GameObject pointEffect = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
+            pointEffect.GetComponent<PointEffect>().pointText.color = new Color(167 / 255f, 145 / 255f, 255 / 255f);
             pointEffect.GetComponent<PointEffect>().pointText.text = "3";
 
             yield return new WaitForSeconds(timeToActivate / 3);
 
-            GameObject pointEffect2 = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(0, 0, 0));
+            GameObject pointEffect2 = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
+            pointEffect2.GetComponent<PointEffect>().pointText.color = new Color(167 / 255f, 145 / 255f, 255 / 255f);
             pointEffect2.GetComponent<PointEffect>().pointText.text = "2";
 
             yield return new WaitForSeconds(timeToActivate / 3);
 
-            GameObject pointEffect3 = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(0, 0, 0));
+            GameObject pointEffect3 = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
+            pointEffect3.GetComponent<PointEffect>().pointText.color = new Color(167 / 255f, 145 / 255f, 255 / 255f);
             pointEffect3.GetComponent<PointEffect>().pointText.text = "1";
 
             yield return new WaitForSeconds(timeToActivate / 3);
@@ -139,6 +160,11 @@ public class PlayerButton : MonoBehaviour
             {
                 scoretracker.SetNumPlayers(currPlayers);
                 SceneManager.LoadScene("BoardScene", LoadSceneMode.Single);
+            }
+            else if (buttontype == buttonType.minigame)
+            {
+                scoretracker.SetNumPlayers(currPlayers);
+                sceneChanger.LoadMiniGame(minigameScene);
             }
 
             yield return null;

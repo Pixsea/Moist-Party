@@ -62,17 +62,17 @@ public class DirectionsManager : MonoBehaviour
 
             //if (player)
         }
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            player1Ready = !player1Ready;
+            player2Ready = !player2Ready;
         }
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("t"))
         {
-            player1Ready = !player1Ready;
+            player3Ready = !player3Ready;
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("i"))
         {
-            player1Ready = !player1Ready;
+            player4Ready = !player4Ready;
         }
     }
 

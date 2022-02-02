@@ -14,6 +14,11 @@ public class ScoreTracker : MonoBehaviour
     private int player4Score;
 
     [SerializeField]
+    private GameObject player3;  //Used to enable/disable the extra players if eneded
+    [SerializeField]
+    private GameObject player4;
+
+    [SerializeField]
     private Text player1Text = null;
     [SerializeField]
     private Text player2Text;
@@ -40,6 +45,8 @@ public class ScoreTracker : MonoBehaviour
     public Text numPlayertext;  // text to change to show how many players are in
     public Text scoreText;  // text to change to show score to win
     public Text randomSelectionText;  // text to change to show if minigame selection will be random
+
+    public GameObject thingsToEnable;
 
 
     // stuff to handle choosing random
@@ -106,13 +113,14 @@ public class ScoreTracker : MonoBehaviour
         if (ScoreTrackerStats.randomSelection && onBoardScene && !done)
         {
             //Disable buttons
-            mashButton.SetActive(false);
-            simonButton.SetActive(false);
-            dartButton.SetActive(false);
-            parkourButton.SetActive(false);
-            glowRunnerButton.SetActive(false);
-            jumpRopeButton.SetActive(false);
-            scoretoWinText.text = "";
+            //mashButton.SetActive(false);
+            //simonButton.SetActive(false);
+            //dartButton.SetActive(false);
+            //parkourButton.SetActive(false);
+            //glowRunnerButton.SetActive(false);
+            //jumpRopeButton.SetActive(false);
+            thingsToEnable.SetActive(false);
+            //scoretoWinText.text = "";
 
             mainText.text = "Selecting next minigame...";
 
@@ -172,6 +180,7 @@ public class ScoreTracker : MonoBehaviour
             if (ScoreTrackerStats.numPlayers < 3)
             {
                 player3Text.gameObject.SetActive(false);
+                player3.SetActive(false);
             }
             else
             {
@@ -184,6 +193,7 @@ public class ScoreTracker : MonoBehaviour
             if (ScoreTrackerStats.numPlayers < 4)
             {
                 player4Text.gameObject.SetActive(false);
+                player4.SetActive(false);
             }
             else
             {
@@ -205,13 +215,14 @@ public class ScoreTracker : MonoBehaviour
                 done = true;
 
                 //Disable buttons
-                mashButton.SetActive(false);
-                simonButton.SetActive(false);
-                dartButton.SetActive(false);
-                parkourButton.SetActive(false);
-                glowRunnerButton.SetActive(false);
-                jumpRopeButton.SetActive(false);
-                scoretoWinText.text = "";
+                //mashButton.SetActive(false);
+                //simonButton.SetActive(false);
+                //dartButton.SetActive(false);
+                //parkourButton.SetActive(false);
+                //glowRunnerButton.SetActive(false);
+                //jumpRopeButton.SetActive(false);
+                //scoretoWinText.text = "";
+                thingsToEnable.SetActive(false);
 
                 mainText.text = "Player 1 Wins The Tournament!";
 
@@ -223,13 +234,14 @@ public class ScoreTracker : MonoBehaviour
                 done = true;
 
                 //Disable buttons
-                mashButton.SetActive(false);
-                simonButton.SetActive(false);
-                dartButton.SetActive(false);
-                parkourButton.SetActive(false);
-                glowRunnerButton.SetActive(false);
-                jumpRopeButton.SetActive(false);
-                scoretoWinText.text = "";
+                //mashButton.SetActive(false);
+                //simonButton.SetActive(false);
+                //dartButton.SetActive(false);
+                //parkourButton.SetActive(false);
+                //glowRunnerButton.SetActive(false);
+                //jumpRopeButton.SetActive(false);
+                //scoretoWinText.text = "";
+                thingsToEnable.SetActive(false);
 
                 mainText.text = "Player 2 Wins The Tournament!";
 
@@ -241,13 +253,14 @@ public class ScoreTracker : MonoBehaviour
                 done = true;
 
                 //Disable buttons
-                mashButton.SetActive(false);
-                simonButton.SetActive(false);
-                dartButton.SetActive(false);
-                parkourButton.SetActive(false);
-                glowRunnerButton.SetActive(false);
-                jumpRopeButton.SetActive(false);
-                scoretoWinText.text = "";
+                //mashButton.SetActive(false);
+                //simonButton.SetActive(false);
+                //dartButton.SetActive(false);
+                //parkourButton.SetActive(false);
+                //glowRunnerButton.SetActive(false);
+                //jumpRopeButton.SetActive(false);
+                //scoretoWinText.text = "";
+                thingsToEnable.SetActive(false);
 
                 mainText.text = "Player 3 Wins The Tournament!";
 
@@ -259,13 +272,14 @@ public class ScoreTracker : MonoBehaviour
                 done = true;
 
                 //Disable buttons
-                mashButton.SetActive(false);
-                simonButton.SetActive(false);
-                dartButton.SetActive(false);
-                parkourButton.SetActive(false);
-                glowRunnerButton.SetActive(false);
-                jumpRopeButton.SetActive(false);
-                scoretoWinText.text = "";
+                //mashButton.SetActive(false);
+                //simonButton.SetActive(false);
+                //dartButton.SetActive(false);
+                //parkourButton.SetActive(false);
+                //glowRunnerButton.SetActive(false);
+                //jumpRopeButton.SetActive(false);
+                //scoretoWinText.text = "";
+                thingsToEnable.SetActive(false);
 
                 mainText.text = "Player 4 Wins The Tournament!";
 
