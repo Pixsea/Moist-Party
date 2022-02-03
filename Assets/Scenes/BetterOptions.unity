@@ -651,6 +651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33ab625c83cc0542864aa5a39fb0e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player3: {fileID: 0}
+  player4: {fileID: 0}
   player1Text: {fileID: 0}
   player2Text: {fileID: 0}
   player3Text: {fileID: 0}
@@ -667,6 +669,7 @@ MonoBehaviour:
   numPlayertext: {fileID: 1268664439}
   scoreText: {fileID: 1450774821}
   randomSelectionText: {fileID: 595261734}
+  thingsToEnable: {fileID: 0}
   onBoardScene: 0
   sceneChanger: {fileID: 0}
 --- !u!4 &171186851
@@ -1537,7 +1540,7 @@ GameObject:
   - component: {fileID: 437187363}
   - component: {fileID: 437187362}
   - component: {fileID: 437187361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P1 Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1887,7 +1890,7 @@ GameObject:
   - component: {fileID: 518276823}
   - component: {fileID: 518276822}
   - component: {fileID: 518276821}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P4 Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3354,7 +3357,7 @@ GameObject:
   - component: {fileID: 921460174}
   - component: {fileID: 921460173}
   - component: {fileID: 921460172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P3 Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3450,7 +3453,7 @@ GameObject:
   - component: {fileID: 948989219}
   - component: {fileID: 948989218}
   - component: {fileID: 948989217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P2 Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5601,7 +5604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547293330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.368, z: 7}
+  m_LocalPosition: {x: 0, y: -0.368, z: 7.4}
   m_LocalScale: {x: 6, y: 1, z: 4}
   m_Children:
   - {fileID: 286371446}

@@ -136,19 +136,19 @@ public class PlayerButton : MonoBehaviour
                 rotation = 45f;
             }
 
-            GameObject pointEffect = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
+            GameObject pointEffect = Instantiate(pointObj, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
             pointEffect.GetComponent<PointEffect>().pointText.color = new Color(167 / 255f, 145 / 255f, 255 / 255f);
             pointEffect.GetComponent<PointEffect>().pointText.text = "3";
 
             yield return new WaitForSeconds(timeToActivate / 3);
 
-            GameObject pointEffect2 = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
+            GameObject pointEffect2 = Instantiate(pointObj, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
             pointEffect2.GetComponent<PointEffect>().pointText.color = new Color(167 / 255f, 145 / 255f, 255 / 255f);
             pointEffect2.GetComponent<PointEffect>().pointText.text = "2";
 
             yield return new WaitForSeconds(timeToActivate / 3);
 
-            GameObject pointEffect3 = Instantiate(pointObj, new Vector3(0, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
+            GameObject pointEffect3 = Instantiate(pointObj, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z - 1), Quaternion.Euler(rotation, 0, 0));
             pointEffect3.GetComponent<PointEffect>().pointText.color = new Color(167 / 255f, 145 / 255f, 255 / 255f);
             pointEffect3.GetComponent<PointEffect>().pointText.text = "1";
 
