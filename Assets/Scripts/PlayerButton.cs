@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerButton : MonoBehaviour
 {
-    public enum buttonType { start, scoreIncrease, scoreDecrease, toggleSelection, minigame};
+    public enum buttonType { start, scoreIncrease, scoreDecrease, toggleSelection, minigame, quit};
 
     
 
@@ -131,7 +131,7 @@ public class PlayerButton : MonoBehaviour
         {
             float rotation = 0;
 
-            if (buttontype == buttonType.minigame)
+            if (buttontype == buttonType.minigame || buttontype == buttonType.quit)
             {
                 rotation = 45f;
             }
@@ -165,6 +165,11 @@ public class PlayerButton : MonoBehaviour
             {
                 scoretracker.SetNumPlayers(currPlayers);
                 sceneChanger.LoadMiniGame(minigameScene);
+            }
+            else if (buttontype == buttonType.quit)
+            {
+                SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                scoretracker.ResetScore();
             }
 
             yield return null;
