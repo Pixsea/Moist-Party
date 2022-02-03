@@ -1877,7 +1877,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2038,6 +2038,7 @@ GameObject:
   - component: {fileID: 560264684}
   - component: {fileID: 560264683}
   - component: {fileID: 560264689}
+  - component: {fileID: 560264690}
   m_Layer: 0
   m_Name: Spin Cube
   m_TagString: Untagged
@@ -2143,7 +2144,7 @@ Transform:
   m_GameObject: {fileID: 560264682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 8.8}
-  m_LocalScale: {x: 5, y: 2, z: 4}
+  m_LocalScale: {x: 5, y: 2, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 19
@@ -2163,6 +2164,22 @@ MonoBehaviour:
   knockbackStrength: 200
   directionBase: {fileID: 560264682}
   clockwise: 0
+--- !u!54 &560264690
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560264682}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1001 &562228963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4083,7 +4100,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7ac20051f5ac82449b4418c5b5e67c7, type: 2}
+  - {fileID: 2100000, guid: 0735b9ed27a43a749a394476fbb3b6c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

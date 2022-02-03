@@ -41,7 +41,9 @@ public class CubeController : MonoBehaviour
         {
             for (int i = 0; i < gameObjectList.Count; i++)
             {
-                gameObjectList[i].GetComponent<DeathObstacleContainer>().flashType = i;
+                DeathObstacleContainer DOC = gameObjectList[i].GetComponent<DeathObstacleContainer>(); 
+                DOC.flashType = i;
+                DOC.StartFlash();
             }
         }
     }

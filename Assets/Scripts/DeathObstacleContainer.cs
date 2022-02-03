@@ -13,19 +13,7 @@ public class DeathObstacleContainer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Decides the pattern in which the cubes this controls flashes
-        if(flashType == 1)
-        {
-            StartCoroutine(Flash1());
-        }
-        else if (flashType == 2)
-        {
-            StartCoroutine(Flash2());
-        }
-        else if (flashType == 3)
-        {
-            StartCoroutine(Flash3());
-        }
+        
     }
 
     // Update is called once per frame
@@ -33,11 +21,42 @@ public class DeathObstacleContainer : MonoBehaviour
     {
         
     }
+
+    public void StartFlash()
+    {
+        //Decides the pattern in which the cubes this controls flashes, and changes the color to match the pattern, blue for 1, green for 2, and purple for 3.
+        //Values are hard coded, ew. Change the first 3 numbers to change the color.
+        if (flashType == 1)
+        {
+            foreach (MeshRenderer cube in this.GetComponentsInChildren<MeshRenderer>())
+            {
+                cube.material.color = new Color32(20, 125, 207,255);
+            }
+            StartCoroutine(Flash1());
+        }
+        else if (flashType == 2)
+        {
+            foreach (MeshRenderer cube in this.GetComponentsInChildren<MeshRenderer>())
+            {
+                cube.material.color = new Color32(54, 161, 77,255);
+            }
+            StartCoroutine(Flash2());
+        }
+        else if (flashType == 3)
+        {
+            foreach (MeshRenderer cube in this.GetComponentsInChildren<MeshRenderer>())
+            {
+                cube.material.color = new Color32(224, 101, 229,255);
+            }
+            StartCoroutine(Flash3());
+        }
+    }
     //Waits the twice the flash time, then changes the state.
     private IEnumerator Flash1()
     {
         while (willFlash)
         {
+            Debug.Log("Flash Cycle 1");
             yield return new WaitForSeconds(flashTimer*2);
             foreach (Transform child in transform)
             {
@@ -57,6 +76,7 @@ public class DeathObstacleContainer : MonoBehaviour
     {
         while (willFlash)
         {
+            Debug.Log("Flash Cycle 2");
             yield return new WaitForSeconds(flashTimer);
             foreach (Transform child in transform)
             {
@@ -77,6 +97,7 @@ public class DeathObstacleContainer : MonoBehaviour
     {
         while (willFlash)
         {
+            Debug.Log("Flash Cycle 3");
             foreach (Transform child in transform)
             {
                 if (child.gameObject.activeSelf)
