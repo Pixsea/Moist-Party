@@ -72,6 +72,7 @@ public class DeathObstacleContainer : MonoBehaviour
         }
     }
 
+    //Waits the wait time once, change, then wait again
     private IEnumerator Flash2()
     {
         while (willFlash)
@@ -93,6 +94,7 @@ public class DeathObstacleContainer : MonoBehaviour
         }
     }
 
+    //Change, then wait twice the time
     private IEnumerator Flash3()
     {
         while (willFlash)
