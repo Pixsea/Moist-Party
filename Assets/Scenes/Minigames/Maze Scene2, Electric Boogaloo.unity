@@ -1264,6 +1264,14 @@ PrefabInstance:
       propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: attackEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647268432791968487, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     - target: {fileID: 8647268433030280850, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2038,7 +2046,6 @@ GameObject:
   - component: {fileID: 560264684}
   - component: {fileID: 560264683}
   - component: {fileID: 560264689}
-  - component: {fileID: 560264690}
   m_Layer: 0
   m_Name: Spin Cube
   m_TagString: Untagged
@@ -2144,7 +2151,7 @@ Transform:
   m_GameObject: {fileID: 560264682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 8.8}
-  m_LocalScale: {x: 5, y: 2, z: 5}
+  m_LocalScale: {x: 5, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 19
@@ -2164,22 +2171,7 @@ MonoBehaviour:
   knockbackStrength: 200
   directionBase: {fileID: 560264682}
   clockwise: 0
---- !u!54 &560264690
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560264682}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
+  stunTime: 0.5
 --- !u!1001 &562228963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3312,6 +3304,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 734623467}
     m_Modifications:
+    - target: {fileID: 1046392428430315898, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: ShapeModule.type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046392428430315898, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046392428430315898, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046392428430315898, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046392428430315898, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046392428430315898, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2819465105607636036, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3319,6 +3335,18 @@ PrefabInstance:
     - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: speed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: jumpPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: attackEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647268432791968487, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8647268433041352214, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_RootOrder
@@ -4693,7 +4721,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackStrength: 200
   directionBase: {fileID: 1873683208}
-  clockwise: 0
+  clockwise: 1
+  stunTime: 0.5
 --- !u!114 &1873683210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4706,7 +4735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c120f161696dcd44eb36d682c7faf1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spin_speed: -150
+  spin_speed: 150
 --- !u!64 &1873683211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4792,7 +4821,7 @@ Transform:
   m_GameObject: {fileID: 1873683208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -7.3}
-  m_LocalScale: {x: 5, y: 2, z: 5}
+  m_LocalScale: {x: 2, y: 2, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 20
