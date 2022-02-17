@@ -6,20 +6,15 @@ public class ConcentrationManager : MonoBehaviour
 {
 
     public GameObject CardPrefab;
-    public CardManager[] cards;
+
+    public List<int> cardValues = new List<int> { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
 
     void CardSetup() {
-        cards = new CardManager[16];
         
 
-        for (int i = 0; i < cards.Length; i++) {
-            cards[i].CardInstance = Instantiate(CardPrefab, new Vector3(0f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
-            cards[i].CardValue = i + 1;
-        }
-
-        for (int i = 0; i < cards.Length / 2; i++) {
-            cards[2 * i].CardValue = i + 1;
-            cards[2 * i + 1].CardValue = i + 1;
+        for (int i = 0; i < cardValues.Count; i++) {
+            var temp = Instantiate(CardPrefab, new Vector3(0f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
+            temp.GetComponent<CardScript>().cardValue = cardValues[i];
         }
     }
 
