@@ -39,6 +39,12 @@ public class PlayerController2 : MonoBehaviour
 
     private bool canAttack = true;
 
+    [SerializeField]
+    private bool attackEnabled = true;
+
+    private ParticleSystem particles;
+    private bool particlesPlaying;
+
 
 
     // Start is called before the first frame update
@@ -47,7 +53,10 @@ public class PlayerController2 : MonoBehaviour
         rigidbody = gameObject.GetComponent<Rigidbody>();
         //controller = gameObject.GetComponent<CharacterController>();
         collider = gameObject.GetComponent<CapsuleCollider>();
-
+        particles = gameObject.GetComponent<ParticleSystem>();
+        particles.Stop();
+        ParticleSystem.MainModule settings = particles.main;
+        settings.startColor = gameObject.GetComponentInChildren < SkinnedMeshRenderer > ().material.color;
         distToGround = collider.height;
     }
 
@@ -59,9 +68,14 @@ public class PlayerController2 : MonoBehaviour
         {
             //playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravityPower);
             rigidbody.AddForce(Vector3.up * Mathf.Sqrt(jumpPower), ForceMode.VelocityChange);
+            if (!particlesPlaying)
+            {
+                Debug.Log("Start Coroutine" + gameObject.name);
+                StartCoroutine(PlayParticles()); 
+            }
         }
 
-        if (Input.GetButtonDown("Jump" + playerNum.ToString()) && !lockMovement && !keepMovementLocked && canAttack)
+        if (Input.GetButtonDown("Jump" + playerNum.ToString()) && !lockMovement && !keepMovementLocked && canAttack && attackEnabled)
         {
             canAttack = false;
 
@@ -274,5 +288,22 @@ public class PlayerController2 : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position + (transform.forward * 1) + (transform.up * 1), new Vector3(1, 2, 1));
+    }
+
+    //Activate the particle system and then stop it after it's done.
+    public IEnumerator PlayParticles()
+    {
+        if(particles)
+        {
+            particles.Play();
+            particlesPlaying = true;
+            Debug.Log("We should play particles now");
+            yield return new WaitForSeconds(0.5f);
+            particles.Stop();
+            particlesPlaying = false;
+            Debug.Log("We should stop particles now");
+        }
+
+        yield return null;
     }
 }
