@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/ParkourScene.unity
     guid: 013e29f46ede41a4fb97c70de4bd3326
+  - enabled: 1
+    path: Assets/Scenes/DirectionsScreen.unity
+    guid: cd63393b8849bb544afc20bb4f8cbde7
+  - enabled: 1
+    path: Assets/Scenes/Minigames/JumpRope.unity
+    guid: 0e2f083409fa22e4d8038ea17249495b
+  - enabled: 1
+    path: Assets/Scenes/BetterOptions.unity
+    guid: f174bb17fec82e54eaaa91051b1c87b3
   m_configObjects: {}

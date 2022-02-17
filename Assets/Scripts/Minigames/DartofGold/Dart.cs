@@ -86,7 +86,7 @@ public class Dart : MonoBehaviour
         //Debug.Log(obj.gameObject.name);
 
         //Debug.Log(obj.gameObject.name);
-        if (stuck == false)
+        if ((stuck == false) && (obj.gameObject == target))
         {
             stuck = true;
             GetScore();
@@ -116,14 +116,16 @@ public class Dart : MonoBehaviour
         }
         if (playerNum == 3)
         {
-            textEdit.color = Color.yellow;
+            textEdit.color = Color.green;
             pointEffect.transform.position += new Vector3(.5f, 0, 0);
         }
         if (playerNum == 4)
         {
-            textEdit.color = Color.green;
+            textEdit.color = Color.yellow;
             pointEffect.transform.position += new Vector3(1.5f, 0, 0);
         }
+
+        Debug.Log(distance);
 
 
         if (distance < .33f)
@@ -146,7 +148,8 @@ public class Dart : MonoBehaviour
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 2);
             textEdit.text = "+2";
         }
-        else if (distance < 2.5f)
+        //else if (distance < 2.5f)
+        else
         {
             gameManager.GetComponent<DartofGold>().IncreaseScore(playerNum, 1);
             textEdit.text = "+1";

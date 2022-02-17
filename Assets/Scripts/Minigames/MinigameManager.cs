@@ -52,7 +52,6 @@ public class MinigameManager : MonoBehaviour
         resultsWait = new WaitForSeconds(resultsWaitSec);
 
         numPlayers = scoreTracker.GetComponent<ScoreTracker>().GetNumPlayers();
-        //Debug.Log(numPlayers);
 
         phase = "Start";
         StartCoroutine(GameLoop());
@@ -118,12 +117,12 @@ public class MinigameManager : MonoBehaviour
     // Called to move, disable, or delete players that aren't used, might have to be adjusted per minigame
     public virtual IEnumerator AdjustPlayers()
     {
-        Debug.Log("test1");
-        Debug.Log(Players.Length);
+        //Debug.Log("test1");
+        //Debug.Log(Players.Length);
         // Only c=change players if there are players to change
         if (Players.Length > 0)
         {
-            Debug.Log("test1");
+            //Debug.Log("test1");
             // Remove players who aren't palying from the arena
             if (numPlayers < 4)
             {
@@ -218,7 +217,7 @@ public class MinigameManager : MonoBehaviour
         // Create the player Dictionary from the player array
         for (int i = 0; i < Players.Length; i++)
         {
-            Players[i].gameObject.GetComponent<PlayerController>().lockMovement = true;
+            Players[i].gameObject.GetComponent<PlayerController2>().lockMovement = true;
         }
     }
 
@@ -228,7 +227,7 @@ public class MinigameManager : MonoBehaviour
         // Create the player Dictionary from the player array
         for (int i = 0; i < Players.Length; i++)
         {
-            Players[i].gameObject.GetComponent <PlayerController> ().lockMovement = false;
+            Players[i].gameObject.GetComponent <PlayerController2> ().lockMovement = false;
         }
     }
 }

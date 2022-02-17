@@ -12,13 +12,17 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         //SceneManager.LoadScene("BoardScene", LoadSceneMode.Single);
-        SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
+        //SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("BetterOptions", LoadSceneMode.Single);
     }
 
     // Quits game when "QUIT" is selected
     public void QuitGame()
     {
         Debug.Log("QUIT!");
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
         Application.Quit();
     }
 }
