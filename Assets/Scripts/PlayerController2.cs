@@ -185,6 +185,8 @@ public class PlayerController2 : MonoBehaviour
         {
             if (Input.GetButton("Jump" + playerNum.ToString()))
             {
+                //SoundManager.instance.PlaySound("jump");
+
                 // Apply less gravity if holding jump for a floaty jump
                 rigidbody.velocity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
 
@@ -240,6 +242,8 @@ public class PlayerController2 : MonoBehaviour
             rigidbody.AddForce(Vector3.up * verticalPower, ForceMode.VelocityChange);
         }
 
+        SoundManager.instance.PlaySound("ow");
+
         knockbackRefresh = true;
 
         knockbackAngle = direction;
@@ -269,6 +273,8 @@ public class PlayerController2 : MonoBehaviour
     IEnumerator Attack()
     {
         playerAnimator.SetTrigger("Punch");
+        SoundManager.instance.PlaySound("punch");
+
         Collider[] hits = Physics.OverlapBox(transform.position + (transform.forward * 1), new Vector3(1, 2, .2f), transform.rotation);
         for (int i = 0; i < hits.Length; i++)
         {

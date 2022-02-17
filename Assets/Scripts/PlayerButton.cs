@@ -114,6 +114,8 @@ public class PlayerButton : MonoBehaviour
 
     IEnumerator StartCountdown()
     {
+        SoundManager.instance.PlaySound("button");
+
         // If a score button
         if (buttontype == buttonType.scoreIncrease)
         {
