@@ -20,14 +20,12 @@ public class CardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("a")) {
-            StartFlip();
-        }
 
         
     }
 
     public void StartFlip() {
+        
         StartCoroutine(CardFlip());
     }
 
