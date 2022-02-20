@@ -35,13 +35,13 @@ public class CardScript : MonoBehaviour
     }
 
     IEnumerator CardFlip() {
+        Flip();
         for (int i = 0; i < 90; i++) {
             yield return new WaitForSeconds(0.01f);
             transform.Rotate(new Vector3(2f, 0f, 0f));
             timer++;
         }
         timer = 0;
-        Flip();
     }
 
     public void Remove() {
