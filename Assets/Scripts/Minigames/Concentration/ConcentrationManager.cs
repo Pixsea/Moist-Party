@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +18,8 @@ public class ConcentrationManager : MonoBehaviour
     public int[] numCardsPerPlayer = new int[] {0, 0, 0, 0};
 
     public int[] score = new int[] {0, 0, 0, 0};
+
+    public int matchCount = 0;
 
     public GameObject[] cards = new GameObject[16];
 
@@ -44,16 +48,8 @@ public class ConcentrationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("1")) {
-            Flip(cards[0], 0);
-        }
-
-        if (Input.GetKeyDown("2")) {
-            Flip(cards[1], 1);
-        }
-
-        if (Input.GetKeyDown("3")) {
-            Flip(cards[2], 2);
+        if (matchCount == 8) {
+            EndGame();
         }
     }
 
@@ -82,13 +78,17 @@ public class ConcentrationManager : MonoBehaviour
             return;
         }
         if (cards[faceUpCards[0]].GetComponent<CardScript>().cardValue == cards[faceUpCards[1]].GetComponent<CardScript>().cardValue) {
-            score[cards[faceUpCards[0]].GetComponent<CardScript>().player - 1] += 1;
-            Debug.Log(score[0]);
+            score[cards[faceUpCards[1]].GetComponent<CardScript>().player - 1] += 1;
+            matchCount += 1;
             Destroy(cards[faceUpCards[0]]);
             Destroy(cards[faceUpCards[1]]);
             faceUpCards[0] = -1;
             faceUpCards[1] = -1;
             numFaceUp = 0;
         }
+    }
+
+    public void EndGame() {
+        Debug.Log("Player " + (Array.IndexOf(score, score.Max())+1).ToString() + " wins");
     }
 }
