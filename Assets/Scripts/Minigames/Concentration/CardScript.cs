@@ -9,6 +9,7 @@ public class CardScript : MonoBehaviour
     public int player; // 0 is no player selected; ints 1-4 represents player that has selected the 
     public int timer;
     public GameObject card;
+    public int index;
 
     // Start is called before the first frame update
     void Start()

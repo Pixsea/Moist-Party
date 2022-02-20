@@ -13,6 +13,10 @@ public class ConcentrationManager : MonoBehaviour
 
     public int[] faceUpCards = new int[] {-1, -1}; //Stores index of cards 0-15
 
+    public int[] numCardsPerPlayer = new int[] {0, 0, 0, 0};
+
+    public int[] score = new int[] {0, 0, 0, 0};
+
     public GameObject[] cards = new GameObject[16];
 
     void CardSetup() {
@@ -26,6 +30,7 @@ public class ConcentrationManager : MonoBehaviour
             }
             cards[i] = Instantiate(CardPrefab, new Vector3(xpos, 0f, zpos), new Quaternion(0f, 0f, 0f, 0f));
             cards[i].GetComponent<CardScript>().cardValue = cardValues[i];
+            cards[i].GetComponent<CardScript>().index = i;
             xpos += 2f;
         }
     }
