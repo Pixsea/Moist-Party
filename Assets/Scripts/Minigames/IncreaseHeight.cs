@@ -27,7 +27,9 @@ public class IncreaseHeight : MonoBehaviour
 
     public void Rise()
     {
-        Debug.Log("temp");
+        SoundManager.instance.PlaySound("error");
+        SoundManager.instance.PlaySound("pain");
+
         rising = true;
     }
 }

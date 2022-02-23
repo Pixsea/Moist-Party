@@ -6835,22 +6835,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4317201950750256922, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
-      propertyPath: ow
-      value: 
-      objectReference: {fileID: 8300000, guid: 629861b0407aa9c4ba5725e92da1fde1, type: 3}
-    - target: {fileID: 4317201950750256922, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
-      propertyPath: ow2
-      value: 
-      objectReference: {fileID: 8300000, guid: 333bda8f4936c9b4cb116a75c2e4bcb9, type: 3}
-    - target: {fileID: 4317201950750256922, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
-      propertyPath: punch
-      value: 
-      objectReference: {fileID: 8300000, guid: 7ea1552d474c55744b2ace7d0eb87b46, type: 3}
-    - target: {fileID: 4317201950750256922, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
-      propertyPath: heavyPunch
-      value: 
-      objectReference: {fileID: 8300000, guid: 239afc74fab4dd9409a0ad7382344bac, type: 3}
     - target: {fileID: 4317201950750256923, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
       propertyPath: m_RootOrder
       value: 1

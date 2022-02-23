@@ -45,6 +45,9 @@ public class PlayerController2 : MonoBehaviour
     private ParticleSystem particles;
     private bool particlesPlaying;
 
+    private bool alreadyLanded = true;
+    private bool landRefresh = false;
+
 
 
     // Start is called before the first frame update
@@ -62,11 +65,24 @@ public class PlayerController2 : MonoBehaviour
 
     private void Update()
     {
+        if (isGrounded)
+        {
+            // Ensure s soudn only plays once upon landing
+            if (landRefresh)
+            {
+                Debug.Log("PAIN2");
+                SoundManager.instance.PlaySound("land");
+                landRefresh = false;
+            }
+        }
+
         //Debug.Log(isGrounded);
         // Jump
         if (Input.GetButtonDown("Jump" + playerNum.ToString()) && isGrounded && m_canJump && !lockMovement && !keepMovementLocked)
         {
             //playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravityPower);
+            SoundManager.instance.PlaySound("jump");
+            StartCoroutine(LandWait(.2f));
             rigidbody.AddForce(Vector3.up * Mathf.Sqrt(jumpPower), ForceMode.VelocityChange);
             if (!particlesPlaying)
             {
@@ -120,59 +136,16 @@ public class PlayerController2 : MonoBehaviour
         }
 
         // Apply movements
-        //rigidbody.MovePosition(rigidbody.position + move * speed * Time.fixedDeltaTime);
         rigidbody.AddForce(move * speed, ForceMode.VelocityChange);
-
-
-        ////Gravity stuff
-        ////isGrounded = controller.isGrounded;
-        //isGrounded = CheckGrounded();
-
-        //Vector3 gravity = new Vector3(0, rigidbody.velocity.y, 0);
-
-        //// If touching the ground, set y velocity toxzero if fallign so that they dont fall through the floor
-        //if (isGrounded && rigidbody.velocity.y < 0)
-        //{
-        //    gravity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
-        //}
-
-        //// Apply gravity, higher gravuty increases fall speed, but requires higher jump power
-        //if (!isGrounded)
-        //{
-        //    if (Input.GetButton("Jump" + playerNum.ToString()))
-        //    {
-        //        gravity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
-        //    }
-        //    else
-        //    {
-        //        gravity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime * 2;
-        //    }
-        //}
-
-
-
-        //// Get the direction the player is moving
-        //Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
-
-        //// Rotate character
-        //if (move != Vector3.zero)
-        //{
-        //    gameObject.transform.forward = move;
-        //}
-
-        //// Apply movements
-        ////rigidbody.MovePosition(rigidbody.position + move * speed * Time.fixedDeltaTime);
-        //Vector3 movement = move * speed;
-        //rigidbody.velocity = new Vector3(movement.x, gravity.y, movement.z) * Time.fixedDeltaTime;
     }
 
 
 
     private void Gravity()
     {
-
-        //isGrounded = controller.isGrounded;
         isGrounded = CheckGrounded();
+        //Debug.Log(CheckGrounded());
+
 
         // If touching the ground, set y velocity to zero if falling so that they dont fall through the floor
         if (isGrounded && rigidbody.velocity.y < 0)
@@ -185,27 +158,21 @@ public class PlayerController2 : MonoBehaviour
         {
             if (Input.GetButton("Jump" + playerNum.ToString()))
             {
-                //SoundManager.instance.PlaySound("jump");
-
                 // Apply less gravity if holding jump for a floaty jump
                 rigidbody.velocity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
-
-                //Vector3 gravity = Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
-                //rigidbody.velocity = new Vector3(rigidbody.velocity.x * .95f, rigidbody.velocity.y + gravity.y, rigidbody.velocity.z * .95f);
             }
             else
             {
                 rigidbody.velocity += Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime * 2;
-
-                //Vector3 gravity = Vector3.up * Physics.gravity.y * gravityPower * Time.deltaTime;
-                //rigidbody.velocity = new Vector3(rigidbody.velocity.x * .95f, rigidbody.velocity.y + gravity.y, rigidbody.velocity.z * .95f);
             }
         }
     }
 
     bool CheckGrounded()
     {
-        return Physics.CheckBox(transform.position - new Vector3(0, distToGround / 2 - .9f, 0), new Vector3(collider.radius, .05f, collider.radius), Quaternion.identity, ground);
+        //Debug.DrawLine(transform.position, transform.position - new Vector3(0, distToGround / 2, 0), Color.cyan);
+        //return Physics.Raycast(transform.position, -Vector3.up, distToGround / 2);
+        return Physics.CheckBox(transform.position - new Vector3(0, distToGround / 2, 0), new Vector3(collider.radius, .05f, collider.radius), Quaternion.identity, ground);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -242,7 +209,10 @@ public class PlayerController2 : MonoBehaviour
             rigidbody.AddForce(Vector3.up * verticalPower, ForceMode.VelocityChange);
         }
 
-        SoundManager.instance.PlaySound("ow");
+        //SoundManager.instance.PlaySound("ow");
+
+        SoundManager.instance.PlaySound("punch");
+        StartCoroutine(LandWait(.2f));
 
         knockbackRefresh = true;
 
@@ -268,12 +238,24 @@ public class PlayerController2 : MonoBehaviour
         yield return null;
     }
 
-    
+    public IEnumerator LandWait(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        landRefresh = false;
+
+        yield return new WaitForSeconds(delay);
+
+        landRefresh = true;
+
+        yield return null;
+    }
+
+
 
     IEnumerator Attack()
     {
         playerAnimator.SetTrigger("Punch");
-        SoundManager.instance.PlaySound("punch");
 
         Collider[] hits = Physics.OverlapBox(transform.position + (transform.forward * 1), new Vector3(1, 2, .2f), transform.rotation);
         for (int i = 0; i < hits.Length; i++)
@@ -293,7 +275,7 @@ public class PlayerController2 : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position + (transform.forward * 1) + (transform.up * 1), new Vector3(1, 2, 1));
+        Gizmos.DrawWireCube(transform.position - new Vector3(0, distToGround / 2 , 0), new Vector3(collider.radius, .05f, collider.radius));
     }
 
     //Activate the particle system and then stop it after it's done.

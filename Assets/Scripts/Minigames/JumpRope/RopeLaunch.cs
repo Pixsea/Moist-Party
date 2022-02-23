@@ -13,5 +13,6 @@ public class RopeLaunch : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.gameObject.GetComponent<PlayerController2>().ApplyKnockback(new Vector3(1, 1, 0), 100, 100, .2f);
+        SoundManager.instance.PlaySound("pain");
     }
 }

@@ -36,6 +36,10 @@ public class SoundManager : MonoBehaviour
     private AudioClip computerHit;
     [SerializeField]
     private AudioClip dartHit;
+    [SerializeField]
+    private AudioClip error;
+    [SerializeField]
+    private AudioClip destruction;
 
 
     void Start()
@@ -69,9 +73,19 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(string name)
     {
+        if (name == "step")
+        {
+            source.clip = step;
+        }
+
         if (name == "jump")
         {
             source.clip = jump;
+        }
+
+        if (name == "land")
+        {
+            source.clip = land;
         }
 
         if (name == "punch")
@@ -111,7 +125,31 @@ public class SoundManager : MonoBehaviour
             source.clip = dartHit;
         }
 
+        if (name == "pain")
+        {
+            source.clip = pain;
+        }
 
-        source.Play();
+        if (name == "computerHit")
+        {
+            source.clip = computerHit;
+
+        }
+
+        if (name == "error")
+        {
+            source.clip = error;
+        }
+
+        if (name == "destruction")
+        {
+            source.clip = destruction;
+            source.volume = .25f;
+        }
+
+
+        //source.Play();
+        source.PlayOneShot(source.clip);
+        //source.volume = 1;
     }
 }

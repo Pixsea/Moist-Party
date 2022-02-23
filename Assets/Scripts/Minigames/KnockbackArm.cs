@@ -24,6 +24,7 @@ public class KnockbackArm : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            SoundManager.instance.PlaySound("heavyPunch");
             Debug.Log(other.gameObject.name);
             Vector3 direction = other.transform.position - directionBase.transform.position;
             direction = new Vector3(direction.x, 0, direction.z);
