@@ -67,16 +67,22 @@ public class PlayerController2 : MonoBehaviour
     {
         if (isGrounded)
         {
-            // Ensure s soudn only plays once upon landing
+            // Ensures soudn only plays once upon landing
             if (landRefresh)
             {
                 Debug.Log("PAIN2");
                 SoundManager.instance.PlaySound("land");
                 landRefresh = false;
+
+                if (!particlesPlaying)
+                {
+                    Debug.Log("Start Coroutine" + gameObject.name);
+                    StartCoroutine(PlayParticles());
+                }
             }
         }
 
-        //Debug.Log(isGrounded);
+        Debug.Log(isGrounded);
         // Jump
         if (Input.GetButtonDown("Jump" + playerNum.ToString()) && isGrounded && m_canJump && !lockMovement && !keepMovementLocked)
         {
@@ -84,11 +90,7 @@ public class PlayerController2 : MonoBehaviour
             SoundManager.instance.PlaySound("jump");
             StartCoroutine(LandWait(.2f));
             rigidbody.AddForce(Vector3.up * Mathf.Sqrt(jumpPower), ForceMode.VelocityChange);
-            if (!particlesPlaying)
-            {
-                Debug.Log("Start Coroutine" + gameObject.name);
-                StartCoroutine(PlayParticles()); 
-            }
+            
         }
 
         if (Input.GetButtonDown("Jump" + playerNum.ToString()) && !lockMovement && !keepMovementLocked && canAttack && attackEnabled)
@@ -172,7 +174,7 @@ public class PlayerController2 : MonoBehaviour
     {
         //Debug.DrawLine(transform.position, transform.position - new Vector3(0, distToGround / 2, 0), Color.cyan);
         //return Physics.Raycast(transform.position, -Vector3.up, distToGround / 2);
-        return Physics.CheckBox(transform.position - new Vector3(0, distToGround / 2, 0), new Vector3(collider.radius, .05f, collider.radius), Quaternion.identity, ground);
+        return Physics.CheckBox(transform.position - new Vector3(0, distToGround / 2 - .9f, 0), new Vector3(collider.radius, .05f, collider.radius), Quaternion.identity, ground);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -212,6 +214,11 @@ public class PlayerController2 : MonoBehaviour
         //SoundManager.instance.PlaySound("ow");
 
         SoundManager.instance.PlaySound("punch");
+        if (!particlesPlaying)
+        {
+            Debug.Log("Start Coroutine" + gameObject.name);
+            StartCoroutine(PlayParticles());
+        }
         StartCoroutine(LandWait(.2f));
 
         knockbackRefresh = true;
@@ -275,7 +282,7 @@ public class PlayerController2 : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position - new Vector3(0, distToGround / 2 , 0), new Vector3(collider.radius, .05f, collider.radius));
+        Gizmos.DrawWireCube(transform.position - new Vector3(0, distToGround / 2 - .9f, 0), new Vector3(collider.radius, .05f, collider.radius));
     }
 
     //Activate the particle system and then stop it after it's done.
