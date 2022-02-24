@@ -57,7 +57,7 @@ public class PlayerController2 : MonoBehaviour
         //controller = gameObject.GetComponent<CharacterController>();
         collider = gameObject.GetComponent<CapsuleCollider>();
         particles = gameObject.GetComponent<ParticleSystem>();
-        particles.Stop();
+        if (particles) { particles.Stop(); }
         ParticleSystem.MainModule settings = particles.main;
         settings.startColor = gameObject.GetComponentInChildren < SkinnedMeshRenderer > ().material.color;
         distToGround = collider.height;
@@ -288,7 +288,7 @@ public class PlayerController2 : MonoBehaviour
     //Activate the particle system and then stop it after it's done.
     public IEnumerator PlayParticles()
     {
-        if(particles)
+        if(particles != null)
         {
             particles.Play();
             particlesPlaying = true;
