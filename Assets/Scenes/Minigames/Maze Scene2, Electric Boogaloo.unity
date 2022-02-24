@@ -767,6 +767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33ab625c83cc0542864aa5a39fb0e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player3: {fileID: 0}
+  player4: {fileID: 0}
   player1Text: {fileID: 0}
   player2Text: {fileID: 0}
   player3Text: {fileID: 0}
@@ -783,6 +785,7 @@ MonoBehaviour:
   numPlayertext: {fileID: 0}
   scoreText: {fileID: 0}
   randomSelectionText: {fileID: 0}
+  thingsToEnable: {fileID: 0}
   onBoardScene: 0
   sceneChanger: {fileID: 0}
 --- !u!4 &165306772
@@ -3338,7 +3341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: jumpPower
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: attackEnabled

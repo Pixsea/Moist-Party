@@ -3001,9 +3001,9 @@ MonoBehaviour:
   CenterText: {fileID: 1437222526}
   Crosshair: {fileID: 914703745}
   player1Button: w
-  player2Button: a
-  player3Button: s
-  player4Button: d
+  player2Button: up
+  player3Button: t
+  player4Button: i
   player1Score: 0
   player2Score: 0
   player3Score: 0
