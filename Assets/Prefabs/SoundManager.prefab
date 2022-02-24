@@ -58,6 +58,8 @@ MonoBehaviour:
   disco: {fileID: 8300000, guid: 736ab53df94812541852570c6b39659c, type: 3}
   computerHit: {fileID: 8300000, guid: 7d26a0b6728e62240aeab24b27d3309e, type: 3}
   dartHit: {fileID: 8300000, guid: f705d78f594cce14d894e13bc1e7103c, type: 3}
+  error: {fileID: 8300000, guid: 48fda986167c3154493483da2984263f, type: 3}
+  destruction: {fileID: 8300000, guid: de517aa8e76d7b24bab3f52dcef7f239, type: 3}
 --- !u!82 &4317201950750256921
 AudioSource:
   m_ObjectHideFlags: 0

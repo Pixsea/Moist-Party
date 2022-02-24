@@ -89,6 +89,7 @@ public class Dart : MonoBehaviour
         if ((stuck == false) && (obj.gameObject == target))
         {
             stuck = true;
+            SoundManager.instance.PlaySound("dartHit");
             GetScore();
         }
     }

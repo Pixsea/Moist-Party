@@ -36,6 +36,8 @@ public class PlayerButton : MonoBehaviour
     [SerializeField]
     private SceneChanger sceneChanger;
 
+    private bool buttonDown = false;
+
 
     private void Start()
     {
@@ -63,6 +65,12 @@ public class PlayerButton : MonoBehaviour
     {
         if (currPlayers >= 1)
         {
+            if (buttonDown == false)
+            {
+                SoundManager.instance.PlaySound("button");
+            }
+
+            buttonDown = true;
             // Move button down
             float newHeight = buttonBlock.transform.position.y - changeSpeed;
             if (newHeight < startHeight - pressedHeightChange)
@@ -73,6 +81,7 @@ public class PlayerButton : MonoBehaviour
         }
         else
         {
+            buttonDown = false;
             // Move button up
             float newHeight = buttonBlock.transform.position.y + changeSpeed;
             if (newHeight > startHeight)
@@ -114,7 +123,7 @@ public class PlayerButton : MonoBehaviour
 
     IEnumerator StartCountdown()
     {
-        SoundManager.instance.PlaySound("button");
+        //SoundManager.instance.PlaySound("button");
 
         // If a score button
         if (buttontype == buttonType.scoreIncrease)
