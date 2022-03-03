@@ -13,10 +13,20 @@ public class ScoreTracker : MonoBehaviour
     private int player3Score;
     private int player4Score;
 
+    // Used to move plaeyrs to the winner arena
+    [SerializeField]
+    private GameObject player1;
+    [SerializeField]
+    private GameObject player2;
     [SerializeField]
     private GameObject player3;  //Used to enable/disable the extra players if eneded
     [SerializeField]
     private GameObject player4;
+    [SerializeField]
+    private GameObject sceneCamera;
+    [SerializeField]
+    private GameObject winnerPodium;  //Used to warp the winner to the correct position
+
 
     [SerializeField]
     private Text player1Text = null;
@@ -32,6 +42,8 @@ public class ScoreTracker : MonoBehaviour
     public bool tournamentRunning;
     private int scoreToWin;
     public Text mainText;
+
+    public Text bigMiddleText;  // Used to Show who won
 
     public GameObject mashButton;  //  Buttons to disable when showing a win screen
     public GameObject simonButton;
@@ -74,53 +86,19 @@ public class ScoreTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown("2"))
-        //{
-        //    SetNumPlayers(2);
-        //}
-
-        //else if (Input.GetKeyDown("3"))
-        //{
-        //    SetNumPlayers(3);
-        //}
-
-        //else if (Input.GetKeyDown("4"))
-        //{
-        //    SetNumPlayers(4);
-        //}
-
-        //else if (Input.GetKeyDown("5"))
-        //{
-        //    SetWinScore(2);
-        //}
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            WinScreen(1);
+        }
     }
 
 
     void FixedUpdate()
     {
-        //if (done)
-        //{
-        //    if (timer <= 0)
-        //    {
-        //        ResetScore();
-        //        SceneManager.LoadScene("BoardScene");
-        //    }
-        //    timer--;
-        //}
-
-
         // Random selection logic
         if (ScoreTrackerStats.randomSelection && onBoardScene && !done)
         {
-            //Disable buttons
-            //mashButton.SetActive(false);
-            //simonButton.SetActive(false);
-            //dartButton.SetActive(false);
-            //parkourButton.SetActive(false);
-            //glowRunnerButton.SetActive(false);
-            //jumpRopeButton.SetActive(false);
             thingsToEnable.SetActive(false);
-            //scoretoWinText.text = "";
 
             mainText.text = "Selecting next minigame...";
 
@@ -212,78 +190,22 @@ public class ScoreTracker : MonoBehaviour
             // Check for winners
             if (player1Score >= scoreToWin)
             {
-                done = true;
-
-                //Disable buttons
-                //mashButton.SetActive(false);
-                //simonButton.SetActive(false);
-                //dartButton.SetActive(false);
-                //parkourButton.SetActive(false);
-                //glowRunnerButton.SetActive(false);
-                //jumpRopeButton.SetActive(false);
-                //scoretoWinText.text = "";
-                thingsToEnable.SetActive(false);
-
-                mainText.text = "Player 1 Wins The Tournament!";
-
-                done = true;
+                WinScreen(1);
             }
 
             else if (player2Score >= scoreToWin)
             {
-                done = true;
-
-                //Disable buttons
-                //mashButton.SetActive(false);
-                //simonButton.SetActive(false);
-                //dartButton.SetActive(false);
-                //parkourButton.SetActive(false);
-                //glowRunnerButton.SetActive(false);
-                //jumpRopeButton.SetActive(false);
-                //scoretoWinText.text = "";
-                thingsToEnable.SetActive(false);
-
-                mainText.text = "Player 2 Wins The Tournament!";
-
-                done = true;
+                WinScreen(2);
             }
 
             else if (player3Score >= scoreToWin)
             {
-                done = true;
-
-                //Disable buttons
-                //mashButton.SetActive(false);
-                //simonButton.SetActive(false);
-                //dartButton.SetActive(false);
-                //parkourButton.SetActive(false);
-                //glowRunnerButton.SetActive(false);
-                //jumpRopeButton.SetActive(false);
-                //scoretoWinText.text = "";
-                thingsToEnable.SetActive(false);
-
-                mainText.text = "Player 3 Wins The Tournament!";
-
-                done = true;
+                WinScreen(3);
             }
 
             else if (player4Score >= scoreToWin)
             {
-                done = true;
-
-                //Disable buttons
-                //mashButton.SetActive(false);
-                //simonButton.SetActive(false);
-                //dartButton.SetActive(false);
-                //parkourButton.SetActive(false);
-                //glowRunnerButton.SetActive(false);
-                //jumpRopeButton.SetActive(false);
-                //scoretoWinText.text = "";
-                thingsToEnable.SetActive(false);
-
-                mainText.text = "Player 4 Wins The Tournament!";
-
-                done = true;
+                WinScreen(4);
             }
         }
     }
@@ -407,6 +329,57 @@ public class ScoreTracker : MonoBehaviour
             }
             //randomSelectionText.text = ScoreTrackerStats.randomSelection.ToString();
         }
+    }
+
+
+    void WinScreen(int playerNum)
+    {
+        scoretoWinText.gameObject.SetActive(false);
+        done = true;
+        thingsToEnable.SetActive(false);
+        mainText.gameObject.SetActive(false);
+        bigMiddleText.gameObject.SetActive(true);
+       
+
+        SoundManager.instance.PlaySound("disco");
+
+
+        player1.transform.position += new Vector3(200, 0, 0);
+        player2.transform.position += new Vector3(200, 0, 0);
+        player3.transform.position += new Vector3(200, 0, 0);
+        player4.transform.position += new Vector3(200, 0, 0);
+        sceneCamera.gameObject.transform.position += new Vector3(200, -5, -10);
+        sceneCamera.gameObject.transform.rotation = Quaternion.Euler(55, 0, 0);
+
+        if (playerNum == 1)
+        {
+            player1.transform.position = new Vector3(winnerPodium.transform.position.x, winnerPodium.transform.position.y + 2.1f, winnerPodium.transform.position.z);
+            player1.transform.rotation = Quaternion.Euler(0, 180, 0);
+            bigMiddleText.text = "Player 1 Wins The Tournament!";
+        }
+        else if (playerNum == 2)
+        {
+            player2.transform.position = new Vector3(winnerPodium.transform.position.x, winnerPodium.transform.position.y + 2.1f, winnerPodium.transform.position.z);
+            player2.transform.rotation = Quaternion.Euler(0, 180, 0);
+            bigMiddleText.text = "Player 2 Wins The Tournament!";
+        }
+        else if (playerNum == 3)
+        {
+            player3.transform.position = new Vector3(winnerPodium.transform.position.x, winnerPodium.transform.position.y + 2.1f, winnerPodium.transform.position.z);
+            player3.transform.rotation = Quaternion.Euler(0, 180, 0);
+            bigMiddleText.text = "Player 3 Wins The Tournament!";
+        }
+        else if (playerNum == 4)
+        {
+            player4.transform.position = new Vector3(winnerPodium.transform.position.x, winnerPodium.transform.position.y + 2.1f, winnerPodium.transform.position.z);
+            player4.transform.rotation = Quaternion.Euler(0, 180, 0);
+            bigMiddleText.text = "Player 4 Wins The Tournament!";
+        }
+    }
+
+    IEnumerator Wait(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
 }

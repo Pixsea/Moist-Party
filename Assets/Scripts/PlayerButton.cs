@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerButton : MonoBehaviour
 {
-    public enum buttonType { start, scoreIncrease, scoreDecrease, toggleSelection, minigame, quit};
+    public enum buttonType { start, scoreIncrease, scoreDecrease, toggleSelection, minigame, quit, dispose};
 
     
 
@@ -137,6 +137,14 @@ public class PlayerButton : MonoBehaviour
         else if (buttontype == buttonType.toggleSelection)
         {
             scoretracker.ChangeRandomSelection();
+        }
+        else if (buttontype == buttonType.dispose)
+        {
+            GameObject platform = GameObject.Find("Loser Platform");
+            if (platform != null)
+            {
+                platform.SetActive(false);
+            }
         }
         else
         {

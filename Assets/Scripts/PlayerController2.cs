@@ -82,7 +82,7 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         // Jump
         if (Input.GetButtonDown("Jump" + playerNum.ToString()) && isGrounded && m_canJump && !lockMovement && !keepMovementLocked)
         {
@@ -280,10 +280,10 @@ public class PlayerController2 : MonoBehaviour
         yield return null;
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position - new Vector3(0, distToGround / 2 - .9f, 0), new Vector3(collider.radius, .05f, collider.radius));
-    }
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireCube(transform.position - new Vector3(0, distToGround / 2 - .9f, 0), new Vector3(collider.radius, .05f, collider.radius));
+    //}
 
     //Activate the particle system and then stop it after it's done.
     public IEnumerator PlayParticles()

@@ -6,7 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static SoundManager instance;
-    AudioSource source;
+    [SerializeField]
+    private AudioSource source;
 
     [SerializeField]
     private AudioClip step;
@@ -44,7 +45,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        source = gameObject.GetComponent<AudioSource>();
+        //source = gameObject.GetComponent<AudioSource>();
     }
 
     private void Awake()
@@ -144,6 +145,12 @@ public class SoundManager : MonoBehaviour
         if (name == "destruction")
         {
             source.clip = destruction;
+            source.volume = .25f;
+        }
+
+        if (name == "disco")
+        {
+            source.clip = disco;
             source.volume = .25f;
         }
 
