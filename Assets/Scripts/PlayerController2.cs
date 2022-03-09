@@ -48,6 +48,9 @@ public class PlayerController2 : MonoBehaviour
     private bool alreadyLanded = true;
     private bool landRefresh = false;
 
+    private bool walking = false;
+    private float footstepNoiseRate = .4f;
+
 
 
     // Start is called before the first frame update
@@ -131,10 +134,22 @@ public class PlayerController2 : MonoBehaviour
         // Get the direction the player is moving
         Vector3 move = new Vector3(Input.GetAxis("Horizontal" + playerNum.ToString()), 0, Input.GetAxis("Vertical" + playerNum.ToString()));
 
-        // Rotate character
+        // Rotate character and start footsteps if starting to walk
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
+
+            if (walking == false)
+            {
+                walking = true;
+                StartCoroutine(StartFoosteps());
+                
+            }
+            
+        }
+        else
+        {
+            walking = false;
         }
 
         // Apply movements
@@ -299,6 +314,22 @@ public class PlayerController2 : MonoBehaviour
             Debug.Log("We should stop particles now");
         }
 
+        yield return null;
+    }
+
+
+
+    IEnumerator StartFoosteps()
+    {
+        while (walking)
+        {
+            SoundManager.instance.PlaySound("step");
+
+            if (walking)
+            {
+                yield return new WaitForSeconds(footstepNoiseRate);
+            }
+        }
         yield return null;
     }
 }

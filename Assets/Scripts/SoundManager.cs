@@ -77,6 +77,7 @@ public class SoundManager : MonoBehaviour
         if (name == "step")
         {
             source.clip = step;
+            source.volume = .1f;
         }
 
         if (name == "jump")
