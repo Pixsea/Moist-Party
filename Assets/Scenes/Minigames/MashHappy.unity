@@ -1169,8 +1169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33ab625c83cc0542864aa5a39fb0e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   player3: {fileID: 0}
   player4: {fileID: 0}
+  sceneCamera: {fileID: 0}
+  winnerPodium: {fileID: 0}
   player1Text: {fileID: 0}
   player2Text: {fileID: 0}
   player3Text: {fileID: 0}
@@ -1178,6 +1182,7 @@ MonoBehaviour:
   scoretoWinText: {fileID: 0}
   tournamentRunning: 0
   mainText: {fileID: 0}
+  bigMiddleText: {fileID: 0}
   mashButton: {fileID: 0}
   simonButton: {fileID: 0}
   dartButton: {fileID: 0}
@@ -2458,7 +2463,7 @@ PrefabInstance:
     - target: {fileID: 2378714, guid: e08a5ded59fd48c479c240831f53d46c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8a41992d50b1d4d4ea958a9f930dcf9d, type: 2}
+      objectReference: {fileID: 2100000, guid: 60b74d0b2476bee4691f68cbd0897726, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08a5ded59fd48c479c240831f53d46c, type: 3}
 --- !u!4 &911102984 stripped
@@ -3751,7 +3756,7 @@ PrefabInstance:
     - target: {fileID: 2378714, guid: e08a5ded59fd48c479c240831f53d46c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 015de31bf3d8de341a0a570f8afae41b, type: 2}
+      objectReference: {fileID: 2100000, guid: 11a70d8831d349b4d913f818a8c87d27, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08a5ded59fd48c479c240831f53d46c, type: 3}
 --- !u!4 &1388134464 stripped
@@ -4508,7 +4513,7 @@ PrefabInstance:
     - target: {fileID: 2378714, guid: e08a5ded59fd48c479c240831f53d46c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f4e45f98d704d5348976b96fdd656aa4, type: 2}
+      objectReference: {fileID: 2100000, guid: 67205c32165d48e4abacb315dd231327, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08a5ded59fd48c479c240831f53d46c, type: 3}
 --- !u!4 &1551471892 stripped
