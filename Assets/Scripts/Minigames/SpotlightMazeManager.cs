@@ -16,6 +16,10 @@ public class SpotlightMazeManager : MinigameManager
     public int player3Score = 0;  // player 3
     public int player4Score = 0;  // player 4
     public PointLights pLs;
+    public Image FadeOutBlock;
+    public Camera mainCamera;
+    [SerializeField]
+    private int fadeSpeed = 3;
     
     public override IEnumerator GameLoop()
     {
@@ -45,13 +49,19 @@ public class SpotlightMazeManager : MinigameManager
 
     public override IEnumerator GameStarting()
     {
-        UIMainText.text = "Ready?";
+        UITimerText.gameObject.SetActive(false);
+        UIMainText.gameObject.SetActive(false);
+        LockMovement2();
+        yield return StartCoroutine(AdjustPlayers());
+        yield return StartCoroutine(GameIntro());
+        //UIMainText.text = "Ready?";
         UITimerText.text = "";
 
         LockMovement2();
+        StartCoroutine(DropTheChildren());
 
         // Adjust non used players
-        yield return StartCoroutine(AdjustPlayers());
+        //yield return StartCoroutine(AdjustPlayers());
 
         // Wait for the specified length of time until yielding control back to the game loop.
         yield return startWait;
@@ -64,6 +74,7 @@ public class SpotlightMazeManager : MinigameManager
         UIMainText.text = "GO!";
 
         timer = TotalGameTime / Time.fixedDeltaTime;
+        UITimerText.gameObject.SetActive(true);
 
         // While the game hasn't ended and while the timer is greater than 0
         while (!gameEnded && (timer > 0))
@@ -260,6 +271,14 @@ public class SpotlightMazeManager : MinigameManager
         if (Players.Length > 0)
         {
             Debug.Log("test1");
+            for(int i = 0; i < Players.Length; i++)
+            {
+                Players[i].transform.position += new Vector3(0, 50, 0);
+                foreach(PlayerController2 p in Players[i].GetComponentsInChildren<PlayerController2>())
+                {
+                    p.gravityPower = 0;
+                }
+            }
             // Remove players who aren't palying from the arena
             if (numPlayers < 4)
             {
@@ -276,6 +295,93 @@ public class SpotlightMazeManager : MinigameManager
         }
 
         yield return null;
+    }
+
+    public IEnumerator GameIntro()
+    {
+        StartCoroutine(FadeInOrOut(false, fadeSpeed));
+        yield return StartCoroutine(CameraZoom());
+        StartCoroutine(TextScrollSpawn(UIMainText, "Ready?"));
+    }
+    //This fades in and out objects by chainging their albedo, probably only works for images for now.
+    public IEnumerator FadeInOrOut(bool fadingIn = true, int speed = 3)
+    {
+        Color objColor = FadeOutBlock.color;
+        float transparency;
+        if(fadingIn)
+        {
+            while(objColor.a < 1)
+            {
+                Debug.Log("Fading");
+                transparency = objColor.a + (speed * Time.deltaTime);
+
+                objColor = new Color(objColor.r, objColor.g, objColor.b, transparency);
+                FadeOutBlock.color = objColor;
+                yield return null;
+            }
+        }
+        else
+        {
+            while (objColor.a > 0)
+            {
+                Debug.Log("Fading");
+                transparency = objColor.a - (speed * Time.deltaTime);
+
+                objColor = new Color(objColor.r, objColor.g, objColor.b, transparency);
+                FadeOutBlock.color = objColor;
+                yield return null;
+            }
+        }
+    }
+
+    public IEnumerator CameraZoom(bool In = true, int sizeDiff = 9, float time = 30f)
+    {
+        float currentSize = mainCamera.orthographicSize;
+        float targetSize = currentSize - sizeDiff;
+        if(In)
+        {
+            while(currentSize > targetSize)
+            {
+                currentSize -= sizeDiff / time;
+                mainCamera.orthographicSize = currentSize;
+                yield return null;
+            }
+        }
+        else
+        {
+            while (currentSize < targetSize)
+            {
+                currentSize += sizeDiff / time;
+                mainCamera.orthographicSize = currentSize;
+                yield return null;
+            }
+        }
+    }
+
+    public IEnumerator TextScrollSpawn(Text place, string text)
+    {
+        string display = "";
+        place.text = display;
+        place.gameObject.SetActive(true);
+        for(int i = 0; i < text.Length; i++)
+        {
+            display += text[i];
+            place.text = display;
+            yield return new WaitForSeconds(0.15f);
+        }
+        yield return null;
+    }
+
+    public IEnumerator DropTheChildren()
+    {
+        yield return new WaitForSeconds(10.0f);
+        for (int i = 0; i < Players.Length; i++)
+        {
+            foreach (PlayerController2 p in Players[i].GetComponentsInChildren<PlayerController2>())
+            {
+                p.gravityPower = 3;
+            }
+        }
     }
 
     // Locks all player movement

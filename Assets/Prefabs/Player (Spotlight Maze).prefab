@@ -400,7 +400,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!143 &8647268432791968484
 CharacterController:
@@ -463,6 +463,7 @@ MonoBehaviour:
   lockMovement: 0
   keepMovementLocked: 0
   playerAnimator: {fileID: 0}
+  attackEnabled: 1
 --- !u!136 &3463019886311270296
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -564,7 +565,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
