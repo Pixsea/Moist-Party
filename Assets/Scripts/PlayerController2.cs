@@ -48,6 +48,12 @@ public class PlayerController2 : MonoBehaviour
     private bool alreadyLanded = true;
     private bool landRefresh = false;
 
+    [SerializeField]
+    private SkinnedMeshRenderer playerRenderer;
+
+    [SerializeField]
+    private Material[] playerSlimeMaterials;
+
 
 
     // Start is called before the first frame update
@@ -61,6 +67,9 @@ public class PlayerController2 : MonoBehaviour
         ParticleSystem.MainModule settings = particles.main;
         settings.startColor = gameObject.GetComponentInChildren < SkinnedMeshRenderer > ().material.color;
         distToGround = collider.height;
+
+        //playerRenderer.material = playerSlimeMaterials[playerNum];
+        settings.startColor = playerSlimeMaterials[playerNum-1].color;
     }
 
     private void Update()
