@@ -75,6 +75,11 @@ public class PlayerController2 : MonoBehaviour
             {
                 Debug.Log("PAIN2");
                 SoundManager.instance.PlaySound("land");
+                if (!particlesPlaying)
+                {
+                    Debug.Log("Start Coroutine" + gameObject.name);
+                    StartCoroutine(PlayParticles());
+                }
                 landRefresh = false;
 
                 if (!particlesPlaying)
@@ -89,6 +94,7 @@ public class PlayerController2 : MonoBehaviour
         // Jump
         if (Input.GetButtonDown("Jump" + playerNum.ToString()) && isGrounded && m_canJump && !lockMovement && !keepMovementLocked)
         {
+            Debug.Log("We're trying jump");
             //playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravityPower);
             SoundManager.instance.PlaySound("jump");
             StartCoroutine(LandWait(.2f));
