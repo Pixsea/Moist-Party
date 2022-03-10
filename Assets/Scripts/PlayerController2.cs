@@ -48,16 +48,16 @@ public class PlayerController2 : MonoBehaviour
     private bool alreadyLanded = true;
     private bool landRefresh = false;
 
-<<<<<<< HEAD
+
     private bool walking = false;
     private float footstepNoiseRate = .4f;
-=======
+
     [SerializeField]
     private SkinnedMeshRenderer playerRenderer;
 
     [SerializeField]
     private Material[] playerSlimeMaterials;
->>>>>>> hunter
+
 
 
 
