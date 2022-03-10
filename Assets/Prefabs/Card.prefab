@@ -132,6 +132,7 @@ MonoBehaviour:
   player: 0
   timer: 0
   card: {fileID: 4812254111868012606}
+  index: 0
 --- !u!65 &7889474293979545711
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e7142cd527fee9438e5e5ea141c15fc, type: 2}
+  - {fileID: 2100000, guid: e346be78142a5fe48aba3534211f3ece, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
