@@ -162,12 +162,16 @@ public class PlayerController2 : MonoBehaviour
                 StartCoroutine(StartFoosteps());
                 
             }
-            
+
+            playerAnimator.SetBool("Moving", true);
         }
         else
         {
             walking = false;
+            playerAnimator.SetBool("Moving", false);
         }
+
+        //playerAnimator.SetFloat("Speed", )
 
         // Apply movements
         rigidbody.AddForce(move * speed, ForceMode.VelocityChange);
