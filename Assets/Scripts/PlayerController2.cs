@@ -58,6 +58,9 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField]
     private Material[] playerSlimeMaterials;
 
+    [SerializeField]
+    private GameObject manager; // USed for concentration minigame
+
 
 
 
@@ -218,6 +221,13 @@ public class PlayerController2 : MonoBehaviour
         if (collision.tag == "Slime")
         {
             speed *= 0.5f;
+        }
+
+        if (manager != null)
+        {
+            collision.GetComponent<CardScript>().player = playerNum;
+            //collision.GetComponent<CardScript>().StartFlip();
+            manager.GetComponent<ConcentrationManager>().Flip(collision.gameObject, collision.GetComponent<CardScript>().index);
         }
     }
 

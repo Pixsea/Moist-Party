@@ -8,6 +8,7 @@ EditorUserSettings:
 <<<<<<< Updated upstream
 =======
     RecentlyUsedScenePath-0:
+<<<<<<< HEAD
       value: 22424703114646680e0b0227036c7d1f17051c192f2d2835633c133af6f9
       flags: 0
     RecentlyUsedScenePath-1:
@@ -21,15 +22,43 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedScenePath-3:
       value: 22424703114646680e0b0227036c7219181e1f2b212d357f073c1023d0ef243dacf238e0f323
+=======
+      value: 22424703114646680e0b0227036c72111f19352f223d68252320092a
+      flags: 0
+    RecentlyUsedScenePath-1:
+      value: 22424703114646680e0b0227036c7c1817051929382d34701e2a183de7ae2136ebf32f
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 22424703114646680e0b0227036c7d1f17051c192f2d2835633c133af6f9
+      flags: 0
+    RecentlyUsedScenePath-3:
+      value: 22424703114646680e0b0227036c7219181e1f2b212d357f1e20103cecd33521f1a923e7ee2e26
+>>>>>>> Kenny_01
       flags: 0
     RecentlyUsedScenePath-4:
       value: 22424703114646680e0b0227036c7219181e1f2b212d357f1e281023eee5073be7e933a7f234362820
       flags: 0
     RecentlyUsedScenePath-5:
+<<<<<<< HEAD
       value: 22424703114646680e0b0227036c7219181e1f2b212d357f1e20103cecd33521f1a923e7ee2e26
       flags: 0
     RecentlyUsedScenePath-6:
       value: 22424703114646680e0b0227036c7219181e1f2b212d357f00280e3bcae12428fba923e7ee2e26
+=======
+      value: 22424703114646680e0b0227036c7219181e1f2b212d357f00280e3bcae12428fba923e7ee2e26
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 22424703114646680e0b0227036c7219181e1f2b212d357f1d280f38edf5260be1e238eca92f31352d1b
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 22424703114646680e0b0227036c7219181e1f2b212d357f09280f27ede61337eee378fce9332b25
+      flags: 0
+    RecentlyUsedScenePath-8:
+      value: 22424703114646680e0b0227036c7219181e1f2b212d357f09280f27ede61337eee378fce9332b25
+      flags: 0
+    RecentlyUsedScenePath-9:
+      value: 22424703114646680e0b0227036c7219181e1f2b212d357f0e261330e7ee202ae3f33fe6e9742a323016f6
+>>>>>>> Kenny_01
       flags: 0
 >>>>>>> Stashed changes
     vcSharedLogLevel:
