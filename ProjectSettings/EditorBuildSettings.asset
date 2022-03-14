@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/Maze Scene2, Electric Boogaloo.unity
     guid: 08ac13dcbaa26d245baf086f25849341
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Concentration.unity
+    guid: 96ea946f05fed3744bc24ce8fee48e19
   m_configObjects: {}
