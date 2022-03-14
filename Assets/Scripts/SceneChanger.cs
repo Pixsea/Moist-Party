@@ -34,6 +34,8 @@ public class SceneChanger : MonoBehaviour
     private Texture parkourDirections;
     [SerializeField]
     private Texture jumpRopeDirections;
+    [SerializeField]
+    private Texture concentrationDirections;
 
 
     [SerializeField]
@@ -85,6 +87,10 @@ public class SceneChanger : MonoBehaviour
             else if (nextScene == "JumpRope")
             {
                 directionImage.texture = jumpRopeDirections;
+            }
+            else if (nextScene == "Concentration")
+            {
+                directionImage.texture = concentrationDirections;
             }
 
 
