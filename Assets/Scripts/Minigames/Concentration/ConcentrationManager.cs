@@ -11,9 +11,9 @@ public class ConcentrationManager : MinigameManager
 
     public List<int> cardValues = new List<int> { 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8 };
 
-    public int numFaceUp = 0;
+    public int[] numFaceUp = new int[] {0, 0, 0, 0};
 
-    public int[] faceUpCards = new int[] {-1, -1}; //Stores index of cards 0-15
+    public int[] faceUpCards = new int[] {-1, -1, -1, -1, -1, -1, -1, -1}; //Stores index of cards 0-15
 
     public int[] numCardsPerPlayer = new int[] {0, 0, 0, 0};
 
@@ -26,6 +26,8 @@ public class ConcentrationManager : MinigameManager
     public Material[] colors = new Material[9];
 
     public bool finished = false;
+
+    public int player = 0;
 
     private static System.Random rng = new System.Random();
 
@@ -76,35 +78,36 @@ public class ConcentrationManager : MinigameManager
         if (card.GetComponent<CardScript>().faceUp) {
             return;
         }
-
-        if (numFaceUp == 2) {
-            cards[faceUpCards[0]].GetComponent<CardScript>().StartFlip();
-            cards[faceUpCards[1]].GetComponent<CardScript>().StartFlip();
-            numFaceUp = 0;
-            faceUpCards[0] = -1;
-            faceUpCards[1] = -1;
+        Debug.Log(card.GetComponent<CardScript>().player);
+        player = card.GetComponent<CardScript>().player;
+        if (numFaceUp[player - 1] == 2) {
+            cards[faceUpCards[(player - 1) * 2]].GetComponent<CardScript>().StartFlip();
+            cards[faceUpCards[(player - 1) * 2 + 1]].GetComponent<CardScript>().StartFlip();
+            numFaceUp[player - 1] = 0;
+            faceUpCards[(player - 1) * 2] = -1;
+            faceUpCards[(player - 1) * 2 + 1] = -1;
         }
 
         card.GetComponent<CardScript>().StartFlip();
-        faceUpCards[numFaceUp] = index;
-        numFaceUp += 1;
+        faceUpCards[(player - 1) * 2 + numFaceUp[player - 1]] = index;
+        numFaceUp[player - 1] += 1;
 
         CheckMatch();
     }
 
     public void CheckMatch() {
-        if (faceUpCards[0] < 0 || faceUpCards[1] < 0) {
+        if (faceUpCards[(player - 1) * 2] < 0 || faceUpCards[(player - 1) * 2 + 1] < 0) {
             return;
         }
-        if (cards[faceUpCards[0]].GetComponent<CardScript>().cardValue == cards[faceUpCards[1]].GetComponent<CardScript>().cardValue) {
-            score[cards[faceUpCards[1]].GetComponent<CardScript>().player - 1] += 1;
+        if (cards[faceUpCards[(player - 1) * 2]].GetComponent<CardScript>().cardValue == cards[faceUpCards[(player - 1) * 2 + 1]].GetComponent<CardScript>().cardValue) {
+            score[cards[faceUpCards[(player - 1) * 2 + 1]].GetComponent<CardScript>().player - 1] += 1;
             matchCount += 1;
-            cards[faceUpCards[0]].GetComponent<CardScript>().ScorePopup();
-            Destroy(cards[faceUpCards[0]]);
-            Destroy(cards[faceUpCards[1]]);
-            faceUpCards[0] = -1;
-            faceUpCards[1] = -1;
-            numFaceUp = 0;
+            cards[faceUpCards[(player - 1) * 2]].GetComponent<CardScript>().ScorePopup();
+            Destroy(cards[faceUpCards[(player - 1) * 2]]);
+            Destroy(cards[faceUpCards[(player - 1) * 2 + 1]]);
+            faceUpCards[(player - 1) * 2] = -1;
+            faceUpCards[(player - 1) * 2 + 1] = -1;
+            numFaceUp[player - 1] = 0;
         }
     }
 
