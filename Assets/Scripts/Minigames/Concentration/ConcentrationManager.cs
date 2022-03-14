@@ -99,6 +99,7 @@ public class ConcentrationManager : MinigameManager
         if (cards[faceUpCards[0]].GetComponent<CardScript>().cardValue == cards[faceUpCards[1]].GetComponent<CardScript>().cardValue) {
             score[cards[faceUpCards[1]].GetComponent<CardScript>().player - 1] += 1;
             matchCount += 1;
+            cards[faceUpCards[0]].GetComponent<CardScript>().ScorePopup();
             Destroy(cards[faceUpCards[0]]);
             Destroy(cards[faceUpCards[1]]);
             faceUpCards[0] = -1;

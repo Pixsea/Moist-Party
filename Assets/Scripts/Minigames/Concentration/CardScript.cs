@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardScript : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CardScript : MonoBehaviour
     public int timer;
     public GameObject card;
     public int index;
+
+    public GameObject pointText;
 
     // Start is called before the first frame update
     void Start()
@@ -47,5 +50,28 @@ public class CardScript : MonoBehaviour
     public void Remove() {
         Destroy(card);
         Destroy(this);
+    }
+
+    public void ScorePopup() {
+
+        GameObject pointEffect = Instantiate(pointText, new Vector3(0, gameObject.transform.position.y, gameObject.transform.position.z - 1), Quaternion.Euler(0, 0, 0));
+        Text textEdit = pointEffect.GetComponent<PointEffect>().pointText;
+        if (player == 1) {
+            textEdit.color = Color.red;
+            pointEffect.transform.position += new Vector3(-1.5f, 0, 0);
+        }
+        if (player == 2) {
+            textEdit.color = Color.blue;
+            pointEffect.transform.position += new Vector3(-.5f, 0, 0);
+        }
+        if (player == 3) {
+            textEdit.color = Color.green;
+            pointEffect.transform.position += new Vector3(5f, 0, 0);
+        }
+        if (player == 4) {
+            textEdit.color = Color.yellow;
+            pointEffect.transform.position += new Vector3(1.5f, 0, 0);
+        }
+        textEdit.text = "+1";
     }
 }

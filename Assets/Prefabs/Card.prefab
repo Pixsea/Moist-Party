@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 4812254111868012606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.025, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1.5}
   m_Children:
   - {fileID: 4812254110695060049}
   - {fileID: 4812254112332070721}
@@ -133,6 +133,7 @@ MonoBehaviour:
   timer: 0
   card: {fileID: 4812254111868012606}
   index: 0
+  pointText: {fileID: 6936563891406581997, guid: 52b193b170346e34bb8f0dc9991d0d83, type: 3}
 --- !u!65 &7889474293979545711
 BoxCollider:
   m_ObjectHideFlags: 0
