@@ -59,10 +59,10 @@ public class ConcentrationManager : MinigameManager
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(GameLoop());
-    }
+    //void Start()
+    //{
+    //    StartCoroutine(GameLoop());
+    //}
 
     // Update is called once per frame
     void Update()
@@ -130,6 +130,7 @@ public class ConcentrationManager : MinigameManager
 
     public override IEnumerator GameStarting() {
         UIMainText.text = "Ready?";
+        UITimerText.text = "";
         LockMovementConcentration();
 
         yield return StartCoroutine(AdjustPlayers());
@@ -146,7 +147,7 @@ public class ConcentrationManager : MinigameManager
 
         yield return new WaitForSeconds(1.5f);
 
-        timer = 60 * 100;
+        timer = TotalGameTime / Time.fixedDeltaTime;
         // While the game hasn't ended and while the timer is greater than 0
         while (!finished && (timer > 0))
         {
@@ -173,7 +174,7 @@ public class ConcentrationManager : MinigameManager
 
         LockMovementConcentration();
 
-        timer = 60 * 3;
+        timer = endWaitSec / Time.fixedDeltaTime;
 
         while(timer > 0)
         {

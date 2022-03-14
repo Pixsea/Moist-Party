@@ -1512,12 +1512,16 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 21026b84d7b86744081149ed24ac6f33, type: 2}
     - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: speed
-      value: 3
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1216478256}
+    - target: {fileID: 1662811265698929492, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
+      propertyPath: playerNum
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4897643888075587219, guid: 8ed5c288fe5bde947b287a8e9a723f0f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1623,12 +1627,12 @@ MonoBehaviour:
   UIMainText: {fileID: 1460904497}
   UITimerText: {fileID: 668800534}
   UsesTimer: 1
-  TotalGameTime: 0
+  TotalGameTime: 60
   timer: 0
-  startWaitSec: 0
-  endWaitSec: 0
-  resultsWaitSec: 0
-  scoreTracker: {fileID: 0}
+  startWaitSec: 3
+  endWaitSec: 3
+  resultsWaitSec: 3
+  scoreTracker: {fileID: 1900585000}
   CardPrefab: {fileID: 4812254111868012606, guid: ef59cf42112da1b4c9db43ed3aeda214, type: 3}
   cardValues: 000000000000000000000000000000000100000001000000010000000100000002000000020000000200000002000000030000000300000003000000030000000400000004000000040000000400000005000000050000000500000005000000060000000600000006000000060000000700000007000000070000000700000008000000080000000800000008000000
   numFaceUp: 0
@@ -2383,7 +2387,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15a3868b3f0a6ae4b9cfe18e76a3f4d2, type: 2}
+  - {fileID: 2100000, guid: 92adbfb1e43450642ab97c7714f1bc81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
