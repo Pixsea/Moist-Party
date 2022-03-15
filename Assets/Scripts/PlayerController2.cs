@@ -21,7 +21,7 @@ public class PlayerController2 : MonoBehaviour
 
     private bool m_canJump = true;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool lockMovement = false;  //Whether the player's movement should locked
     public bool keepMovementLocked = false;  // Whether the movement should always be locked
 

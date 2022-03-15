@@ -116,14 +116,14 @@ public class ConcentrationManager : MinigameManager
     }
 
     public override IEnumerator GameLoop() {
-        LockMovementConcentration();
+        LockMovement();
 
         yield return StartCoroutine(GameStarting());
-        UnlockMovementConcentration();
+        UnlockMovement();
 
         yield return StartCoroutine(GamePlaying());
 
-        LockMovementConcentration();
+        LockMovement();
 
         yield return StartCoroutine(GameEnding());
 
@@ -135,7 +135,7 @@ public class ConcentrationManager : MinigameManager
     public override IEnumerator GameStarting() {
         UIMainText.text = "Ready?";
         UITimerText.text = "";
-        LockMovementConcentration();
+        LockMovement();
 
         yield return StartCoroutine(AdjustPlayers());
 
@@ -176,7 +176,7 @@ public class ConcentrationManager : MinigameManager
         UIMainText.text = "Finish";
         UITimerText.text = "";
 
-        LockMovementConcentration();
+        LockMovement();
 
         timer = endWaitSec / Time.fixedDeltaTime;
 
@@ -194,29 +194,59 @@ public class ConcentrationManager : MinigameManager
 
     public override IEnumerator ShowResults()
     {
-        UIMainText.text = "Player " + (Array.IndexOf(score, score.Max())+1).ToString() + " Wins!";
+        int winner = 0;
+        bool tie = false;
 
-        // Increase the winner's score
-        scoreTracker.GetComponent<ScoreTracker>().IncreaseScore((Array.IndexOf(score, score.Max())+1));
+        int highscore = score.Max();
+        if (score[0] == highscore) {
+            if (winner == 0) {
+                winner = 1;
+            }
 
+            else {
+                tie = true;
+            }
+        }
+
+        if (score[1] == highscore) {
+            if (winner == 0) {
+                winner = 2;
+            }
+
+            else {
+                tie = true;
+            }
+        }
+
+        if (score[2] == highscore) {
+            if (winner == 0) {
+                winner = 3;
+            }
+
+            else {
+                tie = true;
+            }
+        }
+
+        if (score[3] == highscore) {
+            if (winner == 0) {
+                winner = 4;
+            }
+
+            else {
+                tie = true;
+            }
+        }
+
+        if (tie) {
+            UIMainText.text = "It's a tie!";
+        }
+        else
+        {
+            UIMainText.text = "Player " + (Array.IndexOf(score, score.Max())+1).ToString() + " Wins!";
+            // Increase the winner's score
+            scoreTracker.GetComponent<ScoreTracker>().IncreaseScore((Array.IndexOf(score, score.Max())+1));
+        }
         yield return resultsWait;
-    }
-
-    public void LockMovementConcentration()
-    {
-        // Create the player Dictionary from the player array
-        for (int i = 0; i < Players.Length; i++)
-        {
-            Players[i].gameObject.GetComponent<ConcentrationPlayerController>().lockMovement = true;
-        }
-    }
-
-    public void UnlockMovementConcentration()
-    {
-        // Create the player Dictionary from the player array
-        for (int i = 0; i < Players.Length; i++)
-        {
-            Players[i].gameObject.GetComponent <ConcentrationPlayerController> ().lockMovement = false;
-        }
     }
 }
