@@ -279,7 +279,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c01f30bb836e8d44e914d4c3b05de3a5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1429,8 +1429,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33ab625c83cc0542864aa5a39fb0e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   player3: {fileID: 0}
   player4: {fileID: 0}
+  sceneCamera: {fileID: 0}
+  winnerPodium: {fileID: 0}
   player1Text: {fileID: 0}
   player2Text: {fileID: 0}
   player3Text: {fileID: 0}
@@ -1438,6 +1442,7 @@ MonoBehaviour:
   scoretoWinText: {fileID: 0}
   tournamentRunning: 0
   mainText: {fileID: 0}
+  bigMiddleText: {fileID: 0}
   mashButton: {fileID: 0}
   simonButton: {fileID: 0}
   dartButton: {fileID: 0}

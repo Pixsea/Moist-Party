@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 4317201950750256921}
-  step: {fileID: 8300000, guid: 212ba30d232485b438e7be3010ee2761, type: 3}
+  step: {fileID: 8300000, guid: 7e732ccc94f5b3946b5155a8d2c32de2, type: 3}
   jump: {fileID: 8300000, guid: 74743c5b98c368541ba9b71128279ea4, type: 3}
   land: {fileID: 8300000, guid: 5bfb18b528669214fa311929d49566be, type: 3}
   punch: {fileID: 8300000, guid: 7ea1552d474c55744b2ace7d0eb87b46, type: 3}
@@ -73,7 +73,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0

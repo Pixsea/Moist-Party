@@ -2027,6 +2027,7 @@ MonoBehaviour:
   glowRunDirections: {fileID: 0}
   parkourDirections: {fileID: 0}
   jumpRopeDirections: {fileID: 0}
+  concentrationDirections: {fileID: 0}
   player1ReadyText: {fileID: 0}
   player2ReadyText: {fileID: 0}
   player3ReadyText: {fileID: 0}
