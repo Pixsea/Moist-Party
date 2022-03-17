@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 4317201950750256921}
-  step: {fileID: 8300000, guid: 212ba30d232485b438e7be3010ee2761, type: 3}
+  step: {fileID: 8300000, guid: 7e732ccc94f5b3946b5155a8d2c32de2, type: 3}
   jump: {fileID: 8300000, guid: 74743c5b98c368541ba9b71128279ea4, type: 3}
   land: {fileID: 8300000, guid: 5bfb18b528669214fa311929d49566be, type: 3}
   punch: {fileID: 8300000, guid: 7ea1552d474c55744b2ace7d0eb87b46, type: 3}
   heavyPunch: {fileID: 8300000, guid: 239afc74fab4dd9409a0ad7382344bac, type: 3}
-  ow: {fileID: 8300000, guid: 629861b0407aa9c4ba5725e92da1fde1, type: 3}
-  ow2: {fileID: 8300000, guid: 333bda8f4936c9b4cb116a75c2e4bcb9, type: 3}
+  ow: {fileID: 8300000, guid: 97f66b40dc0d8b942896c67a475c2b27, type: 3}
+  ow2: {fileID: 8300000, guid: ab81b0dddd0779d4eb448e7d3334d37a, type: 3}
   button: {fileID: 8300000, guid: c106aa0df1b905843b723c4f90e5dafa, type: 3}
   pain: {fileID: 8300000, guid: 3cd1cac20ee7f2947a8def2e0954ed58, type: 3}
   audience: {fileID: 8300000, guid: ca602afddb54c3647868bc3f3ed4bea1, type: 3}
@@ -73,7 +73,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0

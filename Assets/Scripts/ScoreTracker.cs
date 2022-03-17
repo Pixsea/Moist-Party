@@ -88,7 +88,7 @@ public class ScoreTracker : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            WinScreen(1);
+            //WinScreen(1);
         }
     }
 

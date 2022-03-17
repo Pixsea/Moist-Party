@@ -864,6 +864,7 @@ MonoBehaviour:
   parkourDirections: {fileID: 2800000, guid: b5662de16b232b94aa89cbc9fe41f106, type: 3}
   jumpRopeDirections: {fileID: 2800000, guid: 45d990065b8b05446967aa8b2a4eaafc, type: 3}
   concentrationDirections: {fileID: 2800000, guid: 6c2073a63fb11924495fa7265aa56682, type: 3}
+  spotlightDirections: {fileID: 2800000, guid: 66c5ee42c0e504e409610578595b6eea, type: 3}
   player1ReadyText: {fileID: 2135579556}
   player2ReadyText: {fileID: 101361922}
   player3ReadyText: {fileID: 331706842}

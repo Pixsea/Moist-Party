@@ -1650,6 +1650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4317201950750256921, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4317201950750256923, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -1855,7 +1859,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0764979bad287ef4ca844372b026b0e0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.091
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -364,7 +364,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &69471630
 MeshRenderer:
@@ -459,7 +459,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &72158374
 MeshRenderer:
@@ -683,6 +683,14 @@ PrefabInstance:
     - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: playerNum
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57e129986cc6a7b4c8caf600d3dcbdaa, type: 2}
+    - target: {fileID: 8647268432791968487, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 8647268433030280850, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1274,8 +1282,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: attackEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b65bb54520ce234b8aeaa94a39dc55c, type: 2}
     - target: {fileID: 8647268432791968487, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Constraints
       value: 112
@@ -1619,6 +1631,10 @@ PrefabInstance:
       propertyPath: playerNum
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b0055485f5f7114ea6102c225d9d5f6, type: 2}
     - target: {fileID: 8647268433030280850, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3350,8 +3366,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3235229335300064209, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: attackEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b65bb54520ce234b8aeaa94a39dc55c, type: 2}
     - target: {fileID: 8647268432791968487, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Constraints
       value: 112
@@ -3450,7 +3470,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1188375911
 MeshRenderer:
@@ -3642,6 +3662,10 @@ PrefabInstance:
       propertyPath: playerNum
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21026b84d7b86744081149ed24ac6f33, type: 2}
     - target: {fileID: 8647268433030280850, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4016,6 +4040,14 @@ PrefabInstance:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57e129986cc6a7b4c8caf600d3dcbdaa, type: 2}
+    - target: {fileID: 8647268432791968487, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 8647268433030280850, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4080,6 +4112,10 @@ PrefabInstance:
     - target: {fileID: 4317201950750256920, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317201950750256921, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
+      propertyPath: m_Volume
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4317201950750256923, guid: 7c7125eed4c22ba42a1c24e5e9331d1b, type: 3}
       propertyPath: m_RootOrder
@@ -4769,6 +4805,10 @@ PrefabInstance:
       propertyPath: playerNum
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21026b84d7b86744081149ed24ac6f33, type: 2}
     - target: {fileID: 8647268433030280850, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5007,7 +5047,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c2e2d701b77439942982e54d200e18cb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.24
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5379,6 +5419,10 @@ PrefabInstance:
       propertyPath: playerNum
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7385981383453260937, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b0055485f5f7114ea6102c225d9d5f6, type: 2}
     - target: {fileID: 8647268433030280850, guid: efd436affce7ac14b82e252c94fcd9c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5561,7 +5605,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2097468323
 MeshRenderer:

@@ -93,6 +93,17 @@ public class SoundManager : MonoBehaviour
         if (name == "punch")
         {
             source.clip = punch;
+
+            float temp = Random.Range(0, 10.0f);
+
+            if (1 < temp && temp <= 4)
+            {
+                source.clip = ow;
+            }
+            else if (temp <= 1)
+            {
+                source.clip = ow2;
+            }
         }
 
         if (name == "heavyPunch")
