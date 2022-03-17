@@ -358,7 +358,8 @@ public class PlayerController2 : MonoBehaviour
 
             if (walking)
             {
-                yield return new WaitForSeconds(footstepNoiseRate);
+                float temp = footstepNoiseRate + Random.RandomRange(0, .1f);
+                yield return new WaitForSeconds(temp);
             }
         }
         yield return null;
