@@ -3,7 +3,7 @@ Who is on your team?
 Hunter Trigo 
 Art Leader/ Programmer / Sound
 Jason Iino
-Paid Poogramming Lead/Design
+Paid Programming Lead/Design
 Christopher Chereque
 Programmer/ Design / Art
 Kenneth Lin
